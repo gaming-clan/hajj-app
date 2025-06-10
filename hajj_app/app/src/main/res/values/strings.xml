@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Rregullat e Haxhit</string>
+    <string name="home">Kryefaqja</string>
+    <string name="categories">Kategoritë</string>
+    <string name="search">Kërko</string>
+    <string name="about">Rreth Aplikacionit</string>
+    <string name="introduction">Hyrje</string>
+    <string name="pillars_of_islam">Shtyllat e Islamit</string>
+    <string name="hajj_obligation">Detyrimi i Haxhit</string>
+    <string name="travel_etiquette">Edukata e Udhëtimit</string>
+    <string name="ihram">Ihrami</string>
+    <string name="prohibitions">Ndalesat gjatë Ihramit</string>
+    <string name="miqat">Vendcaktimet</string>
+    <string name="kaaba">Qabja</string>
+    <string name="importance">Rëndësia e Haxhit</string>
+    <string name="back">Kthehu</string>
+    <string name="search_hint">Kërko rregulla...</string>
+    <string name="favorite">Të preferuara</string>
+    <string name="share">Ndaj</string>
+    <string name="about_app">Ky aplikacion përmban rregullat dhe udhëzimet kryesore për kryerjen e Haxhit sipas traditës islame.</string>
+    <string name="version">Versioni 1.0</string>
+    <string name="no_results">Nuk u gjetën rezultate</string>
+</resources>
