@@ -1,0 +1,4 @@
+
+rootProject.name = "hajj-app"
+include ":app"
+
