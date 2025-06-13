@@ -2076,6 +2076,7 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id image_logo
 id immediateStop
 id included
 id info
@@ -2203,6 +2204,8 @@ id radio
 id ratio
 id rectangles
 id recycler_view_categories
+id recycler_view_items
+id recycler_view_search
 id reverseSawtooth
 id right
 id rightToLeft
@@ -2229,6 +2232,7 @@ id search_go_btn
 id search_mag_icon
 id search_plate
 id search_src_text
+id search_view
 id search_voice_btn
 id select_dialog_listview
 id selected
@@ -2296,9 +2300,16 @@ id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart
 id textTop
+id text_about_app
+id text_contact
+id text_detail_description
+id text_detail_title
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
+id text_rule_description
+id text_rule_title
+id text_version
 id textinput_counter
 id textinput_error
 id textinput_helper_text
@@ -2410,7 +2421,9 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_detail
 layout activity_main
+layout activity_splash
 layout bonuspack_bubble
 layout custom_dialog
 layout design_bottom_navigation_item
@@ -2428,8 +2441,12 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout fragment_about
+layout fragment_categories
 layout fragment_home
 layout fragment_map
+layout fragment_search
+layout item_rule
 layout material_chip_input_combo
 layout material_clock_display
 layout material_clock_display_divider
@@ -2550,6 +2567,7 @@ string character_counter_pattern
 string chip_text
 string clear_text_end_icon_content_description
 string compass
+string contact_info
 string cyclemap
 string error_icon_content_description
 string exposed_dropdown_menu_content_description

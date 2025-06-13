@@ -41,5 +41,13 @@ public class HomeFragment extends Fragment {
         categories = DataManager.getInstance(getContext()).getCategories();
         adapter = new CategoryAdapter(getContext(), categories);
         recyclerView.setAdapter(adapter);
+        adapter.setOnItemClickListener(category -> {
+            Fragment fragment = CategoryFragment.newInstance(category.getId(), category.getTitle());
+            getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .addToBackStack(null)
+                .commit();
+        });
     }
 }

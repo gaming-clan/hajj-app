@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:2:1-27:12
-INJECTED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:2:1-27:12
+ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:2:1-35:12
 MERGED from [com.google.android.material:material:1.4.0] C:\Users\Graphic\.gradle\caches\8.12\transforms\090292d81391e54d6146dc532c4483c2\transformed\material-1.4.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.2] C:\Users\Graphic\.gradle\caches\8.12\transforms\21fd40c6f28c4d02ac0115aa7b053ba5\transformed\constraintlayout-2.1.2\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat:1.4.0] C:\Users\Graphic\.gradle\caches\8.12\transforms\c65450ccc735b9f6e94eabb5e2a8c75a\transformed\appcompat-1.4.0\AndroidManifest.xml:17:1-24:12
@@ -66,8 +66,8 @@ ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:7:5-81
 	android:name
 		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:7:22-78
 application
-ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:9:5-25:19
-INJECTED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:9:5-25:19
+ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:9:5-33:19
+INJECTED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:9:5-33:19
 MERGED from [com.google.android.material:material:1.4.0] C:\Users\Graphic\.gradle\caches\8.12\transforms\090292d81391e54d6146dc532c4483c2\transformed\material-1.4.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.4.0] C:\Users\Graphic\.gradle\caches\8.12\transforms\090292d81391e54d6146dc532c4483c2\transformed\material-1.4.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.2] C:\Users\Graphic\.gradle\caches\8.12\transforms\21fd40c6f28c4d02ac0115aa7b053ba5\transformed\constraintlayout-2.1.2\AndroidManifest.xml:9:5-20
@@ -98,22 +98,36 @@ MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\Graphic\.gradle\ca
 		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:10:9-35
 	android:theme
 		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:15:9-45
-activity#com.example.hajjrules.MainActivity
-ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:16:9-24:20
+activity#com.example.hajjrules.SplashActivity
+ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:16:9-23:20
 	android:exported
 		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:18:13-36
 	android:name
-		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:17:13-41
+		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:17:13-43
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:19:13-23:29
+ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:19:13-22:29
 action#android.intent.action.MAIN
 ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:20:17-69
 	android:name
 		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:20:25-66
 category#android.intent.category.LAUNCHER
-ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:22:17-77
+ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:21:17-77
 	android:name
-		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:22:27-74
+		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:21:27-74
+activity#com.example.hajjrules.MainActivity
+ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:25:9-27:39
+	android:exported
+		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:27:13-36
+	android:name
+		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:26:13-41
+activity#com.example.hajjrules.DetailActivity
+ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:29:9-32:39
+	android:parentActivityName
+		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:31:13-55
+	android:exported
+		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:32:13-36
+	android:name
+		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:30:13-43
 uses-sdk
 INJECTED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml

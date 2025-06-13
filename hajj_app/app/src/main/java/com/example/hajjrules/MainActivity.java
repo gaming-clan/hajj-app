@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         if (id == R.id.navigation_home) {
             fragment = new HomeFragment();
         } else if (id == R.id.navigation_categories) {
-            fragment = new CategoryFragment();
+            fragment = new HomeFragment();
         } else if (id == R.id.navigation_search) {
             fragment = new SearchFragment();
         } else if (id == R.id.navigation_about) {
