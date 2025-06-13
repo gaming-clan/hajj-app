@@ -204,6 +204,10 @@ public class DataManager {
         return rulesByCategory.getOrDefault(categoryId, new ArrayList<>());
     }
 
+    public List<HajjRule> getRulesForCategory(int categoryId) {
+        return rulesByCategory.getOrDefault(categoryId, new ArrayList<>());
+    }
+
     public List<HajjRule> searchRules(String query) {
         List<HajjRule> results = new ArrayList<>();
         String lowerQuery = query.toLowerCase();

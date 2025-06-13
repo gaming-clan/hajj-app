@@ -1,4 +1,3 @@
-
 rootProject.name = "hajj-app"
 include ":app"
-
+project(":app").projectDir = new File("hajj_app/app")
