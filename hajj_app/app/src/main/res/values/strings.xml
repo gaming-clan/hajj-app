@@ -21,8 +21,5 @@
     <string name="about_app">Ky aplikacion përmban rregullat dhe udhëzimet kryesore për kryerjen e Haxhit sipas traditës islame.</string>
     <string name="version">Versioni 1.0</string>
     <string name="no_results">Nuk u gjetën rezultate</string>
-</resources>
-
-
     <string name="map">Harta</string>
-
+</resources>
