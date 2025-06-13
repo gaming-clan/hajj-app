@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace "com.example.hajjrules"
+    namespace "com.muslim.hajjrules"
     compileSdkVersion 31
     defaultConfig {
-        applicationId "com.example.hajjrules"
+        applicationId "com.muslim.hajjrules"
         minSdkVersion 21
         targetSdkVersion 31
         versionCode 1

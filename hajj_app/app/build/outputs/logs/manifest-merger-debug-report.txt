@@ -45,7 +45,7 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\User
 MERGED from [androidx.print:print:1.0.0] C:\Users\Graphic\.gradle\caches\8.12\transforms\e7bb84df32cb642f4e501bb3ffe8949c\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\Graphic\.gradle\caches\8.12\transforms\8c4e488e602bfbd8da76fbc2e7dabc63\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
 	package
-		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:3:5-36
+		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:3:5-35
 		INJECTED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml
@@ -98,7 +98,7 @@ MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\Graphic\.gradle\ca
 		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:10:9-35
 	android:theme
 		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:15:9-45
-activity#com.example.hajjrules.SplashActivity
+activity#com.muslim.hajjrules.SplashActivity
 ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:16:9-23:20
 	android:exported
 		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:18:13-36
@@ -114,13 +114,13 @@ category#android.intent.category.LAUNCHER
 ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:21:17-77
 	android:name
 		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:21:27-74
-activity#com.example.hajjrules.MainActivity
+activity#com.muslim.hajjrules.MainActivity
 ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:25:9-27:39
 	android:exported
 		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:27:13-36
 	android:name
 		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:26:13-41
-activity#com.example.hajjrules.DetailActivity
+activity#com.muslim.hajjrules.DetailActivity
 ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:29:9-32:39
 	android:parentActivityName
 		ADDED from G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:31:13-55
