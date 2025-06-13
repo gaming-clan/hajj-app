@@ -42,7 +42,7 @@
         android:testOnly="true"
         android:theme="@style/Theme.HajjApp" >
         <activity
-            android:name="com.example.hajjrules.MainActivity"
+            android:name="com.example.hajjrules.SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,6 +50,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.hajjrules.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.example.hajjrules.DetailActivity"
+            android:exported="true"
+            android:parentActivityName="com.example.hajjrules.MainActivity" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
