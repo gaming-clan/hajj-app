@@ -11,6 +11,7 @@ import com.example.hajjrules.fragments.AboutFragment;
 import com.example.hajjrules.fragments.CategoryFragment;
 import com.example.hajjrules.fragments.HomeFragment;
 import com.example.hajjrules.fragments.SearchFragment;
+import com.example.hajjrules.fragments.MapFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -56,6 +57,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 break;
             case R.id.navigation_about:
                 fragment = new AboutFragment();
+                break;
+            case R.id.navigation_map:
+                fragment = new MapFragment();
                 break;
         }
 

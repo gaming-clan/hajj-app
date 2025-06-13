@@ -17,3 +17,9 @@
         android:icon="@android:drawable/ic_menu_info_details"
         android:title="@string/about" />
 </menu>
+
+    <item
+        android:id="@+id/navigation_map"
+        android:icon="@android:drawable/ic_menu_mapmode"
+        android:title="@string/map" />
+
