@@ -1,50 +1,50 @@
 [
     {
-        "merged": "com.example.hajjrules.app-merged_res-24:/layout_fragment_map.xml.flat",
-        "source": "com.example.hajjrules.app-main-26:/layout/fragment_map.xml"
+        "merged": "com.muslim.hajjrules.app-merged_res-24:/layout_fragment_categories.xml.flat",
+        "source": "com.muslim.hajjrules.app-main-26:/layout/fragment_categories.xml"
     },
     {
-        "merged": "com.example.hajjrules.app-merged_res-24:/mipmap-mdpi_ic_launcher.png.flat",
-        "source": "com.example.hajjrules.app-main-26:/mipmap-mdpi/ic_launcher.png"
+        "merged": "com.muslim.hajjrules.app-merged_res-24:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "com.muslim.hajjrules.app-main-26:/mipmap-mdpi/ic_launcher_round.png"
     },
     {
-        "merged": "com.example.hajjrules.app-merged_res-24:/layout_fragment_home.xml.flat",
-        "source": "com.example.hajjrules.app-main-26:/layout/fragment_home.xml"
+        "merged": "com.muslim.hajjrules.app-merged_res-24:/layout_activity_splash.xml.flat",
+        "source": "com.muslim.hajjrules.app-main-26:/layout/activity_splash.xml"
     },
     {
-        "merged": "com.example.hajjrules.app-merged_res-24:/menu_bottom_navigation_menu.xml.flat",
-        "source": "com.example.hajjrules.app-main-26:/menu/bottom_navigation_menu.xml"
+        "merged": "com.muslim.hajjrules.app-merged_res-24:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.muslim.hajjrules.app-main-26:/mipmap-mdpi/ic_launcher.png"
     },
     {
-        "merged": "com.example.hajjrules.app-merged_res-24:/layout_activity_detail.xml.flat",
-        "source": "com.example.hajjrules.app-main-26:/layout/activity_detail.xml"
+        "merged": "com.muslim.hajjrules.app-merged_res-24:/layout_fragment_map.xml.flat",
+        "source": "com.muslim.hajjrules.app-main-26:/layout/fragment_map.xml"
     },
     {
-        "merged": "com.example.hajjrules.app-merged_res-24:/layout_item_rule.xml.flat",
-        "source": "com.example.hajjrules.app-main-26:/layout/item_rule.xml"
+        "merged": "com.muslim.hajjrules.app-merged_res-24:/layout_fragment_about.xml.flat",
+        "source": "com.muslim.hajjrules.app-main-26:/layout/fragment_about.xml"
     },
     {
-        "merged": "com.example.hajjrules.app-merged_res-24:/layout_activity_splash.xml.flat",
-        "source": "com.example.hajjrules.app-main-26:/layout/activity_splash.xml"
+        "merged": "com.muslim.hajjrules.app-merged_res-24:/layout_activity_main.xml.flat",
+        "source": "com.muslim.hajjrules.app-main-26:/layout/activity_main.xml"
     },
     {
-        "merged": "com.example.hajjrules.app-merged_res-24:/mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "com.example.hajjrules.app-main-26:/mipmap-mdpi/ic_launcher_round.png"
+        "merged": "com.muslim.hajjrules.app-merged_res-24:/layout_activity_detail.xml.flat",
+        "source": "com.muslim.hajjrules.app-main-26:/layout/activity_detail.xml"
     },
     {
-        "merged": "com.example.hajjrules.app-merged_res-24:/layout_fragment_about.xml.flat",
-        "source": "com.example.hajjrules.app-main-26:/layout/fragment_about.xml"
+        "merged": "com.muslim.hajjrules.app-merged_res-24:/menu_bottom_navigation_menu.xml.flat",
+        "source": "com.muslim.hajjrules.app-main-26:/menu/bottom_navigation_menu.xml"
     },
     {
-        "merged": "com.example.hajjrules.app-merged_res-24:/layout_activity_main.xml.flat",
-        "source": "com.example.hajjrules.app-main-26:/layout/activity_main.xml"
+        "merged": "com.muslim.hajjrules.app-merged_res-24:/layout_item_rule.xml.flat",
+        "source": "com.muslim.hajjrules.app-main-26:/layout/item_rule.xml"
     },
     {
-        "merged": "com.example.hajjrules.app-merged_res-24:/layout_fragment_categories.xml.flat",
-        "source": "com.example.hajjrules.app-main-26:/layout/fragment_categories.xml"
+        "merged": "com.muslim.hajjrules.app-merged_res-24:/layout_fragment_home.xml.flat",
+        "source": "com.muslim.hajjrules.app-main-26:/layout/fragment_home.xml"
     },
     {
-        "merged": "com.example.hajjrules.app-merged_res-24:/layout_fragment_search.xml.flat",
-        "source": "com.example.hajjrules.app-main-26:/layout/fragment_search.xml"
+        "merged": "com.muslim.hajjrules.app-merged_res-24:/layout_fragment_search.xml.flat",
+        "source": "com.muslim.hajjrules.app-main-26:/layout/fragment_search.xml"
     }
 ]

@@ -1,6 +1,6 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.example.hajjrules"
+3    package="com.muslim.hajjrules"
 4    android:versionCode="1"
 5    android:versionName="1.0" >
 6
@@ -73,7 +73,7 @@
 43-->G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:15:9-45
 44        <activity
 44-->G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:16:9-23:20
-45            android:name="com.example.hajjrules.SplashActivity"
+45            android:name="com.muslim.hajjrules.SplashActivity"
 45-->G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:17:13-43
 46            android:exported="true" >
 46-->G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:18:13-36
@@ -90,24 +90,24 @@
 52        </activity>
 53        <activity
 53-->G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:25:9-27:39
-54            android:name="com.example.hajjrules.MainActivity"
+54            android:name="com.muslim.hajjrules.MainActivity"
 54-->G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:26:13-41
 55            android:exported="true" />
 55-->G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:27:13-36
 56        <activity
 56-->G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:29:9-32:39
-57            android:name="com.example.hajjrules.DetailActivity"
+57            android:name="com.muslim.hajjrules.DetailActivity"
 57-->G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:30:13-43
 58            android:exported="true"
 58-->G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:32:13-36
-59            android:parentActivityName="com.example.hajjrules.MainActivity" />
+59            android:parentActivityName="com.muslim.hajjrules.MainActivity" />
 59-->G:\hajj-app\hajj_app\app\src\main\AndroidManifest.xml:31:13-55
 60
 61        <provider
 61-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Graphic\.gradle\caches\8.12\transforms\466f52399bd1f307525fc99160d213fb\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
 62            android:name="androidx.startup.InitializationProvider"
 62-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Graphic\.gradle\caches\8.12\transforms\466f52399bd1f307525fc99160d213fb\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:27:13-67
-63            android:authorities="com.example.hajjrules.androidx-startup"
+63            android:authorities="com.muslim.hajjrules.androidx-startup"
 63-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Graphic\.gradle\caches\8.12\transforms\466f52399bd1f307525fc99160d213fb\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:28:13-68
 64            android:exported="false" >
 64-->[androidx.emoji2:emoji2:1.0.0] C:\Users\Graphic\.gradle\caches\8.12\transforms\466f52399bd1f307525fc99160d213fb\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:29:13-37

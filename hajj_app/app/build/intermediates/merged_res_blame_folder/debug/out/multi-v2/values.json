@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.hajjrules.app-mergeDebugResources-22:/values/values.xml",
+            "outputFile": "com.muslim.hajjrules.app-mergeDebugResources-22:/values/values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Graphic\\.gradle\\caches\\8.12\\transforms\\ebd38dc59a104849029c31ea6b2f7ee7\\transformed\\recyclerview-1.1.0\\res\\values\\values.xml",

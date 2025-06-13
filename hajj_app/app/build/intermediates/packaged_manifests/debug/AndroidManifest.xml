@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.hajjrules"
+    package="com.muslim.hajjrules"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -42,7 +42,7 @@
         android:testOnly="true"
         android:theme="@style/Theme.HajjApp" >
         <activity
-            android:name="com.example.hajjrules.SplashActivity"
+            android:name="com.muslim.hajjrules.SplashActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -51,16 +51,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.hajjrules.MainActivity"
+            android:name="com.muslim.hajjrules.MainActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.hajjrules.DetailActivity"
+            android:name="com.muslim.hajjrules.DetailActivity"
             android:exported="true"
-            android:parentActivityName="com.example.hajjrules.MainActivity" />
+            android:parentActivityName="com.muslim.hajjrules.MainActivity" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.example.hajjrules.androidx-startup"
+            android:authorities="com.muslim.hajjrules.androidx-startup"
             android:exported="false" >
             <meta-data
                 android:name="androidx.emoji2.text.EmojiCompatInitializer"
