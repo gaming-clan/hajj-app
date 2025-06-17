@@ -73,13 +73,13 @@ public class DataManager {
 
     private void initializeCategories() {
         categories.add(new Category(1, "Hyrje dhe Rëndësia", "Hyrje dhe rëndësia e Haxhit në Islam", android.R.drawable.ic_dialog_info));
-        categories.add(new Category(2, "Shtyllat e Islamit", "Pesë shtyllat themelore të Islamit", android.R.drawable.ic_menu_sort_by_size));
-        categories.add(new Category(3, "Detyrimi i Haxhit", "Detyrimi dhe kushtet e kryerjes së Haxhit", android.R.drawable.ic_menu_agenda));
-        categories.add(new Category(4, "Edukata e Udhëtimit", "Rregullat dhe etika gjatë udhëtimit për Haxh", android.R.drawable.ic_menu_directions));
-        categories.add(new Category(5, "Ihrami", "Rregullat dhe procedurat e Ihramit", android.R.drawable.ic_menu_gallery));
-        categories.add(new Category(6, "Ndalesat gjatë Ihramit", "Veprimet e ndaluara gjatë Ihramit", android.R.drawable.ic_menu_close_clear_cancel));
+        categories.add(new Category(2, "Shtyllat e Islamit", "Pesë shtyllat themelore të Islamit", com.muslim.hajjrules.R.drawable.pillars_of_islam));
+        categories.add(new Category(3, "Detyrimi i Haxhit", "Detyrimi dhe kushtet e kryerjes së Haxhit", com.muslim.hajjrules.R.drawable.hajj_obligation));
+        categories.add(new Category(4, "Edukata e Udhëtimit", "Rregullat dhe etika gjatë udhëtimit për Haxh", com.muslim.hajjrules.R.drawable.travel_etiquette));
+        categories.add(new Category(5, "Ihrami", "Rregullat dhe procedurat e Ihramit", com.muslim.hajjrules.R.drawable.ihram));
+        categories.add(new Category(6, "Ndalesat gjatë Ihramit", "Veprimet e ndaluara gjatë Ihramit", com.muslim.hajjrules.R.drawable.prohibitions));
         categories.add(new Category(7, "Vendcaktimet", "Vendcaktimet (Mikat) për Haxhin", android.R.drawable.ic_menu_mylocation));
-        categories.add(new Category(8, "Qabja", "Informacion për Qaben e shenjtë", android.R.drawable.ic_menu_compass));
+        categories.add(new Category(8, "Qabja", "Informacion për Qaben e shenjtë", com.muslim.hajjrules.R.drawable.hajj_kaaba_1));
     }
 
     private void loadRules() {
