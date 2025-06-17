@@ -1,235 +1,218 @@
 {
-    "title": "Rregullat e Haxhit",
-    "introduction": {
-        "description": "Haxhi është një nga pesë shtyllat e Islamit dhe është detyrë për çdo musliman që ka mundësi ta kryejë atë të paktën një herë në jetë.",
-        "qabja": "Qabja është vendi që tërheq zemrat e muslimanëve nga e gjithë bota, dhe është shtëpia e parë e ndërtuar për adhurim mbi tokë."
+  "title": "Rregullat e Haxhit",
+  "introduction": {
+    "description": "Haxhi është një nga pesë shtyllat e Islamit dhe është detyrë për çdo musliman që ka mundësi ta kryejë atë të paktën një herë në jetë.",
+    "qabja": "Qabja është vendi që tërheq zemrat e muslimanëve nga e gjithë bota, dhe është shtëpia e parë e ndërtuar për adhurim mbi tokë."
+  },
+  "shtyllat_e_islamit": [
+    {
+      "id": 1,
+      "name": "Dëshmia",
+      "description": "Nuk ka zot përveç Allahut dhe Muhammedi është i Dërguari i Tij."
     },
-    "pillars_of_islam": [
-        {
-            "id": 1,
-            "name": "Dëshmia",
-            "description": "Nuk ka zot përveç Allahut dhe Muhammedi është i Dërguari i Tij."
-        },
-        {
-            "id": 2,
-            "name": "Falja e namazit",
-            "description": "Kryerja e pesë namazeve ditore."
-        },
-        {
-            "id": 3,
-            "name": "Dhënja e Zekatit",
-            "description": "Dhënia e një pjese të pasurisë për të varfërit."
-        },
-        {
-            "id": 4,
-            "name": "Agjërimi i Ramazanit",
-            "description": "Agjërimi gjatë muajit të Ramazanit."
-        },
-        {
-            "id": 5,
-            "name": "Haxhi në Qabe",
-            "description": "Vizita e Qabes së paktën një herë në jetë për ata që kanë mundësi."
-        }
-    ],
-    "obligation_of_hajj": {
-        "description": "Haxhi është detyrë vetëm një herë në jetë.",
-        "hadith": "Haxhi është vetëm një herë në jetë. Kush kryen më shumë janë nafile për të.",
-        "conditions": "Haxhi duhet të jetë patjetër vetëm për Allahun dhe të kryhet sipas mënyrës së të Dërguarit të Allahut."
+    {
+      "id": 2,
+      "name": "Falja e namazit",
+      "description": "Kryerja e pesë namazeve ditore."
     },
-    "travel_etiquette": [
-        {
-            "id": 1,
-            "rule": "Qëllimi duhet të jetë vetëm për hir të Allahut",
-            "description": "Jo për t'u dukur apo për qëllime të tjera."
-        },
-        {
-            "id": 2,
-            "rule": "Larja e borxheve dhe shkrimi i testamentit",
-            "description": "Udhëtari duhet të lajë borxhet dhe të shkruajë testamentin para nisjes."
-        },
-        {
-            "id": 3,
-            "rule": "Pendimi nga mëkatet",
-            "description": "Pendimi nga mëkatet dhe vendosmëria për të mos u kthyer më në to."
-        },
-        {
-            "id": 4,
-            "rule": "Kërkimi i hallallëkut",
-            "description": "Kërkimi i hallallëkut nga të gjithë para udhëtimit."
-        },
-        {
-            "id": 5,
-            "rule": "Paraja hallall",
-            "description": "Paraja që shpenzohet për udhëtim duhet të jetë e fituar në mënyrë hallall."
-        },
-        {
-            "id": 6,
-            "rule": "Largimi nga mëkatet",
-            "description": "Largimi nga të gjitha mëkatet gjatë kryerjes së ceremonive."
-        },
-        {
-            "id": 7,
-            "rule": "Leximi i materialeve informuese",
-            "description": "Leximi i materialeve informuese për Umren dhe Haxhin para udhëtimit."
-        },
-        {
-            "id": 8,
-            "rule": "Përmbushja e detyrave fetare",
-            "description": "Përmbushja e detyrave fetare gjatë udhëtimit."
-        },
-        {
-            "id": 9,
-            "rule": "Zgjedhja e shoqërisë së mirë",
-            "description": "Zgjedhja e shoqërisë së mirë dhe të devotshme."
-        },
-        {
-            "id": 10,
-            "rule": "Pajisja me morale të larta",
-            "description": "Pajisja me morale të larta gjatë gjithë udhëtimit."
-        },
-        {
-            "id": 11,
-            "rule": "Këshillimi i familjarëve",
-            "description": "Këshillimi i familjarëve para nisjes."
-        },
-        {
-            "id": 12,
-            "rule": "Thënia e lutjeve të udhëtimit",
-            "description": "Thënia e lutjeve të udhëtimit sipas traditës islame."
-        }
-    ],
-    "ihram": {
-        "description": "Ihrami është qëllimi që ka muslimani për të kryer ceremonitë e Haxhit apo të Umres.",
-        "time": "Nijeti për Haxhin bëhet në muajt: Sheual, Dhul Kadeh dhe Dhul Hixh'xheh.",
-        "types_of_intention": [
-            {
-                "type": "Umra",
-                "intention": "LEB'BEJKE UMRATEN"
-            },
-            {
-                "type": "Haxh (mutemet'tia)",
-                "intention": "LEB'BEJKE UMRATEN MUTEMET'TIAN BIHA ILEL'HAXH'XHI"
-            },
-            {
-                "type": "Haxh (Kiran)",
-                "intention": "LEB'BEJKE UMRATEN UE HAXH'XHEN"
-            },
-            {
-                "type": "Haxh (Ifrad)",
-                "intention": "LEB'BEJKE HAXH'XHEN"
-            }
-        ],
-        "before_wearing": [
-            {
-                "id": 1,
-                "action": "Prerja e thonjve dhe shkurtimi i mustaqeve",
-                "description": "Prerja e thonjve, shkurtimi i mustaqeve, pastrimi i qimeve të sqetullave dhe vendit të turpshëm."
-            },
-            {
-                "id": 2,
-                "action": "Larja e trupit",
-                "description": "Larja e të gjithë trupit (e pëlqyeshme, por jo e detyrueshme)."
-            },
-            {
-                "id": 3,
-                "action": "Veshja e ihramit",
-                "description": "Burrat heqin të gjitha rrobat dhe veshin rrobat e haxhit (ihrami), ndërsa gratë qëndrojnë me veshjen e zakonshme."
-            }
-        ],
-        "additional_details": {
-            "what_is_ihram": "The spiritual aspect of Hajj begins with learning about the rituals of Hajj. An important ritual of hajj is entering the state of Ihram- which is unlike anything else you go through in your life.",
-            "why_important": "Ihram is a sacred state of purity that signifies equality among all pilgrims in Allah’s eyes. This state is marked by specific clothing and intention made for the act of worship whether you are doing Hajj or Umrah. This change of clothes is made at the boundary point separating ordinary Muslims from pilgrims- is called miqat. One wears an ihram once they reach the point of miqat, whether they are traveling by plane or road. You cannot get into the state of Ihram before the point of miqat if you are traveling for Hajj or Umrah.",
-            "rules_for_men": "For men, the ihram consists of two seamless white sheets of cloth, one wrapped around the waist, known as Izar, and the other draped over the left shoulder, known as rida. Also, for men, the right shoulder must be bare in the state of Ihram, and no undergarments are permitted.",
-            "rules_for_women": "On the other hand, while the attire for women does not have any specific requirement, it should be loose-fitting and breathable, ensuring full body coverage while allowing for unimpeded movement. It is crucial that the garments are devoid of embellishments of any sort and are plain- while they can be any color- women often wear white or black to blend in.",
-            "women_cover_hands_face": "For the state of Ihram, women must not cover their faces with a Niqab or wear gloves.",
-            "women_adornments": "Women cannot wear any adornments, perfumes, or makeup.",
-            "women_menstruating": "According to hadith, menstruation does not mean that a woman cannot enter the ihram. So, a menstruating woman should enter the ihram and do everything that other pilgrims do, apart from tawaf around the Ka’bah. She should delay tawaf until she becomes pure (i.e., until her period ends). If a woman delays ihram and passes the miqat-in fear of her menstruation- then she must go back to the point of miqat and enter into the state of Ihram. Women on menstruation should ensure they have a change of clothes and all things necessary to stay active and clean for the duration of Hajj or Umrah.",
-            "steps_of_ihram": [
-                "Cut your nails, remove or trim any hair.",
-                "Do ghusl(bath)",
-                "Put on your Ihram",
-                "Offer nafl.",
-                "Make your intention for Hajj/Umrah",
-                "And begin making talbiyah"
-            ]
-        }
+    {
+      "id": 3,
+      "name": "Dhënja e Zekatit",
+      "description": "Dhënia e një pjese të pasurisë për të varfërit."
     },
-    "prohibitions_during_ihram": [
-        {
-            "id": 1,
-            "prohibition": "Mbulimi i kokës",
-            "description": "Nuk lejohet të mbulohet koka për burrat."
-        },
-        {
-            "id": 2,
-            "prohibition": "Veshja e rrobave të qepura",
-            "description": "Nuk lejohet të vishen rroba të qepura për burrat."
-        },
-        {
-            "id": 3,
-            "prohibition": "Parfumimi",
-            "description": "Nuk lejohet të parfumoset trupi apo rrobat."
-        },
-        {
-            "id": 4,
-            "prohibition": "Prerja e thonjve dhe flokëve",
-            "description": "Nuk lejohet të priten thonjtë apo flokët."
-        },
-        {
-            "id": 5,
-            "prohibition": "Gjuetia",
-            "description": "Nuk lejohet gjuetia e kafshëve tokësore."
-        },
-        {
-            "id": 6,
-            "prohibition": "Marrëdhëniet intime",
-            "description": "Nuk lejohet marrëdhëniet intime me bashkëshorten."
-        },
-        {
-            "id": 7,
-            "prohibition": "Martesa",
-            "description": "Nuk lejohet lidhja e kurorës (martesa)."
-        }
-    ],
-    "miqats": [
-        {
-            "id": 1,
-            "name": "DHUL HULEJFEH",
-            "for_whom": "Për banorët e Medinës dhe ata që vijnë nga ajo rrugë",
-            "distance_from_mecca": "450 km nga Meka"
-        },
-        {
-            "id": 2,
-            "name": "XHUHFEH",
-            "for_whom": "Për udhëtarët nga Siria, Egjipti, Maroku dhe ata që vijnë nga ajo rrugë",
-            "distance_from_mecca": "183 km nga Meka"
-        },
-        {
-            "id": 3,
-            "name": "KARNUL MENAZIL",
-            "for_whom": "Për haxhilerët e Nexhdit dhe ata që vijnë nga ajo rrugë",
-            "distance_from_mecca": "75 km nga Meka"
-        },
-        {
-            "id": 4,
-            "name": "JELEMLEM",
-            "for_whom": "Për haxhinjtë nga Jemeni dhe ata që kalojnë aty",
-            "distance_from_mecca": "92 km nga Meka"
-        },
-        {
-            "id": 5,
-            "name": "DHATE IRK",
-            "for_whom": "Për haxhinjtë e Irakut dhe ata që kalojnë nga ai vend",
-            "distance_from_mecca": "94 km nga Meka"
-        }
-    ],
-    "kaaba": {
-        "description": "Qabja është vendi që tërheq zemrat e muslimanëve nga e gjithë bota. Është shtëpia e parë e ndërtuar për adhurim mbi tokë.",
-        "importance": "Muslimanët drejtohen nga Qabja pesë herë në ditë për të kryer namazin dhe vërshojnë për të kryer ceremonitë e Haxhit."
+    {
+      "id": 4,
+      "name": "Agjërimi i Ramazanit",
+      "description": "Agjërimi gjatë muajit të Ramazanit."
     },
-    "importance_of_hajj": {
-        "description": "Haxhi është një nga shtyllat e Islamit dhe është detyrë për çdo musliman që ka mundësi ta kryejë.",
-        "hadith": "Haxhi është detyrë vetëm një herë në jetë, dhe kush e kryen më shumë se një herë, këto janë nafile (vepra vullnetare) për të.",
-        "advice": "Për më shumë detaje dhe udhëzime specifike, rekomandohet konsultimi me burime të specializuara dhe dijetarë islamikë."
+    {
+      "id": 5,
+      "name": "Haxhi në Qabe",
+      "description": "Vizita e Qabes së paktën një herë në jetë për ata që kanë mundësi."
     }
+  ],
+  "detyrimi_i_haxhit": {
+    "description": "Haxhi është detyrë vetëm një herë në jetë.",
+    "hadith": "Haxhi është vetëm një herë në jetë. Kush kryen më shumë janë nafile për të.",
+    "kushtet": "Haxhi duhet të jetë patjetër vetëm për Allahun dhe të kryhet sipas mënyrës së të Dërguarit të Allahut."
+  },
+  "edukata_e_udhetimit": [
+    {
+      "id": 1,
+      "rule": "Qëllimi duhet të jetë vetëm për hir të Allahut",
+      "description": "Jo për t'u dukur apo për qëllime të tjera."
+    },
+    {
+      "id": 2,
+      "rule": "Larja e borxheve dhe shkrimi i testamentit",
+      "description": "Udhëtari duhet të lajë borxhet dhe të shkruajë testamentin para nisjes."
+    },
+    {
+      "id": 3,
+      "rule": "Pendimi nga mëkatet",
+      "description": "Pendimi nga mëkatet dhe vendosmëria për të mos u kthyer më në to."
+    },
+    {
+      "id": 4,
+      "rule": "Kërkimi i hallallëkut",
+      "description": "Kërkimi i hallallëkut nga të gjithë para udhëtimit."
+    },
+    {
+      "id": 5,
+      "rule": "Paraja hallall",
+      "description": "Paraja që shpenzohet për udhëtim duhet të jetë e fituar në mënyrë hallall."
+    },
+    {
+      "id": 6,
+      "rule": "Largimi nga mëkatet",
+      "description": "Largimi nga të gjitha mëkatet gjatë kryerjes së ceremonive."
+    },
+    {
+      "id": 7,
+      "rule": "Leximi i materialeve informuese",
+      "description": "Leximi i materialeve informuese për Umren dhe Haxhin para udhëtimit."
+    },
+    {
+      "id": 8,
+      "rule": "Përmbushja e detyrave fetare",
+      "description": "Përmbushja e detyrave fetare gjatë udhëtimit."
+    },
+    {
+      "id": 9,
+      "rule": "Zgjedhja e shoqërisë së mirë",
+      "description": "Zgjedhja e shoqërisë së mirë dhe të devotshme."
+    },
+    {
+      "id": 10,
+      "rule": "Pajisja me morale të larta",
+      "description": "Pajisja me morale të larta gjatë gjithë udhëtimit."
+    },
+    {
+      "id": 11,
+      "rule": "Këshillimi i familjarëve",
+      "description": "Këshillimi i familjarëve para nisjes."
+    },
+    {
+      "id": 12,
+      "rule": "Thënia e lutjeve të udhëtimit",
+      "description": "Thënia e lutjeve të udhëtimit sipas traditës islame."
+    }
+  ],
+  "ihrami": {
+    "description": "Ihrami është qëllimi që ka muslimani për të kryer ceremonitë e Haxhit apo të Umres.",
+    "koha": "Nijeti për Haxhin bëhet në muajt: Sheual, Dhul Kadeh dhe Dhul Hixh'xheh.",
+    "llojet_e_nijetit": [
+      {
+        "lloji": "Umra",
+        "nijeti": "LEB'BEJKE UMRATEN"
+      },
+      {
+        "lloji": "Haxh (mutemet'tia)",
+        "nijeti": "LEB'BEJKE UMRATEN MUTEMET'TIAN BIHA ILEL'HAXH'XHI"
+      },
+      {
+        "lloji": "Haxh (Kiran)",
+        "nijeti": "LEB'BEJKE UMRATEN UE HAXH'XHEN"
+      },
+      {
+        "lloji": "Haxh (Ifrad)",
+        "nijeti": "LEB'BEJKE HAXH'XHEN"
+      }
+    ],
+    "para_veshjes": [
+      {
+        "id": 1,
+        "veprim": "Prerja e thonjve dhe shkurtimi i mustaqeve",
+        "description": "Prerja e thonjve, shkurtimi i mustaqeve, pastrimi i qimeve të sqetullave dhe vendit të turpshëm."
+      },
+      {
+        "id": 2,
+        "veprim": "Larja e trupit",
+        "description": "Larja e të gjithë trupit (e pëlqyeshme, por jo e detyrueshme)."
+      },
+      {
+        "id": 3,
+        "veprim": "Veshja e ihramit",
+        "description": "Burrat heqin të gjitha rrobat dhe veshin rrobat e haxhit (ihrami), ndërsa gratë qëndrojnë me veshjen e zakonshme."
+      }
+    ]
+  },
+  "ndalesat_gjate_ihramit": [
+    {
+      "id": 1,
+      "ndalesa": "Mbulimi i kokës",
+      "description": "Nuk lejohet të mbulohet koka për burrat."
+    },
+    {
+      "id": 2,
+      "ndalesa": "Veshja e rrobave të qepura",
+      "description": "Nuk lejohet të vishen rroba të qepura për burrat."
+    },
+    {
+      "id": 3,
+      "ndalesa": "Parfumimi",
+      "description": "Nuk lejohet të parfumoset trupi apo rrobat."
+    },
+    {
+      "id": 4,
+      "ndalesa": "Prerja e thonjve dhe flokëve",
+      "description": "Nuk lejohet të priten thonjtë apo flokët."
+    },
+    {
+      "id": 5,
+      "ndalesa": "Gjuetia",
+      "description": "Nuk lejohet gjuetia e kafshëve tokësore."
+    },
+    {
+      "id": 6,
+      "ndalesa": "Marrëdhëniet intime",
+      "description": "Nuk lejohet marrëdhëniet intime me bashkëshorten."
+    },
+    {
+      "id": 7,
+      "ndalesa": "Martesa",
+      "description": "Nuk lejohet lidhja e kurorës (martesa)."
+    }
+  ],
+  "vendcaktimet": [
+    {
+      "id": 1,
+      "emri": "DHUL HULEJFEH",
+      "per_ke": "Për banorët e Medinës dhe ata që vijnë nga ajo rrugë",
+      "largesia": "450 km nga Meka"
+    },
+    {
+      "id": 2,
+      "emri": "XHUHFEH",
+      "per_ke": "Për udhëtarët nga Siria, Egjipti, Maroku dhe ata që vijnë nga ajo rrugë",
+      "largesia": "183 km nga Meka"
+    },
+    {
+      "id": 3,
+      "emri": "KARNUL MENAZIL",
+      "per_ke": "Për haxhilerët e Nexhdit dhe ata që vijnë nga ajo rrugë",
+      "largesia": "75 km nga Meka"
+    },
+    {
+      "id": 4,
+      "emri": "JELEMLEM",
+      "per_ke": "Për haxhinjtë nga Jemeni dhe ata që kalojnë aty",
+      "largesia": "92 km nga Meka"
+    },
+    {
+      "id": 5,
+      "emri": "DHATE IRK",
+      "per_ke": "Për haxhinjtë e Irakut dhe ata që kalojnë nga ai vend",
+      "largesia": "94 km nga Meka"
+    }
+  ],
+  "qabja": {
+    "description": "Qabja është vendi që tërheq zemrat e muslimanëve nga e gjithë bota. Është shtëpia e parë e ndërtuar për adhurim mbi tokë.",
+    "rendesia": "Muslimanët drejtohen nga Qabja pesë herë në ditë për të kryer namazin dhe vërshojnë për të kryer ceremonitë e Haxhit."
+  },
+  "rendesia_e_haxhit": {
+    "description": "Haxhi është një nga shtyllat e Islamit dhe është detyrë për çdo musliman që ka mundësi ta kryejë.",
+    "hadith": "Haxhi është detyrë vetëm një herë në jetë, dhe kush e kryen më shumë se një herë, këto janë nafile (vepra vullnetare) për të.",
+    "keshilla": "Për më shumë detaje dhe udhëzime specifike, rekomandohet konsultimi me burime të specializuara dhe dijetarë islamikë."
+  }
 }

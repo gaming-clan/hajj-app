@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Teal color scheme based on the images -->
-    <color name="primary">#4A90A4</color>
-    <color name="primary_dark">#2E5266</color>
-    <color name="primary_light">#7BB3C8</color>
-    <color name="accent">#B8D4E3</color>
+    <color name="background">#1E5465</color>
+    <color name="secondary_color">#428CA3</color>
+    <color name="other_tones">#FFC100</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="gray">#757575</color>
     <color name="light_gray">#EEEEEE</color>
-    <!-- Additional colors from the images -->
-    <color name="teal_background">#4A90A4</color>
-    <color name="light_teal">#B8D4E3</color>
-    <color name="gold">#FFD700</color>
-    <color name="dark_teal">#2E5266</color>
 </resources>
 
