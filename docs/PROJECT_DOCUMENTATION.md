@@ -59,7 +59,7 @@ Created an extended hajj_rules.json with the following improvements:
 ## Technical Details
 
 ### New Images Added
-1. **1.png** - Complete Hajj steps overview (12 steps)
+1. **image_1.png** - Complete Hajj steps overview (12 steps)
 2. **2.png** - Hajj importance and Kaaba information
 3. **3.png** - Ihram rules and procedures
 4. **4.png** - Additional Hajj guidance
@@ -69,7 +69,7 @@ Created an extended hajj_rules.json with the following improvements:
 8. **8.png** - Prayer and worship guidelines
 9. **9.png** - Hajj completion procedures
 10. **10.png** - Additional religious guidance
-11. **11.png** - Spiritual preparation
+11. **image_11.png** - Spiritual preparation
 12. **12.png** - Final Hajj procedures
 13. **13.png** - Completion and return guidance
 
