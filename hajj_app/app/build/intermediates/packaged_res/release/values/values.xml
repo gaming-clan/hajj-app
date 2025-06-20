@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="background">#1E5465</color>
+    <color name="black">#000000</color>
+    <color name="gray">#757575</color>
+    <color name="light_gray">#EEEEEE</color>
+    <color name="other_tones">#FFC100</color>
+    <color name="secondary_color">#428CA3</color>
+    <color name="white">#FFFFFF</color>
+    <string name="about">Rreth Aplikacionit</string>
+    <string name="about_app">Ky aplikacion përmban rregullat dhe udhëzimet kryesore për kryerjen e Haxhit sipas traditës islame.</string>
+    <string name="app_name">Rregullat e Haxhit</string>
+    <string name="back">Kthehu</string>
+    <string name="categories">Kategoritë</string>
+    <string name="contact_info">Kontakti: dariolloshi2023@gmail.com</string>
+    <string name="favorite">Të preferuara</string>
+    <string name="hajj_obligation">Detyrimi i Haxhit</string>
+    <string name="home">Kryefaqja</string>
+    <string name="ihram">Ihrami</string>
+    <string name="importance">Rëndësia e Haxhit</string>
+    <string name="introduction">Hyrje</string>
+    <string name="kaaba">Qabja</string>
+    <string name="map">Harta</string>
+    <string name="miqat">Vendcaktimet</string>
+    <string name="no_results">Nuk u gjetën rezultate</string>
+    <string name="pillars_of_islam">Shtyllat e Islamit</string>
+    <string name="prohibitions">Ndalesat gjatë Ihramit</string>
+    <string name="search">Kërko</string>
+    <string name="search_hint">Kërko rregulla...</string>
+    <string name="share">Ndaj</string>
+    <string name="travel_etiquette">Edukata e Udhëtimit</string>
+    <string name="version">Versioni 1.0</string>
+    <style name="Theme.HajjApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        
+        <item name="colorPrimary">@color/background</item>
+        <item name="colorPrimaryVariant">@color/secondary_color</item>
+        <item name="colorOnPrimary">@color/white</item>
+        
+        <item name="colorSecondary">@color/other_tones</item>
+        <item name="colorSecondaryVariant">@color/secondary_color</item>
+        <item name="colorOnSecondary">@color/white</item>
+        
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    </style>
+</resources>

@@ -77,12 +77,12 @@
 43-->[androidx.core:core:1.13.0] /home/ubuntu/.gradle/caches/8.12/transforms/f4447fda4a3830e4b4f44aafb39d7127/transformed/core-1.13.0/AndroidManifest.xml:28:18-86
 44        android:debuggable="true"
 45        android:extractNativeLibs="true"
-46        android:icon="@mipmap/ic_launcher"
-46-->/home/ubuntu/hajj-app/hajj_app/app/src/main/AndroidManifest.xml:13:9-43
+46        android:icon="@drawable/hajj_kaaba_1"
+46-->/home/ubuntu/hajj-app/hajj_app/app/src/main/AndroidManifest.xml:13:9-46
 47        android:label="@string/app_name"
 47-->/home/ubuntu/hajj-app/hajj_app/app/src/main/AndroidManifest.xml:14:9-41
-48        android:roundIcon="@mipmap/ic_launcher_round"
-48-->/home/ubuntu/hajj-app/hajj_app/app/src/main/AndroidManifest.xml:15:9-54
+48        android:roundIcon="@drawable/hajj_kaaba_1"
+48-->/home/ubuntu/hajj-app/hajj_app/app/src/main/AndroidManifest.xml:15:9-51
 49        android:supportsRtl="true"
 49-->/home/ubuntu/hajj-app/hajj_app/app/src/main/AndroidManifest.xml:16:9-35
 50        android:theme="@style/Theme.HajjApp" >

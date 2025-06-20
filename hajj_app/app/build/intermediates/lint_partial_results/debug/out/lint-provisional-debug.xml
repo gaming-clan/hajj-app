@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.1.0" type="conditional_incidents">
+
+    <incident
+        id="ScopedStorage"
+        severity="warning"
+        message="">
+        <location
+            file="${:app*debug*sourceProvider*0*manifest*0}"
+            line="8"
+            column="36"
+            startOffset="407"
+            endLine="8"
+            endColumn="77"
+            endOffset="448"/>
+        <map>
+            <entry
+                name="maxSdkVersion"
+                int="2147483647"/>
+            <entry
+                name="read"
+                boolean="false"/>
+        </map>
+    </incident>
+
+    <incident
+        id="CustomSplashScreen"
+        severity="warning"
+        message="The application should not provide its own launch screen">
+        <location
+            file="${:app*debug*sourceProvider*0*javaDir*0}/com/muslim/hajjrules/SplashActivity.java"
+            line="10"
+            column="14"
+            startOffset="216"
+            endLine="10"
+            endColumn="28"
+            endOffset="230"/>
+        <map>
+            <condition targetGE="31"/>
+        </map>
+    </incident>
+
+</incidents>

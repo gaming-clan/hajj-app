@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.muslim.hajjrules.app-mergeReleaseResources-30:/values-hdpi-v4/values-hdpi-v4.xml",
+            "map": [
+                {
+                    "source": "/home/ubuntu/.gradle/caches/8.12/transforms/3bdda9442b7d1d07d64e8bedce1e2f3d/transformed/appcompat-1.7.1/res/values-hdpi-v4/values-hdpi-v4.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "13",
+                        "endOffsets": "327"
+                    }
+                }
+            ]
+        }
+    ]
+}
