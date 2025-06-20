@@ -88,7 +88,7 @@ public class DataManager {
             introRules.add(new HajjRule(
                 "Hyrje", 
                 intro.getString("description"), 
-                com.muslim.hajjrules.R.drawable.hajj_ritual_1, // Ritual image
+                com.muslim.hajjrules.R.drawable.hajj_kaaba_1, // Ritual image
                 1
             ));
             introRules.add(new HajjRule(
@@ -157,13 +157,13 @@ public class DataManager {
             ihramRules.add(new HajjRule(
                 "Çfarë është Ihrami", 
                 ihram.getString("description"), 
-                com.muslim.hajjrules.R.drawable.hajj_ritual_1, // Ritual image
+                com.muslim.hajjrules.R.drawable.hajj_kaaba_1, // Ritual image
                 1
             ));
             ihramRules.add(new HajjRule(
                 "Koha e Ihramit", 
                 ihram.getString("koha"), 
-                com.muslim.hajjrules.R.drawable.hajj_ritual_1, // Ritual image
+                com.muslim.hajjrules.R.drawable.hajj_kaaba_1, // Ritual image
                 2
             ));
 
@@ -173,7 +173,7 @@ public class DataManager {
                 ihramRules.add(new HajjRule(
                         "Nijeti për " + nijet.getString("lloji"),
                         nijet.getString("nijeti"),
-                        com.muslim.hajjrules.R.drawable.hajj_ritual_1, // Ritual image
+                        com.muslim.hajjrules.R.drawable.hajj_kaaba_1, // Ritual image
                         3 + i
                 ));
             }
@@ -184,7 +184,7 @@ public class DataManager {
                 ihramRules.add(new HajjRule(
                         prep.getString("veprim"),
                         prep.getString("description"),
-                        com.muslim.hajjrules.R.drawable.hajj_ritual_1, // Ritual image
+                        com.muslim.hajjrules.R.drawable.hajj_kaaba_1, // Ritual image
                         7 + i
                 ));
             }
