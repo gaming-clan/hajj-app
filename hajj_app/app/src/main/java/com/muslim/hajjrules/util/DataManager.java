@@ -10,10 +10,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -87,8 +85,18 @@ public class DataManager {
             // Load introduction rules
             List<HajjRule> introRules = new ArrayList<>();
             JSONObject intro = hajjRulesJson.getJSONObject("introduction");
-            introRules.add(new HajjRule("Hyrje", intro.getString("description"), 1, 1));
-            introRules.add(new HajjRule("Qabja", intro.getString("qabja"), 1, 2));
+            introRules.add(new HajjRule(
+                "Hyrje", 
+                intro.getString("description"), 
+                com.muslim.hajjrules.R.drawable.hajj_ritual_1, // Ritual image
+                1
+            ));
+            introRules.add(new HajjRule(
+                "Qabja", 
+                intro.getString("qabja"), 
+                com.muslim.hajjrules.R.drawable.hajj_kaaba_1, // Ritual image
+                2
+            ));
             rulesByCategory.put(1, introRules);
 
             // Load pillars of Islam
@@ -96,10 +104,11 @@ public class DataManager {
             JSONArray pillars = hajjRulesJson.getJSONArray("shtyllat_e_islamit");
             for (int i = 0; i < pillars.length(); i++) {
                 JSONObject pillar = pillars.getJSONObject(i);
+                int imageResId = com.muslim.hajjrules.R.drawable.pillars_of_islam;
                 pillarRules.add(new HajjRule(
                         pillar.getString("name"),
                         pillar.getString("description"),
-                        2,
+                        imageResId,
                         pillar.getInt("id")
                 ));
             }
@@ -108,9 +117,24 @@ public class DataManager {
             // Load hajj obligation
             List<HajjRule> obligationRules = new ArrayList<>();
             JSONObject obligation = hajjRulesJson.getJSONObject("detyrimi_i_haxhit");
-            obligationRules.add(new HajjRule("Detyrimi", obligation.getString("description"), 3, 1));
-            obligationRules.add(new HajjRule("Hadith", obligation.getString("hadith"), 3, 2));
-            obligationRules.add(new HajjRule("Kushtet", obligation.getString("kushtet"), 3, 3));
+            obligationRules.add(new HajjRule(
+                "Detyrimi", 
+                obligation.getString("description"), 
+                com.muslim.hajjrules.R.drawable.hajj_obligation, 
+                1
+            ));
+            obligationRules.add(new HajjRule(
+                "Hadith", 
+                obligation.getString("hadith"), 
+                com.muslim.hajjrules.R.drawable.hajj_obligation, 
+                2
+            ));
+            obligationRules.add(new HajjRule(
+                "Kushtet", 
+                obligation.getString("kushtet"), 
+                com.muslim.hajjrules.R.drawable.hajj_obligation, 
+                3
+            ));
             rulesByCategory.put(3, obligationRules);
 
             // Load travel etiquette
@@ -121,7 +145,7 @@ public class DataManager {
                 etiquetteRules.add(new HajjRule(
                         etiquette.getString("rule"),
                         etiquette.getString("description"),
-                        4,
+                        com.muslim.hajjrules.R.drawable.travel_etiquette,
                         etiquette.getInt("id")
                 ));
             }
@@ -130,27 +154,37 @@ public class DataManager {
             // Load ihram rules
             List<HajjRule> ihramRules = new ArrayList<>();
             JSONObject ihram = hajjRulesJson.getJSONObject("ihrami");
-            ihramRules.add(new HajjRule("Çfarë është Ihrami", ihram.getString("description"), 5, 1));
-            ihramRules.add(new HajjRule("Koha e Ihramit", ihram.getString("koha"), 5, 2));
-            
+            ihramRules.add(new HajjRule(
+                "Çfarë është Ihrami", 
+                ihram.getString("description"), 
+                com.muslim.hajjrules.R.drawable.hajj_ritual_1, // Ritual image
+                1
+            ));
+            ihramRules.add(new HajjRule(
+                "Koha e Ihramit", 
+                ihram.getString("koha"), 
+                com.muslim.hajjrules.R.drawable.hajj_ritual_1, // Ritual image
+                2
+            ));
+
             JSONArray nijetTypes = ihram.getJSONArray("llojet_e_nijetit");
             for (int i = 0; i < nijetTypes.length(); i++) {
                 JSONObject nijet = nijetTypes.getJSONObject(i);
                 ihramRules.add(new HajjRule(
                         "Nijeti për " + nijet.getString("lloji"),
                         nijet.getString("nijeti"),
-                        5,
+                        com.muslim.hajjrules.R.drawable.hajj_ritual_1, // Ritual image
                         3 + i
                 ));
             }
-            
+
             JSONArray beforeIhram = ihram.getJSONArray("para_veshjes");
             for (int i = 0; i < beforeIhram.length(); i++) {
                 JSONObject prep = beforeIhram.getJSONObject(i);
                 ihramRules.add(new HajjRule(
                         prep.getString("veprim"),
                         prep.getString("description"),
-                        5,
+                        com.muslim.hajjrules.R.drawable.hajj_ritual_1, // Ritual image
                         7 + i
                 ));
             }
@@ -164,7 +198,7 @@ public class DataManager {
                 prohibitionRules.add(new HajjRule(
                         prohibition.getString("ndalesa"),
                         prohibition.getString("description"),
-                        6,
+                        com.muslim.hajjrules.R.drawable.prohibitions,
                         prohibition.getInt("id")
                 ));
             }
@@ -178,7 +212,7 @@ public class DataManager {
                 miqatRules.add(new HajjRule(
                         miqat.getString("emri"),
                         miqat.getString("per_ke") + " - " + miqat.getString("largesia"),
-                        7,
+                        android.R.drawable.ic_menu_mylocation,
                         miqat.getInt("id")
                 ));
             }
@@ -187,8 +221,18 @@ public class DataManager {
             // Load Kaaba info
             List<HajjRule> kaabaRules = new ArrayList<>();
             JSONObject kaaba = hajjRulesJson.getJSONObject("qabja");
-            kaabaRules.add(new HajjRule("Qabja", kaaba.getString("description"), 8, 1));
-            kaabaRules.add(new HajjRule("Rëndësia e Qabes", kaaba.getString("rendesia"), 8, 2));
+            kaabaRules.add(new HajjRule(
+                "Qabja", 
+                kaaba.getString("description"), 
+                com.muslim.hajjrules.R.drawable.hajj_kaaba_1, 
+                1
+            ));
+            kaabaRules.add(new HajjRule(
+                "Rëndësia e Qabes", 
+                kaaba.getString("rendesia"), 
+                com.muslim.hajjrules.R.drawable.hajj_kaaba_1, 
+                2
+            ));
             rulesByCategory.put(8, kaabaRules);
 
         } catch (JSONException e) {
@@ -213,16 +257,14 @@ public class DataManager {
     public List<HajjRule> searchRules(String query) {
         List<HajjRule> results = new ArrayList<>();
         String lowerQuery = query.toLowerCase();
-        
         for (List<HajjRule> rules : rulesByCategory.values()) {
             for (HajjRule rule : rules) {
-                if (rule.getTitle().toLowerCase().contains(lowerQuery) || 
+                if (rule.getTitle().toLowerCase().contains(lowerQuery) ||
                     rule.getDescription().toLowerCase().contains(lowerQuery)) {
                     results.add(rule);
                 }
             }
         }
-        
         return results;
     }
 }
