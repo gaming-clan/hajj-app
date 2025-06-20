@@ -1,0 +1,134 @@
+[
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/layout_fragment_about.xml.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/layout/fragment_about.xml"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_prohibitions.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/drawable/prohibitions.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_ihram.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/drawable/ihram.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_image_5.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/drawable/image_5.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_image_3.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/drawable/image_3.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/layout_fragment_search.xml.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/layout/fragment_search.xml"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_image_13.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/drawable/image_13.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/menu_bottom_navigation_menu.xml.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/menu/bottom_navigation_menu.xml"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_image_7.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/drawable/image_7.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_image_9.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/drawable/image_9.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/layout_fragment_map.xml.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/layout/fragment_map.xml"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_image_1.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/drawable/image_1.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/layout_activity_main.xml.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_image_12.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/drawable/image_12.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/layout_item_rule.xml.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/layout/item_rule.xml"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_image_4.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/drawable/image_4.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/layout_fragment_categories.xml.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/layout/fragment_categories.xml"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_image_10.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/drawable/image_10.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_image_6.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/drawable/image_6.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/layout_activity_detail.xml.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/layout/activity_detail.xml"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_travel_etiquette.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/drawable/travel_etiquette.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_pillars_of_islam.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/drawable/pillars_of_islam.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/layout_fragment_home.xml.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_image_2.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/drawable/image_2.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_image_8.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/drawable/image_8.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/layout_activity_splash.xml.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/layout/activity_splash.xml"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_hajj_obligation.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/drawable/hajj_obligation.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_image_11.png.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/drawable/image_11.png"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_hajj_kaaba_1.jpg.flat",
+        "source": "com.muslim.hajjrules.app-main-33:/drawable/hajj_kaaba_1.jpg"
+    }
+]

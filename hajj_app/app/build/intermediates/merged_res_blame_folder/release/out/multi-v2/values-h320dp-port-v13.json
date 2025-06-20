@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.muslim.hajjrules.app-mergeReleaseResources-30:/values-h320dp-port-v13/values-h320dp-port-v13.xml",
+            "map": [
+                {
+                    "source": "/home/ubuntu/.gradle/caches/8.12/transforms/0be3e2a95f41dcb54e3f644eb99a2178/transformed/material-1.12.0/res/values-h320dp-port-v13/values-h320dp-port-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "63",
+                        "endOffsets": "114"
+                    }
+                }
+            ]
+        }
+    ]
+}

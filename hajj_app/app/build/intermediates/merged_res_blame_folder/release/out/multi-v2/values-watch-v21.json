@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.muslim.hajjrules.app-mergeReleaseResources-30:/values-watch-v21/values-watch-v21.xml",
+            "map": [
+                {
+                    "source": "/home/ubuntu/.gradle/caches/8.12/transforms/3bdda9442b7d1d07d64e8bedce1e2f3d/transformed/appcompat-1.7.1/res/values-watch-v21/values-watch-v21.xml",
+                    "from": {
+                        "startLines": "2,6,10",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,271,499",
+                        "endLines": "5,9,13",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "266,494,724"
+                    }
+                }
+            ]
+        }
+    ]
+}
