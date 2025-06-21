@@ -56,6 +56,7 @@ public class CategoryFragment extends Fragment {
             Intent intent = new Intent(getActivity(), DetailActivity.class);
             intent.putExtra("ruleTitle", rule.getTitle());
             intent.putExtra("ruleDescription", rule.getDescription());
+            intent.putExtra("ruleImageId", rule.getImageResourceId());
             startActivity(intent);
         });
         return view;

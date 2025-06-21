@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,6 +45,15 @@ public class RuleAdapter extends RecyclerView.Adapter<RuleAdapter.RuleViewHolder
         HajjRule rule = rules.get(position);
         holder.title.setText(rule.getTitle());
         holder.description.setText(rule.getDescription());
+        
+        // Set the image if available
+        if (rule.getImageResourceId() != 0) {
+            holder.imageIcon.setImageResource(rule.getImageResourceId());
+            holder.imageIcon.setVisibility(View.VISIBLE);
+        } else {
+            holder.imageIcon.setVisibility(View.GONE);
+        }
+        
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {
                 listener.onItemClick(rule);
@@ -64,11 +74,13 @@ public class RuleAdapter extends RecyclerView.Adapter<RuleAdapter.RuleViewHolder
     static class RuleViewHolder extends RecyclerView.ViewHolder {
         TextView title;
         TextView description;
+        ImageView imageIcon;
 
         public RuleViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.text_rule_title);
             description = itemView.findViewById(R.id.text_rule_description);
+            imageIcon = itemView.findViewById(R.id.image_rule_icon);
         }
     }
 }
