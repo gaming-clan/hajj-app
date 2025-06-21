@@ -40,7 +40,7 @@
         {
             "id": 1,
             "rule": "Qëllimi duhet të jetë vetëm për hir të Allahut",
-            "description": "Jo për t'u dukur apo për qëllime të tjera."
+            "description": "Jo për t\"u dukur apo për qëllime të tjera."
         },
         {
             "id": 2,
@@ -100,23 +100,23 @@
     ],
     "ihram": {
         "description": "Ihrami është qëllimi që ka muslimani për të kryer ceremonitë e Haxhit apo të Umres.",
-        "time": "Nijeti për Haxhin bëhet në muajt: Sheual, Dhul Kadeh dhe Dhul Hixh'xheh.",
+        "time": "Nijeti për Haxhin bëhet në muajt: Sheual, Dhul Kadeh dhe Dhul Hixh\"xheh.",
         "types_of_intention": [
             {
                 "type": "Umra",
-                "intention": "LEB'BEJKE UMRATEN"
+                "intention": "LEB\"BEJKE UMRATEN"
             },
             {
-                "type": "Haxh (mutemet'tia)",
-                "intention": "LEB'BEJKE UMRATEN MUTEMET'TIAN BIHA ILEL'HAXH'XHI"
+                "type": "Haxh (mutemet\"tia)",
+                "intention": "LEB\"BEJKE UMRATEN MUTEMET\"TIAN BIHA ILEL\"HAXH\"XHI"
             },
             {
                 "type": "Haxh (Kiran)",
-                "intention": "LEB'BEJKE UMRATEN UE HAXH'XHEN"
+                "intention": "LEB\"BEJKE UMRATEN UE HAXH\"XHEN"
             },
             {
                 "type": "Haxh (Ifrad)",
-                "intention": "LEB'BEJKE HAXH'XHEN"
+                "intention": "LEB\"BEJKE HAXH\"XHEN"
             }
         ],
         "before_wearing": [
@@ -196,31 +196,36 @@
             "id": 1,
             "name": "DHUL HULEJFEH",
             "for_whom": "Për banorët e Medinës dhe ata që vijnë nga ajo rrugë",
-            "distance_from_mecca": "450 km nga Meka"
+            "distance_from_mecca": "450 km nga Meka",
+            "image": "miqats.jpg"
         },
         {
             "id": 2,
             "name": "XHUHFEH",
             "for_whom": "Për udhëtarët nga Siria, Egjipti, Maroku dhe ata që vijnë nga ajo rrugë",
-            "distance_from_mecca": "183 km nga Meka"
+            "distance_from_mecca": "183 km nga Meka",
+            "image": "miqats.jpg"
         },
         {
             "id": 3,
             "name": "KARNUL MENAZIL",
             "for_whom": "Për haxhilerët e Nexhdit dhe ata që vijnë nga ajo rrugë",
-            "distance_from_mecca": "75 km nga Meka"
+            "distance_from_mecca": "75 km nga Meka",
+            "image": "miqats.jpg"
         },
         {
             "id": 4,
             "name": "JELEMLEM",
             "for_whom": "Për haxhinjtë nga Jemeni dhe ata që kalojnë aty",
-            "distance_from_mecca": "92 km nga Meka"
+            "distance_from_mecca": "92 km nga Meka",
+            "image": "miqats.jpg"
         },
         {
             "id": 5,
             "name": "DHATE IRK",
             "for_whom": "Për haxhinjtë e Irakut dhe ata që kalojnë nga ai vend",
-            "distance_from_mecca": "94 km nga Meka"
+            "distance_from_mecca": "94 km nga Meka",
+            "image": "miqats.jpg"
         }
     ],
     "kaaba": {
@@ -233,3 +238,4 @@
         "advice": "Për më shumë detaje dhe udhëzime specifike, rekomandohet konsultimi me burime të specializuara dhe dijetarë islamikë."
     }
 }
+
