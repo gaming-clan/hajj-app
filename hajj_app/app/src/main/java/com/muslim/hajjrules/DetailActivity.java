@@ -22,6 +22,7 @@ public class DetailActivity extends AppCompatActivity {
 
         String title = getIntent().getStringExtra("ruleTitle");
         String desc = getIntent().getStringExtra("ruleDescription");
+        int imageResourceId = getIntent().getIntExtra("ruleImageId", 0);
 
         TextView tvTitle = findViewById(R.id.text_detail_title);
         TextView tvDesc = findViewById(R.id.text_detail_description);
@@ -30,28 +31,10 @@ public class DetailActivity extends AppCompatActivity {
         tvTitle.setText(title);
         tvDesc.setText(desc);
 
-        // Set image based on title
-        if (title != null) {
-            switch (title) {
-                case "Shtyllat e Islamit":
-                    imageView.setImageResource(R.drawable.pillars_of_islam);
-                    break;
-                case "Detyrimi i Haxhit":
-                    imageView.setImageResource(R.drawable.hajj_obligation);
-                    break;
-                case "Edukata e Udhëtimit":
-                    imageView.setImageResource(R.drawable.travel_etiquette);
-                    break;
-                case "Ihrami":
-                    imageView.setImageResource(R.drawable.ihram);
-                    break;
-                case "Ndalesat gjatë Ihramit":
-                    imageView.setImageResource(R.drawable.prohibitions);
-                    break;
-                default:
-                    imageView.setVisibility(View.GONE);
-                    break;
-            }
+        // Set image from the rule object
+        if (imageResourceId != 0) {
+            imageView.setImageResource(imageResourceId);
+            imageView.setVisibility(View.VISIBLE);
         } else {
             imageView.setVisibility(View.GONE);
         }
