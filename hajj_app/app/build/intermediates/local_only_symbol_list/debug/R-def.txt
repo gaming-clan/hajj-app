@@ -7,6 +7,7 @@ color light_gray
 color other_tones
 color secondary_color
 color white
+drawable app_icon
 drawable hajj_kaaba_1
 drawable hajj_obligation
 drawable ihram
@@ -23,6 +24,7 @@ drawable image_6
 drawable image_7
 drawable image_8
 drawable image_9
+drawable miqats
 drawable pillars_of_islam
 drawable prohibitions
 drawable travel_etiquette
@@ -30,6 +32,7 @@ id bottom_navigation
 id fragment_container
 id image_detail_illustration
 id image_logo
+id image_rule_icon
 id map
 id navigation_about
 id navigation_categories

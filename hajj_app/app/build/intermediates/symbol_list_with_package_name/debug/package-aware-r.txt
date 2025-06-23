@@ -3002,6 +3002,7 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable app_icon
 drawable avd_hide_password
 drawable avd_show_password
 drawable bonuspack_bubble
@@ -3082,6 +3083,7 @@ drawable material_ic_keyboard_arrow_previous_black_24dp
 drawable material_ic_keyboard_arrow_right_black_24dp
 drawable material_ic_menu_arrow_down_black_24dp
 drawable material_ic_menu_arrow_up_black_24dp
+drawable miqats
 drawable moreinfo_arrow
 drawable moreinfo_arrow_pressed
 drawable mtrl_bottomsheet_drag_handle
@@ -3389,6 +3391,7 @@ id ignoreRequest
 id image
 id image_detail_illustration
 id image_logo
+id image_rule_icon
 id immediateStop
 id included
 id indeterminate

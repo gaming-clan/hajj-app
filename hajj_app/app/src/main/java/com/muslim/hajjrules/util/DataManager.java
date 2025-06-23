@@ -88,19 +88,19 @@ public class DataManager {
             HajjRule introRule = new HajjRule(
                 "Hyrje", 
                 intro.getString("description"), 
+                1, // categoryId
                 com.muslim.hajjrules.R.drawable.image_1, // Introduction image
                 1
             );
-            introRule.setCategoryId(1);
             introRules.add(introRule);
             
             HajjRule qabjaRule = new HajjRule(
                 "Qabja", 
                 intro.getString("qabja"), 
+                1, // categoryId
                 com.muslim.hajjrules.R.drawable.hajj_kaaba_1, // Kaaba image
                 2
             );
-            qabjaRule.setCategoryId(1);
             introRules.add(qabjaRule);
             rulesByCategory.put(1, introRules);
 
@@ -121,10 +121,10 @@ public class DataManager {
                 HajjRule pillarRule = new HajjRule(
                         pillar.getString("name"),
                         pillar.getString("description"),
+                        2, // categoryId
                         imageResId,
                         pillar.getInt("id")
                 );
-                pillarRule.setCategoryId(2);
                 pillarRules.add(pillarRule);
             }
             rulesByCategory.put(2, pillarRules);
@@ -135,28 +135,28 @@ public class DataManager {
             HajjRule obligationRule1 = new HajjRule(
                 "Detyrimi", 
                 obligation.getString("description"), 
+                3, // categoryId
                 com.muslim.hajjrules.R.drawable.hajj_obligation, 
                 1
             );
-            obligationRule1.setCategoryId(3);
             obligationRules.add(obligationRule1);
             
             HajjRule obligationRule2 = new HajjRule(
                 "Hadith", 
                 obligation.getString("hadith"), 
+                3, // categoryId
                 com.muslim.hajjrules.R.drawable.image_6, 
                 2
             );
-            obligationRule2.setCategoryId(3);
             obligationRules.add(obligationRule2);
             
             HajjRule obligationRule3 = new HajjRule(
                 "Kushtet", 
                 obligation.getString("kushtet"), 
+                3, // categoryId
                 com.muslim.hajjrules.R.drawable.image_7, 
                 3
             );
-            obligationRule3.setCategoryId(3);
             obligationRules.add(obligationRule3);
             rulesByCategory.put(3, obligationRules);
 
@@ -182,10 +182,10 @@ public class DataManager {
                 HajjRule etiquetteRule = new HajjRule(
                         etiquette.getString("rule"),
                         etiquette.getString("description"),
+                        4, // categoryId
                         imageResId,
                         etiquette.getInt("id")
                 );
-                etiquetteRule.setCategoryId(4);
                 etiquetteRules.add(etiquetteRule);
             }
             rulesByCategory.put(4, etiquetteRules);
@@ -196,19 +196,19 @@ public class DataManager {
             HajjRule ihramRule1 = new HajjRule(
                 "Çfarë është Ihrami", 
                 ihram.getString("description"), 
+                5, // categoryId
                 com.muslim.hajjrules.R.drawable.ihram, 
                 1
             );
-            ihramRule1.setCategoryId(5);
             ihramRules.add(ihramRule1);
             
             HajjRule ihramRule2 = new HajjRule(
                 "Koha e Ihramit", 
                 ihram.getString("koha"), 
+                5, // categoryId
                 com.muslim.hajjrules.R.drawable.ihram, 
                 2
             );
-            ihramRule2.setCategoryId(5);
             ihramRules.add(ihramRule2);
 
             JSONArray nijetTypes = ihram.getJSONArray("llojet_e_nijetit");
@@ -217,10 +217,10 @@ public class DataManager {
                 HajjRule nijetRule = new HajjRule(
                         "Nijeti për " + nijet.getString("lloji"),
                         nijet.getString("nijeti"),
+                        5, // categoryId
                         com.muslim.hajjrules.R.drawable.ihram,
                         3 + i
                 );
-                nijetRule.setCategoryId(5);
                 ihramRules.add(nijetRule);
             }
 
@@ -230,10 +230,10 @@ public class DataManager {
                 HajjRule prepRule = new HajjRule(
                         prep.getString("veprim"),
                         prep.getString("description"),
+                        5, // categoryId
                         com.muslim.hajjrules.R.drawable.ihram,
                         7 + i
                 );
-                prepRule.setCategoryId(5);
                 ihramRules.add(prepRule);
             }
             rulesByCategory.put(5, ihramRules);
@@ -246,10 +246,10 @@ public class DataManager {
                 HajjRule prohibitionRule = new HajjRule(
                         prohibition.getString("ndalesa"),
                         prohibition.getString("description"),
+                        6, // categoryId
                         com.muslim.hajjrules.R.drawable.prohibitions,
                         prohibition.getInt("id")
                 );
-                prohibitionRule.setCategoryId(6);
                 prohibitionRules.add(prohibitionRule);
             }
             rulesByCategory.put(6, prohibitionRules);
@@ -262,10 +262,10 @@ public class DataManager {
                 HajjRule miqatRule = new HajjRule(
                         miqat.getString("emri"),
                         miqat.getString("per_ke") + " - " + miqat.getString("largesia"),
-                        android.R.drawable.ic_menu_mylocation,
+                        7, // categoryId
+                        com.muslim.hajjrules.R.drawable.miqats,
                         miqat.getInt("id")
                 );
-                miqatRule.setCategoryId(7);
                 miqatRules.add(miqatRule);
             }
             rulesByCategory.put(7, miqatRules);
@@ -276,19 +276,19 @@ public class DataManager {
             HajjRule kaabaRule1 = new HajjRule(
                 "Qabja", 
                 kaaba.getString("description"), 
+                8, // categoryId
                 com.muslim.hajjrules.R.drawable.hajj_kaaba_1, 
                 1
             );
-            kaabaRule1.setCategoryId(8);
             kaabaRules.add(kaabaRule1);
             
             HajjRule kaabaRule2 = new HajjRule(
                 "Rëndësia e Qabes", 
                 kaaba.getString("rendesia"), 
+                8, // categoryId
                 com.muslim.hajjrules.R.drawable.hajj_kaaba_1, 
                 2
             );
-            kaabaRule2.setCategoryId(8);
             kaabaRules.add(kaabaRule2);
             rulesByCategory.put(8, kaabaRules);
 
@@ -325,3 +325,4 @@ public class DataManager {
         return results;
     }
 }
+

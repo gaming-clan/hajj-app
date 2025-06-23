@@ -24,6 +24,10 @@
         "source": "com.muslim.hajjrules.app-main-34:/layout/fragment_search.xml"
     },
     {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.muslim.hajjrules.app-main-34:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
         "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_image_13.png.flat",
         "source": "com.muslim.hajjrules.app-main-34:/drawable/image_13.png"
     },
@@ -80,6 +84,10 @@
         "source": "com.muslim.hajjrules.app-main-34:/drawable/image_10.png"
     },
     {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_miqats.jpg.flat",
+        "source": "com.muslim.hajjrules.app-main-34:/drawable/miqats.jpg"
+    },
+    {
         "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_image_6.png.flat",
         "source": "com.muslim.hajjrules.app-main-34:/drawable/image_6.png"
     },
@@ -114,6 +122,10 @@
     {
         "merged": "com.muslim.hajjrules.app-merged_res-32:/layout_activity_splash.xml.flat",
         "source": "com.muslim.hajjrules.app-main-34:/layout/activity_splash.xml"
+    },
+    {
+        "merged": "com.muslim.hajjrules.app-merged_res-32:/drawable_app_icon.png.flat",
+        "source": "com.muslim.hajjrules.app-main-34:/drawable/app_icon.png"
     },
     {
         "merged": "com.muslim.hajjrules.app-merged_res-32:/mipmap-xhdpi_ic_launcher.png.flat",

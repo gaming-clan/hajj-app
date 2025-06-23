@@ -40,7 +40,7 @@
     {
       "id": 1,
       "rule": "Qëllimi duhet të jetë vetëm për hir të Allahut",
-      "description": "Jo për t'u dukur apo për qëllime të tjera."
+      "description": "Jo për t\'u dukur apo për qëllime të tjera."
     },
     {
       "id": 2,
@@ -100,23 +100,23 @@
   ],
   "ihrami": {
     "description": "Ihrami është qëllimi që ka muslimani për të kryer ceremonitë e Haxhit apo të Umres.",
-    "koha": "Nijeti për Haxhin bëhet në muajt: Sheual, Dhul Kadeh dhe Dhul Hixh'xheh.",
+    "koha": "Nijeti për Haxhin bëhet në muajt: Sheual, Dhul Kadeh dhe Dhul Hixh\'xheh.",
     "llojet_e_nijetit": [
       {
         "lloji": "Umra",
-        "nijeti": "LEB'BEJKE UMRATEN"
+        "nijeti": "LEB\'BEJKE UMRATEN"
       },
       {
-        "lloji": "Haxh (mutemet'tia)",
-        "nijeti": "LEB'BEJKE UMRATEN MUTEMET'TIAN BIHA ILEL'HAXH'XHI"
+        "lloji": "Haxh (mutemet\'tia)",
+        "nijeti": "LEB\'BEJKE UMRATEN MUTEMET\'TIAN BIHA ILEL\'HAXH\'XHI"
       },
       {
         "lloji": "Haxh (Kiran)",
-        "nijeti": "LEB'BEJKE UMRATEN UE HAXH'XHEN"
+        "nijeti": "LEB\'BEJKE UMRATEN UE HAXH\'XHEN"
       },
       {
         "lloji": "Haxh (Ifrad)",
-        "nijeti": "LEB'BEJKE HAXH'XHEN"
+        "nijeti": "LEB\'BEJKE HAXH\'XHEN"
       }
     ],
     "para_veshjes": [
@@ -179,31 +179,36 @@
       "id": 1,
       "emri": "DHUL HULEJFEH",
       "per_ke": "Për banorët e Medinës dhe ata që vijnë nga ajo rrugë",
-      "largesia": "450 km nga Meka"
+      "largesia": "450 km nga Meka",
+      "image": "miqats.jpg"
     },
     {
       "id": 2,
       "emri": "XHUHFEH",
       "per_ke": "Për udhëtarët nga Siria, Egjipti, Maroku dhe ata që vijnë nga ajo rrugë",
-      "largesia": "183 km nga Meka"
+      "largesia": "183 km nga Meka",
+      "image": "miqats.jpg"
     },
     {
       "id": 3,
       "emri": "KARNUL MENAZIL",
       "per_ke": "Për haxhilerët e Nexhdit dhe ata që vijnë nga ajo rrugë",
-      "largesia": "75 km nga Meka"
+      "largesia": "75 km nga Meka",
+      "image": "miqats.jpg"
     },
     {
       "id": 4,
       "emri": "JELEMLEM",
       "per_ke": "Për haxhinjtë nga Jemeni dhe ata që kalojnë aty",
-      "largesia": "92 km nga Meka"
+      "largesia": "92 km nga Meka",
+      "image": "miqats.jpg"
     },
     {
       "id": 5,
       "emri": "DHATE IRK",
       "per_ke": "Për haxhinjtë e Irakut dhe ata që kalojnë nga ai vend",
-      "largesia": "94 km nga Meka"
+      "largesia": "94 km nga Meka",
+      "image": "miqats.jpg"
     }
   ],
   "qabja": {
@@ -216,3 +221,5 @@
     "keshilla": "Për më shumë detaje dhe udhëzime specifike, rekomandohet konsultimi me burime të specializuara dhe dijetarë islamikë."
   }
 }
+
+
