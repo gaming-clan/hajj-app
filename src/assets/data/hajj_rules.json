@@ -21,28 +21,74 @@
   "shtyllat_e_islamit": [
     {
       "id": 1,
-      "name": "Dëshmia",
-      "description": "Nuk ka zot përveç Allahut dhe Muhammedi është i Dërguari i Tij."
+      "name": {
+        "albanian": "Dëshmia",
+        "arabic": "الشهادتان",
+        "english": "The Testimony"
+      },
+      "description": {
+        "albanian": "Nuk ka zot përveç Allahut dhe Muhammedi është i Dërguari i Tij.",
+        "arabic": "لا إله إلا الله، محمد رسول الله",
+        "english": "There is no god but Allah, and Muhammad is the Messenger of Allah.",
+        "quranic_reference": "شَهِدَ ٱللَّهُ أَنَّهُۥ لَا إِلَٰهَ إِلَّا هُوَ وَٱلْمَلَٰٓئِكَةُ وَأُولُوا۟ ٱلْعِلْمِ قَآئِمًۢا بِٱلْقِسْطِ"
+      }
     },
     {
       "id": 2,
-      "name": "Falja e namazit",
-      "description": "Kryerja e pesë namazeve ditore."
+      "name": {
+        "albanian": "Falja e namazit",
+        "arabic": "الصلاة",
+        "english": "Prayer"
+      },
+      "description": {
+        "albanian": "Kryerja e pesë namazeve ditore.",
+        "arabic": "أداء الصلوات الخمس المفروضة في اليوم والليلة",
+        "english": "Performing the five obligatory prayers daily and nightly.",
+        "quranic_reference": "إِنَّ ٱلصَّلَوٰةَ كَانَتْ عَلَى ٱلْمُؤْمِنِينَ كِتَٰبًا مَّوْقُوتًا"
+      }
     },
     {
       "id": 3,
-      "name": "Dhënja e Zekatit",
-      "description": "Dhënia e një pjese të pasurisë për të varfërit."
+      "name": {
+        "albanian": "Dhënja e Zekatit",
+        "arabic": "الزكاة",
+        "english": "Zakat"
+      },
+      "description": {
+        "albanian": "Dhënia e një pjese të pasurisë për të varfërit.",
+        "arabic": "إخراج جزء من المال للمحتاجين والمساكين",
+        "english": "Giving a portion of wealth to the needy and poor.",
+        "quranic_reference": "خُذْ مِنْ أَمْوَٰلِهِمْ صَدَقَةً تُطَهِّرُهُمْ وَتُزَكِّيهِم بِهَا"
+      }
     },
     {
       "id": 4,
-      "name": "Agjërimi i Ramazanit",
-      "description": "Agjërimi gjatë muajit të Ramazanit."
+      "name": {
+        "albanian": "Agjërimi i Ramazanit",
+        "arabic": "صوم رمضان",
+        "english": "Fasting in Ramadan"
+      },
+      "description": {
+        "albanian": "Agjërimi gjatë muajit të Ramazanit.",
+        "arabic": "الإمساك عن الطعام والشراب والشهوة من الفجر إلى الغروب في شهر رمضان",
+        "english": "Abstaining from food, drink, and desires from dawn to sunset in Ramadan.",
+        "quranic_reference": "يَا أَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ كُتِبَ عَلَيْكُمُ ٱلصِّيَامُ كَمَا كُتِبَ عَلَى ٱلَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ"
+      }
     },
     {
       "id": 5,
-      "name": "Haxhi në Qabe",
-      "description": "Vizita e Qabes së paktën një herë në jetë për ata që kanë mundësi."
+      "name": {
+        "albanian": "Haxhi në Qabe",
+        "arabic": "حج البيت",
+        "english": "Hajj to the House"
+      },
+      "description": {
+        "albanian": "Vizita e Qabes së paktën një herë në jetë për ata që kanë mundësi.",
+        "arabic": "زيارة الكعبة الشريفة مرة واحدة في العمر على الأقل للقادرين",
+        "english": "Visiting the Holy Kaaba at least once in a lifetime for those who are able.",
+        "quranic_reference": "وَلِلَّهِ عَلَى ٱلنَّاسِ حِجُّ ٱلْبَيْتِ مَنِ ٱسْتَطَاعَ إِلَيْهِ سَبِيلًا",
+        "hadith_reference": "بُنِيَ ٱلْإِسْلَامُ عَلَىٰ خَمْسٍ: شَهَادَةِ أَنْ لَا إِلَٰهَ إِلَّا ٱللَّهُ وَأَنَّ مُحَمَّدًا رَسُولُ ٱللَّهِ، وَإِقَامِ ٱلصَّلَاةِ، وَإِيتَاءِ ٱلزَّكَاةِ، وَحَجِّ ٱلْبَيْتِ، وَصَوْمِ رَمَضَانَ"
+      }
     }
   ],
   "detyrimi_i_haxhit": {
