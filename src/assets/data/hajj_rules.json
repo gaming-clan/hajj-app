@@ -92,9 +92,24 @@
     }
   ],
   "detyrimi_i_haxhit": {
-    "description": "Haxhi është detyrë vetëm një herë në jetë.",
-    "hadith": "Haxhi është vetëm një herë në jetë. Kush kryen më shumë janë nafile për të.",
-    "kushtet": "Haxhi duhet të jetë patjetër vetëm për Allahun dhe të kryhet sipas mënyrës së të Dërguarit të Allahut."
+    "description": {
+      "albanian": "Haxhi është detyrë vetëm një herë në jetë.",
+      "arabic": "الحج فرض مرة واحدة في العمر",
+      "english": "Hajj is obligatory only once in a lifetime"
+    },
+    "hadith": {
+      "albanian": "Haxhi është vetëm një herë në jetë. Kush kryen më shumë janë nafile për të.",
+      "arabic": "الحج مرة واحدة، فمن زاد فهو نافلة",
+      "english": "Hajj is once in a lifetime. Whoever does more than that is voluntary.",
+      "reference": "Sahih al-Bukhari, Book 26, Hadith 1513",
+      "full_arabic_hadith": "عن أبي هريرة رضي الله عنه قال: خطبنا رسول الله صلى الله عليه وسلم فقال: يا أيها الناس، قد فرض الله عليكم الحج فحجوا. فقال رجل: أكل عام يا رسول الله؟ فسكت، حتى قالها ثلاثا. فقال رسول الله صلى الله عليه وسلم: لو قلت نعم لوجبت، ولما استطعتم. الحج مرة واحدة، فمن زاد فهو نافلة"
+    },
+    "kushtet": {
+      "albanian": "Haxhi duhet të jetë patjetër vetëm për Allahun dhe të kryhet sipas مënyrës së të Dërguarit të Allahut.",
+      "arabic": "الحج يجب أن يكون خالصاً لله، ويؤدى على سنة رسول الله صلى الله عليه وسلم",
+      "english": "Hajj must be purely for Allah and performed according to the Sunnah of the Messenger of Allah",
+      "quranic_reference": "وَمَا أُمِرُوا۟ إِلَّا لِيَعْبُدُوا۟ ٱللَّهَ مُخْلِصِينَ لَهُ ٱلدِّينَ حُنَفَآءَ"
+    }
   },
   "edukata_e_udhetimit": [
     {
