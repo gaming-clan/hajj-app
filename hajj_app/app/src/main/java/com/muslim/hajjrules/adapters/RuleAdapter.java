@@ -38,6 +38,10 @@ public class RuleAdapter extends RecyclerView.Adapter<RuleAdapter.RuleViewHolder
         this.listener = listener;
     }
 
+    public void setOnFavoriteClickListener(OnFavoriteClickListener favoriteListener) {
+        this.favoriteListener = favoriteListener;
+    }
+
     @NonNull
     @Override
     public RuleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
