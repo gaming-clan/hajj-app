@@ -3,13 +3,11 @@ package com.muslim.hajjrules.di;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.muslim.hajjrules.data.repository.HajjRepositoryInterface;
 import com.muslim.hajjrules.viewmodel.CategoryViewModel;
 import com.muslim.hajjrules.viewmodel.HomeViewModel;
 
 import dagger.Binds;
 import dagger.Module;
-import dagger.Provides;
 import dagger.multibindings.IntoMap;
 import dagger.multibindings.ClassKey;
 
