@@ -1,8 +1,22 @@
 {
-  "title": "Rregullat e Haxhit",
+  "title": {
+    "albanian": "Rregullat e Haxhit",
+    "arabic": "أحكام الحج",
+    "english": "Rules of Hajj"
+  },
   "introduction": {
-    "description": "Haxhi është një nga pesë shtyllat e Islamit dhe është detyrë për çdo musliman që ka mundësi ta kryejë atë të paktën një herë në jetë.",
-    "qabja": "Qabja është vendi që tërheq zemrat e muslimanëve nga e gjithë bota, dhe është shtëpia e parë e ndërtuar për adhurim mbi tokë."
+    "description": {
+      "albanian": "Haxhi është një nga pesë shtyllat e Islamit dhe është detyrë për çdo musliman që ka mundësi ta kryejë atë të paktën një herë në jetë.",
+      "arabic": "الحج هو أحد أركان الإسلام الخمسة، وهو فرض على كل مسلم قادر على أدائه مرة واحدة في العمر على الأقل",
+      "english": "Hajj is one of the five pillars of Islam and is obligatory for every Muslim who is able to perform it at least once in a lifetime",
+      "quranic_reference": "وَلِلَّهِ عَلَى ٱلنَّاسِ حِجُّ ٱلْبَيْتِ مَنِ ٱسْتَطَاعَ إِلَيْهِ سَبِيلًا"
+    },
+    "qabja": {
+      "albanian": "Qabja është vendi që tërheq zemrat e muslimanëve nga e gjithë bota, dhe është shtëpia e parë e ndërtuar për adhurim mbi tokë.",
+      "arabic": "الكعبة هي المكان الذي تجذب إليه قلوب المسلمين من جميع أنحاء العالم، وهي أول بيت بني للعبادة على الأرض",
+      "english": "The Kaaba is the place that attracts the hearts of Muslims from all over the world, and it is the first house built for worship on earth",
+      "quranic_reference": "إِنَّ أَوَّلَ بَيْتٍ وُضِعَ لِلنَّاسِ لَلَّذِي بِبَكَّةَ مُبَارَكًا وَهُدًى لِّلْعَٰلَمِينَ"
+    }
   },
   "shtyllat_e_islamit": [
     {
