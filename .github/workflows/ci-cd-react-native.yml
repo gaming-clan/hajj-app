@@ -1,0 +1,406 @@
+name: CI/CD - React Native Hajj App
+
+on:
+  push:
+    branches: [ main, develop, 'release/*' ]
+  pull_request:
+    branches: [ main ]
+  release:
+    types: [ published ]
+
+env:
+  NODE_VERSION: '18'
+  JAVA_VERSION: '17'
+  ANDROID_API_LEVEL: '34'
+
+jobs:
+  # Code Quality and Security Scanning
+  quality-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: ESLint - Code Quality Check
+        run: npm run lint
+
+      - name: TypeScript - Type Checking
+        run: npm run type-check
+
+      - name: Prettier - Code Formatting Check
+        run: npm run format:check
+
+      - name: Security Audit
+        run: npm audit --audit-level high
+
+      - name: Islamic Content Validation
+        run: npm run test:islamic-content
+
+      - name: Unit Tests
+        run: npm run test:unit -- --coverage --watchAll=false
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./coverage/lcov.info
+          flags: unittests
+          name: codecov-umbrella
+
+  # Android Build and Test
+  android-build:
+    runs-on: ubuntu-latest
+    needs: quality-check
+    if: github.event_name == 'push' || github.event_name == 'release'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: ${{ env.JAVA_VERSION }}
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Cache Gradle
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Install Android dependencies
+        run: |
+          cd android
+          ./gradlew androidDependencies
+
+      - name: Build Debug APK
+        run: |
+          cd android
+          ./gradlew assembleDebug --stacktrace
+
+      - name: Run Android Tests
+        run: |
+          cd android
+          ./gradlew testDebugUnitTest --stacktrace
+
+      - name: Build Release APK (Production)
+        if: github.ref == 'refs/heads/main' || github.event_name == 'release'
+        run: |
+          cd android
+          ./gradlew assembleRelease --stacktrace
+        env:
+          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+
+      - name: Upload Debug APK Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: android-debug-apk
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+
+      - name: Upload Release APK Artifact
+        if: github.ref == 'refs/heads/main' || github.event_name == 'release'
+        uses: actions/upload-artifact@v3
+        with:
+          name: android-release-apk
+          path: android/app/build/outputs/apk/release/app-release.apk
+
+      - name: Build AAB for Play Store
+        if: github.ref == 'refs/heads/main' || github.event_name == 'release'
+        run: |
+          cd android
+          ./gradlew bundleRelease --stacktrace
+        env:
+          SIGNING_KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
+          SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
+
+      - name: Upload AAB Artifact
+        if: github.ref == 'refs/heads/main' || github.event_name == 'release'
+        uses: actions/upload-artifact@v3
+        with:
+          name: android-release-aab
+          path: android/app/build/outputs/bundle/release/app-release.aab
+
+  # iOS Build (for future use)
+  ios-build:
+    runs-on: macos-latest
+    needs: quality-check
+    if: github.event_name == 'push' || github.event_name == 'release'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install CocoaPods
+        run: |
+          cd ios
+          pod install
+
+      - name: Build iOS App
+        run: |
+          cd ios
+          xcodebuild -workspace HajjApp.xcworkspace \
+            -scheme HajjApp \
+            -configuration Debug \
+            -destination generic/platform=iOS \
+            build
+
+      - name: Run iOS Tests
+        run: |
+          cd ios
+          xcodebuild -workspace HajjApp.xcworkspace \
+            -scheme HajjApp \
+            -configuration Debug \
+            -destination 'platform=iOS Simulator,name=iPhone 14' \
+            test
+
+      - name: Build iOS Release
+        if: github.ref == 'refs/heads/main' || github.event_name == 'release'
+        run: |
+          cd ios
+          xcodebuild -workspace HajjApp.xcworkspace \
+            -scheme HajjApp \
+            -configuration Release \
+            -destination generic/platform=iOS \
+            build
+
+  # Islamic Content Verification
+  content-verification:
+    runs-on: ubuntu-latest
+    needs: quality-check
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify Islamic Content Authenticity
+        run: |
+          echo "=== Islamic Content Verification Report ==="
+
+          # Verify Quranic references
+          echo "✓ Checking Quranic references..."
+          npm run verify:quranic-references
+
+          # Verify Hadith references
+          echo "✓ Checking Hadith references..."
+          npm run verify:hadith-references
+
+          # Validate Arabic text integrity
+          echo "✓ Validating Arabic text..."
+          npm run validate:arabic-text
+
+          # Check for content security
+          echo "✓ Checking content security..."
+          npm run security:content-check
+
+          # Generate verification report
+          echo "✓ Generating verification report..."
+          npm run generate:verification-report
+
+      - name: Upload Verification Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: islamic-content-verification-report
+          path: docs/islamic_content_verification_report.md
+
+  # Security Scanning
+  security-scan:
+    runs-on: ubuntu-latest
+    needs: quality-check
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+      - name: OWASP Dependency Check
+        run: |
+          npm audit --audit-level high --json > npm-audit-report.json || true
+          cat npm-audit-report.json
+
+      - name: Security Content Analysis
+        run: |
+          echo "=== Security Analysis for Islamic Content ==="
+
+          # Check for XSS vulnerabilities in content
+          node -e "
+          const fs = require('fs');
+          const content = fs.readFileSync('src/assets/data/hajj_rules.json', 'utf8');
+          const dangerousPatterns = [/<script/i, /javascript:/i, /on\\w+=/i];
+
+          let securityIssues = 0;
+          dangerousPatterns.forEach(pattern => {
+            if (pattern.test(content)) {
+              securityIssues++;
+              console.log('⚠️  Security issue found:', pattern);
+            }
+          });
+
+          if (securityIssues === 0) {
+            console.log('✅ No security issues detected in Islamic content');
+          } else {
+            process.exit(1);
+          }
+          "
+
+  # Deployment to Production
+  deploy-production:
+    runs-on: ubuntu-latest
+    needs: [android-build, ios-build, content-verification, security-scan]
+    if: github.event_name == 'release' && github.ref == 'refs/heads/main'
+    environment: production
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: ./build-artifacts
+
+      - name: Deploy to Google Play Console
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}
+          packageName: com.muslim.hajjrules
+          releaseFiles: ./build-artifacts/android-release-aab/app-release.aab
+          track: production
+          status: completed
+          whatsNewDirectory: fastlane/metadata/android/
+
+      - name: Deploy to Firebase App Distribution
+        uses: wzieba/Firebase-Distribution-Github-Action@v1
+        with:
+          appId: ${{ secrets.FIREBASE_ANDROID_APP_ID }}
+          serviceCredentialsFile: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_KEY }}
+          groups: testers
+          file: ./build-artifacts/android-release-apk/app-release.apk
+          releaseNotes: |
+            🕌 Hajj & Umrah Guide v${{ github.event.release.tag_name }}
+
+            ✅ Verified Islamic content with authentic sources
+            ✅ Enhanced Arabic RTL support
+            ✅ Improved accessibility features
+            ✅ Security enhancements
+            ✅ Performance optimizations
+
+            Full release notes: https://github.com/muslim/hajj-app/releases/tag/${{ github.event.release.tag_name }}
+
+      - name: Notify deployment success
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          channel: '#deployments'
+          text: |
+            🕌 *Hajj & Umrah Guide* successfully deployed to production!
+
+            **Version:** ${{ github.event.release.tag_name }}
+            **Platform:** React Native
+            **Build:** ${{ github.sha }}
+
+            ✅ Islamic content verified
+            ✅ Security scans passed
+            ✅ Quality checks completed
+
+            Download: https://play.google.com/store/apps/details?id=com.muslim.hajjrules
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  # Performance Monitoring
+  performance-monitoring:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Bundle size analysis
+        run: |
+          echo "=== Bundle Size Analysis ==="
+          npm run bundle:analyze
+
+      - name: Performance benchmarks
+        run: |
+          echo "=== Performance Benchmarks ==="
+          npm run benchmark:performance
+
+      - name: Memory usage analysis
+        run: |
+          echo "=== Memory Usage Analysis ==="
+          npm run analyze:memory
+
+      - name: Upload performance report
+        uses: actions/upload-artifact@v3
+        with:
+          name: performance-report
+          path: |
+            bundle-analysis-report.json
+            performance-benchmarks.json
+            memory-analysis.json
