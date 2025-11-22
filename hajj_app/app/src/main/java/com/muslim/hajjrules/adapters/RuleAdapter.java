@@ -19,14 +19,9 @@ public class RuleAdapter extends RecyclerView.Adapter<RuleAdapter.RuleViewHolder
     private Context context;
     private List<HajjRule> rules;
     private OnItemClickListener listener;
-    private OnFavoriteClickListener favoriteListener;
 
     public interface OnItemClickListener {
         void onItemClick(HajjRule rule);
-    }
-
-    public interface OnFavoriteClickListener {
-        void onFavoriteClick(HajjRule rule);
     }
 
     public RuleAdapter(Context context, List<HajjRule> rules) {
