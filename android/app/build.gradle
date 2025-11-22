@@ -1,0 +1,195 @@
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader("UTF-8") { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterRoot = localProperties.getProperty("flutter.sdk")
+if (flutterRoot == null) {
+    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
+}
+
+def flutterVersionCode = localProperties.getProperty("flutter.versionCode")
+if (flutterVersionCode == null) {
+    flutterVersionCode = "1"
+}
+
+def flutterVersionName = localProperties.getProperty("flutter.versionName")
+if (flutterVersionName == null) {
+    flutterVersionName = "1.0"
+}
+
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+    compileSdkVersion 34
+    ndkVersion flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        applicationId "com.muslim.hajjrules"
+        minSdkVersion 21
+        targetSdkVersion 34
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+        multiDexEnabled true
+
+        // Build configuration for Islamic content app
+        buildConfigField "String", "BUILD_TYPE", "\"${buildType.name}\""
+        buildConfigField "long", "BUILD_TIME", "${System.currentTimeMillis()}L"
+        buildConfigField "String", "VERSION_INFO", "\"${flutterVersionName} (${flutterVersionCode})\""
+
+        // ProGuard configuration for release builds
+        consumerProguardFiles "proguard-rules.pro"
+    }
+
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+            storePassword keystoreProperties['storePassword']
+
+            // Enable V2 and V3 signing for better security
+            enableV1Signing true
+            enableV2Signing true
+            enableV3Signing true
+        }
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            debuggable true
+            minifyEnabled false
+            shrinkResources false
+            crunchPngs false
+
+            // Debug build configuration
+            buildConfigField "boolean", "IS_PRODUCTION", "false"
+            buildConfigField "String", "API_BASE_URL", "\"https://staging-api.hajj-app.com\""
+
+            // Disable obfuscation for debugging
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            minifyEnabled true
+            shrinkResources true
+            crunchPngs true
+
+            // Production build configuration
+            buildConfigField "boolean", "IS_PRODUCTION", "true"
+            buildConfigField "String", "API_BASE_URL", "\"https://api.hajj-app.com\""
+
+            // Enable code shrinking and obfuscation
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            // Signing configuration
+            signingConfig signingConfigs.release
+
+            // Enable R8 full mode for better optimization
+            consumerProguardFiles 'proguard-rules.pro'
+        }
+
+        // Profile build for testing release performance
+        profile {
+            initWith debug
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    splits {
+        abi {
+            reset()
+            enable enableSeparateBuildPerCpuArchitecture
+            universalApk false
+            include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
+        }
+    }
+
+    // Variant output configuration
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def versionCodes = ["armeabi-v7a": 1, "x86": 2, "arm64-v8a": 3, "x86_64": 4]
+            def abi = output.getFilter(OutputFile.ABI)
+            if (abi != null) {
+                output.versionCodeOverride =
+                    defaultConfig.versionCode * 1000 + versionCodes.get(abi)
+            }
+
+            // Customize APK names
+            if (variant.buildType.name == "release") {
+                output.outputFileName = "hajj-app-v${defaultConfig.versionName}-${variant.versionCode}-${abi}.apk"
+            }
+        }
+    }
+
+    // Lint configuration
+    lint {
+        disable 'InvalidPackage', 'MissingTranslation'
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    // Bundle configuration for Play Store
+    bundle {
+        language {
+            enableSplit = true
+        }
+        density {
+            enableSplit = true
+        }
+        abi {
+            enableSplit = true
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    // Security dependencies
+    implementation 'androidx.security:security-crypto:1.1.0-alpha06'
+
+    // Performance monitoring
+    implementation 'androidx.work:work-runtime-ktx:2.9.0'
+
+    // Add your existing dependencies here
+}
+
+// Apply Google Services plugin for Firebase
+apply plugin: 'com.google.gms.google-services'
+
+// Apply Crashlytics plugin for crash reporting
+apply plugin: 'com.google.firebase.crashlytics'
