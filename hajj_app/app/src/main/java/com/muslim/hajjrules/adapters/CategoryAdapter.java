@@ -54,15 +54,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         return categories != null ? categories.size() : 0;
     }
 
-    /**
-     * Update categories data and refresh the adapter
-     * This method is used by MVVM pattern to update data from ViewModel
-     */
-    public void updateCategories(List<Category> newCategories) {
-        this.categories = newCategories;
-        notifyDataSetChanged();
-    }
-
     static class CategoryViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
 
