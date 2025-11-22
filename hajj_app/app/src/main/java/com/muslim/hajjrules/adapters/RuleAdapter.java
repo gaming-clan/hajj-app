@@ -72,7 +72,7 @@ public class RuleAdapter extends RecyclerView.Adapter<RuleAdapter.RuleViewHolder
 
     @Override
     public int getItemCount() {
-        return rules != null ? rules.size() : 0;
+        return rules.size();
     }
 
     public void updateRules(List<HajjRule> newRules) {
