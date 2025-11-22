@@ -14,6 +14,13 @@ import com.muslim.hajjrules.fragments.SearchFragment;
 import com.muslim.hajjrules.fragments.MapFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+/**
+ * Main Activity with Hilt support for dependency injection
+ * Manages bottom navigation and fragment transactions
+ */
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private BottomNavigationView bottomNavigationView;
