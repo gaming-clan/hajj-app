@@ -9,17 +9,26 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.viewModels;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.muslim.hajjrules.R;
 import com.muslim.hajjrules.adapters.RuleAdapter;
 import com.muslim.hajjrules.model.HajjRule;
-import com.muslim.hajjrules.util.DataManager;
+import com.muslim.hajjrules.viewmodel.CategoryViewModel;
 import com.muslim.hajjrules.DetailActivity;
 
 import java.util.List;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+/**
+ * Category Fragment that displays rules for a specific category using MVVM architecture
+ * Uses Hilt for dependency injection and ViewModel for data management
+ */
+@AndroidEntryPoint
 public class CategoryFragment extends Fragment {
 
     private static final String ARG_CATEGORY_ID = "categoryId";
