@@ -40,7 +40,7 @@
     {
       "id": 1,
       "rule": "Qëllimi duhet të jetë vetëm për hir të Allahut",
-      "description": "Jo për t\'u dukur apo për qëllime të tjera."
+      "description": "Jo për t'u dukur apo për qëllime të tjera."
     },
     {
       "id": 2,
@@ -99,24 +99,24 @@
     }
   ],
   "ihrami": {
-    "description": "Ihrami është qëllimi që ka muslimani për të kryer ceremonitë e Haxhit apo të Umres.",
-    "koha": "Nijeti për Haxhin bëhet në muajt: Sheual, Dhul Kadeh dhe Dhul Hixh\'xheh.",
+    "description": "Ihrami është gjendja e shenjtë në të cilën hyn pelegrini me nijetin për të kryer Haxhin ose Umren; veshja është përgatitje, jo vetë ihrami. Nijeti është në zemër; formulimet e paraqitura janë shembuj dhe jo formulë e vetme e detyrueshme.",
+    "koha": "Muajt e Haxhit janë Sheuali, Dhul-Kadeh dhe dhjetë ditët e para të Dhul-Hixhes. Umra mund të kryhet gjatë gjithë vitit.",
     "llojet_e_nijetit": [
       {
         "lloji": "Umra",
-        "nijeti": "LEB\'BEJKE UMRATEN"
+        "nijeti": "LEBBEJKE UMRATEN"
       },
       {
-        "lloji": "Haxh (mutemet\'tia)",
-        "nijeti": "LEB\'BEJKE UMRATEN MUTEMET\'TIAN BIHA ILEL\'HAXH\'XHI"
+        "lloji": "Haxh (temettu)",
+        "nijeti": "LEBBEJKE UMRATEN MUTEMETTIAN BIHA ILEL-HAXHXHI"
       },
       {
         "lloji": "Haxh (Kiran)",
-        "nijeti": "LEB\'BEJKE UMRATEN UE HAXH\'XHEN"
+        "nijeti": "LEBBEJKE UMRATEN UE HAXHXHEN"
       },
       {
         "lloji": "Haxh (Ifrad)",
-        "nijeti": "LEB\'BEJKE HAXH\'XHEN"
+        "nijeti": "LEBBEJKE HAXHXHEN"
       }
     ],
     "para_veshjes": [
@@ -133,7 +133,7 @@
       {
         "id": 3,
         "veprim": "Veshja e ihramit",
-        "description": "Burrat heqin të gjitha rrobat dhe veshin rrobat e haxhit (ihrami), ndërsa gratë qëndrojnë me veshjen e zakonshme."
+        "description": "Burrat heqin veshjet e zakonshme të formësuara për trupin dhe veshin izar e rida; gratë veshin rroba të zakonshme, të mbuluara e modeste, pa një uniformë të posaçme ihrami."
       }
     ]
   },
@@ -145,13 +145,13 @@
     },
     {
       "id": 2,
-      "ndalesa": "Veshja e rrobave të qepura",
-      "description": "Nuk lejohet të vishen rroba të qepura për burrat."
+      "ndalesa": "Veshja e rrobave të formësuara për trupin",
+      "description": "Për burrat në ihram nuk lejohen këmisha, pantallonat dhe veshje të ngjashme të formësuara për trupin; prania e qepjeve në vetvete nuk është ndalesë."
     },
     {
       "id": 3,
       "ndalesa": "Parfumimi",
-      "description": "Nuk lejohet të parfumoset trupi apo rrobat."
+      "description": "Pas hyrjes në ihram nuk përdoret parfum në trup ose në rroba."
     },
     {
       "id": 4,
@@ -166,12 +166,12 @@
     {
       "id": 6,
       "ndalesa": "Marrëdhëniet intime",
-      "description": "Nuk lejohet marrëdhëniet intime me bashkëshorten."
+      "description": "Nuk lejohen marrëdhëniet intime gjatë ihramit."
     },
     {
       "id": 7,
       "ndalesa": "Martesa",
-      "description": "Nuk lejohet lidhja e kurorës (martesa)."
+      "description": "Gjatë ihramit nuk lidhet, nuk ndërmjetësohet dhe nuk kërkohet martesa."
     }
   ],
   "vendcaktimet": [
@@ -179,35 +179,35 @@
       "id": 1,
       "emri": "DHUL HULEJFEH",
       "per_ke": "Për banorët e Medinës dhe ata që vijnë nga ajo rrugë",
-      "largesia": "450 km nga Meka",
+      "largesia": "Distanca ndryshon sipas pikës së matjes dhe itinerarit; nuk është kufi ritual.",
       "image": "miqats.jpg"
     },
     {
       "id": 2,
       "emri": "XHUHFEH",
       "per_ke": "Për udhëtarët nga Siria, Egjipti, Maroku dhe ata që vijnë nga ajo rrugë",
-      "largesia": "183 km nga Meka",
+      "largesia": "Distanca ndryshon sipas pikës së matjes dhe itinerarit; nuk është kufi ritual.",
       "image": "miqats.jpg"
     },
     {
       "id": 3,
       "emri": "KARNUL MENAZIL",
       "per_ke": "Për haxhilerët e Nexhdit dhe ata që vijnë nga ajo rrugë",
-      "largesia": "75 km nga Meka",
+      "largesia": "Distanca ndryshon sipas pikës së matjes dhe itinerarit; nuk është kufi ritual.",
       "image": "miqats.jpg"
     },
     {
       "id": 4,
       "emri": "JELEMLEM",
       "per_ke": "Për haxhinjtë nga Jemeni dhe ata që kalojnë aty",
-      "largesia": "92 km nga Meka",
+      "largesia": "Distanca ndryshon sipas pikës së matjes dhe itinerarit; nuk është kufi ritual.",
       "image": "miqats.jpg"
     },
     {
       "id": 5,
       "emri": "DHATE IRK",
       "per_ke": "Për haxhinjtë e Irakut dhe ata që kalojnë nga ai vend",
-      "largesia": "94 km nga Meka",
+      "largesia": "Distanca ndryshon sipas pikës së matjes dhe itinerarit; nuk është kufi ritual.",
       "image": "miqats.jpg"
     }
   ],

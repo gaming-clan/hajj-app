@@ -1,4 +1,5 @@
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook, act, waitFor } from '@testing-library/react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useOptimizedData } from '../shared/hooks/useOptimizedData';
 
 // Mock AsyncStorage
@@ -24,7 +25,7 @@ describe('Performance Optimization Tests', () => {
           cacheKey: 'test-key',
           fetcher: mockFetcher,
           cacheTTL: 1000,
-        })
+        }),
       );
 
       expect(result.current.isLoading).toBe(true);
@@ -36,14 +37,14 @@ describe('Performance Optimization Tests', () => {
       const testData = { id: 1, name: 'Test Data' };
       const mockFetcher = jest.fn().mockResolvedValue(testData);
 
-      const { result, waitForNextUpdate } = renderHook(() =>
+      const { result } = renderHook(() =>
         useOptimizedData({
           cacheKey: 'test-key',
           fetcher: mockFetcher,
-        })
+        }),
       );
 
-      await waitForNextUpdate();
+      await waitFor(() => expect(result.current.data).toEqual(testData));
 
       expect(result.current.isLoading).toBe(false);
       expect(result.current.data).toEqual(testData);
@@ -55,14 +56,14 @@ describe('Performance Optimization Tests', () => {
       const error = new Error('Network error');
       const mockFetcher = jest.fn().mockRejectedValue(error);
 
-      const { result, waitForNextUpdate } = renderHook(() =>
+      const { result } = renderHook(() =>
         useOptimizedData({
           cacheKey: 'test-key',
           fetcher: mockFetcher,
-        })
+        }),
       );
 
-      await waitForNextUpdate();
+      await waitFor(() => expect(result.current.error).toBe(error));
 
       expect(result.current.isLoading).toBe(false);
       expect(result.current.data).toBeNull();
@@ -73,22 +74,23 @@ describe('Performance Optimization Tests', () => {
     test('should refresh data when force refresh is called', async () => {
       const testData1 = { id: 1, name: 'Data 1' };
       const testData2 = { id: 2, name: 'Data 2' };
-      const mockFetcher = jest.fn()
+      const mockFetcher = jest
+        .fn()
         .mockResolvedValueOnce(testData1)
         .mockResolvedValueOnce(testData2);
 
-      const { result, waitForNextUpdate, rerender } = renderHook(
+      const { result } = renderHook(
         ({ fetcher }) =>
           useOptimizedData({
             cacheKey: 'test-key',
             fetcher,
           }),
         {
-          initialProps: { fetcher: mockFetcher }
-        }
+          initialProps: { fetcher: mockFetcher },
+        },
       );
 
-      await waitForNextUpdate();
+      await waitFor(() => expect(result.current.data).toEqual(testData1));
 
       expect(result.current.data).toEqual(testData1);
       expect(mockFetcher).toHaveBeenCalledTimes(1);
@@ -98,14 +100,13 @@ describe('Performance Optimization Tests', () => {
         result.current.refresh();
       });
 
-      await waitForNextUpdate();
+      await waitFor(() => expect(result.current.data).toEqual(testData2));
 
       expect(result.current.data).toEqual(testData2);
       expect(mockFetcher).toHaveBeenCalledTimes(2);
     });
 
     test('should debounce refresh calls', async () => {
-      jest.useFakeTimers();
       const testData = { id: 1, name: 'Test Data' };
       const mockFetcher = jest.fn().mockResolvedValue(testData);
 
@@ -114,8 +115,12 @@ describe('Performance Optimization Tests', () => {
           cacheKey: 'test-key',
           fetcher: mockFetcher,
           debounceMs: 100,
-        })
+        }),
       );
+
+      await waitFor(() => expect(result.current.isLoading).toBe(false));
+      mockFetcher.mockClear();
+      jest.useFakeTimers();
 
       // Call debouncedRefresh multiple times quickly
       act(() => {
@@ -125,8 +130,10 @@ describe('Performance Optimization Tests', () => {
       });
 
       // Fast-forward time
-      act(() => {
+      await act(async () => {
         jest.advanceTimersByTime(100);
+        await Promise.resolve();
+        await Promise.resolve();
       });
 
       // Should only call fetcher once due to debouncing
@@ -138,17 +145,16 @@ describe('Performance Optimization Tests', () => {
     test('should clear cache properly', async () => {
       const testData = { id: 1, name: 'Test Data' };
       const mockFetcher = jest.fn().mockResolvedValue(testData);
-      const AsyncStorage = require('@react-native-async-storage/async-storage');
       AsyncStorage.removeItem.mockResolvedValue();
 
-      const { result, waitForNextUpdate } = renderHook(() =>
+      const { result } = renderHook(() =>
         useOptimizedData({
           cacheKey: 'test-key',
           fetcher: mockFetcher,
-        })
+        }),
       );
 
-      await waitForNextUpdate();
+      await waitFor(() => expect(result.current.data).toEqual(testData));
 
       act(() => {
         result.current.clearCache();
@@ -162,7 +168,6 @@ describe('Performance Optimization Tests', () => {
     test('should respect cache TTL', async () => {
       const testData = { data: 'test' };
       const mockFetcher = jest.fn().mockResolvedValue(testData);
-      const AsyncStorage = require('@react-native-async-storage/async-storage');
 
       // Mock cache hit with valid TTL
       const cacheEntry = {
@@ -177,9 +182,10 @@ describe('Performance Optimization Tests', () => {
           cacheKey: 'test-key',
           fetcher: mockFetcher,
           cacheTTL: 60000, // 1 minute TTL
-        })
+        }),
       );
 
+      await waitFor(() => expect(result.current.data).toEqual(testData));
       // Should use cache data without calling fetcher
       expect(mockFetcher).not.toHaveBeenCalled();
       expect(AsyncStorage.getItem).toHaveBeenCalledWith('test-key');
@@ -188,7 +194,6 @@ describe('Performance Optimization Tests', () => {
     test('should ignore expired cache', async () => {
       const testData = { data: 'test' };
       const mockFetcher = jest.fn().mockResolvedValue(testData);
-      const AsyncStorage = require('@react-native-async-storage/async-storage');
 
       // Mock cache hit with expired TTL
       const cacheEntry = {
@@ -199,15 +204,15 @@ describe('Performance Optimization Tests', () => {
       AsyncStorage.getItem.mockResolvedValue(JSON.stringify(cacheEntry));
       AsyncStorage.removeItem.mockResolvedValue();
 
-      const { result, waitForNextUpdate } = renderHook(() =>
+      const { result } = renderHook(() =>
         useOptimizedData({
           cacheKey: 'test-key',
           fetcher: mockFetcher,
           cacheTTL: 60000, // 1 minute TTL
-        })
+        }),
       );
 
-      await waitForNextUpdate();
+      await waitFor(() => expect(result.current.data).toEqual(testData));
 
       // Should ignore cache and call fetcher
       expect(mockFetcher).toHaveBeenCalledTimes(1);
@@ -217,7 +222,6 @@ describe('Performance Optimization Tests', () => {
     test('should ignore cache with different version', async () => {
       const testData = { data: 'test' };
       const mockFetcher = jest.fn().mockResolvedValue(testData);
-      const AsyncStorage = require('@react-native-async-storage/async-storage');
 
       // Mock cache hit with different version
       const cacheEntry = {
@@ -228,15 +232,15 @@ describe('Performance Optimization Tests', () => {
       AsyncStorage.getItem.mockResolvedValue(JSON.stringify(cacheEntry));
       AsyncStorage.removeItem.mockResolvedValue();
 
-      const { result, waitForNextUpdate } = renderHook(() =>
+      const { result } = renderHook(() =>
         useOptimizedData({
           cacheKey: 'test-key',
           fetcher: mockFetcher,
           cacheVersion: '1.0',
-        })
+        }),
       );
 
-      await waitForNextUpdate();
+      await waitFor(() => expect(result.current.data).toEqual(testData));
 
       // Should ignore cache and call fetcher
       expect(mockFetcher).toHaveBeenCalledTimes(1);
@@ -252,7 +256,7 @@ describe('Performance Optimization Tests', () => {
         useOptimizedData({
           cacheKey: 'test-key',
           fetcher: mockFetcher,
-        })
+        }),
       );
 
       // Should not cause memory leaks
@@ -270,14 +274,14 @@ describe('Performance Optimization Tests', () => {
 
       const mockFetcher = jest.fn().mockResolvedValue(largeData);
 
-      const { result, waitForNextUpdate } = renderHook(() =>
+      const { result } = renderHook(() =>
         useOptimizedData({
           cacheKey: 'large-dataset',
           fetcher: mockFetcher,
-        })
+        }),
       );
 
-      await waitForNextUpdate();
+      await waitFor(() => expect(result.current.data).toEqual(largeData));
 
       expect(result.current.data).toEqual(largeData);
       expect(result.current.isLoading).toBe(false);
@@ -293,48 +297,49 @@ describe('Performance Optimization Tests', () => {
       const networkError = new Error('Network request failed');
       const mockFetcher = jest.fn().mockRejectedValue(networkError);
 
-      const { result, waitForNextUpdate } = renderHook(() =>
+      const { result } = renderHook(() =>
         useOptimizedData({
           cacheKey: 'test-key',
           fetcher: mockFetcher,
-        })
+        }),
       );
 
-      await waitForNextUpdate();
+      await waitFor(() =>
+        expect(result.current.error?.message).toBe('Network request failed'),
+      );
 
       expect(result.current.error).toBeInstanceOf(Error);
       expect(result.current.error?.message).toBe('Network request failed');
     });
 
-    test('should handle JSON parsing errors', async () => {
+    test('should accept string data without attempting to parse it', async () => {
       const mockFetcher = jest.fn().mockResolvedValue('invalid json');
 
-      const { result, waitForNextUpdate } = renderHook(() =>
+      const { result } = renderHook(() =>
         useOptimizedData({
           cacheKey: 'test-key',
           fetcher: mockFetcher,
-        })
+        }),
       );
 
-      await waitForNextUpdate();
-
-      // Should handle JSON errors in the actual implementation
-      expect(result.current.error).toBeDefined();
+      await waitFor(() => expect(result.current.data).toBe('invalid json'));
+      expect(result.current.error).toBeNull();
     });
 
     test('should handle storage errors gracefully', async () => {
       const mockFetcher = jest.fn().mockResolvedValue({ data: 'test' });
-      const AsyncStorage = require('@react-native-async-storage/async-storage');
       AsyncStorage.setItem.mockRejectedValue(new Error('Storage error'));
 
-      const { result, waitForNextUpdate } = renderHook(() =>
+      const { result } = renderHook(() =>
         useOptimizedData({
           cacheKey: 'test-key',
           fetcher: mockFetcher,
-        })
+        }),
       );
 
-      await waitForNextUpdate();
+      await waitFor(() =>
+        expect(result.current.data).toEqual({ data: 'test' }),
+      );
 
       // Should still load data even if caching fails
       expect(result.current.data).toEqual({ data: 'test' });

@@ -1,17 +1,14 @@
-import React, {useEffect} from 'react';
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  Dimensions,
-} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import React, { useEffect } from 'react';
+import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../core/types';
 
-const {width, height} = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
 const SplashScreen: React.FC = () => {
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<StackNavigationProp<RootStackParamList, 'Splash'>>();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -24,7 +21,7 @@ const SplashScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../../assets/images/app_icon.png')}
+        source={require('../assets/images/app_icon.png')}
         style={styles.logo}
         resizeMode="contain"
       />

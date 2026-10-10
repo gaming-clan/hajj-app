@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -9,16 +9,18 @@ import {
   Dimensions,
   ScrollView,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../core/types';
 import DataService from '../services/DataService';
-import {Category} from '../types';
+import { Category } from '../types';
 
-const {width} = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 const HomeScreen: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
   const [introduction, setIntroduction] = useState<any>(null);
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   useEffect(() => {
     loadData();
@@ -38,10 +40,11 @@ const HomeScreen: React.FC = () => {
     });
   };
 
-  const renderCategory = ({item}: {item: Category}) => (
+  const renderCategory = ({ item }: { item: Category }) => (
     <TouchableOpacity
       style={styles.categoryCard}
-      onPress={() => handleCategoryPress(item)}>
+      onPress={() => handleCategoryPress(item)}
+    >
       <View style={styles.categoryContent}>
         <View style={styles.categoryIcon}>
           <Text style={styles.categoryIconText}>📖</Text>
@@ -71,7 +74,7 @@ const HomeScreen: React.FC = () => {
         <FlatList
           data={categories}
           renderItem={renderCategory}
-          keyExtractor={item => item.id.toString()}
+          keyExtractor={(item) => item.id.toString()}
           scrollEnabled={false}
           showsVerticalScrollIndicator={false}
         />
@@ -92,7 +95,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     elevation: 3,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 3,
   },
@@ -132,7 +135,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     elevation: 2,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 1},
+    shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
   },

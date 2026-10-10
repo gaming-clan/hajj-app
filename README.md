@@ -5,19 +5,18 @@
 [![Platform](https://img.shields.io/badge/Platform-iOS%20%7C%20Android%20%7C%20Web-blue.svg)](https://github.com/muslim/hajj-app)
 [![Languages](https://img.shields.io/badge/Languages-Arabic%20%7C%20English%20%7C%20Albanian-green.svg)](https://github.com/muslim/hajj-app)
 
-A comprehensive multi-platform mobile application providing verified Islamic guidance for Hajj and Umrah rituals, built with React Native, Android Native, and Flutter implementations.
+A multi-platform mobile application providing source-referenced introductory guidance for Hajj and Umrah, built with React Native and Android components (with an incomplete Flutter scaffold).
 
 ## 🕌 **Project Overview**
 
-The **Hajj & Umrah Guide** is a meticulously crafted digital companion for Muslims performing the sacred pilgrimages of Hajj and Umrah. This project demonstrates best practices in multi-platform development while maintaining the highest standards of religious accuracy, accessibility, and user experience.
+The **Hajj & Umrah Guide** is an educational companion for Muslims preparing for Hajj and Umrah. Its content is an overview, not a fatwa or substitute for qualified scholarly advice. Some material still needs translation and independent scholarly review.
 
 ### ✨ **Key Features**
 
-#### **🕌 Verified Islamic Content**
-- **100% Authenticated**: All content verified against authentic Islamic sources (Quran, Sahih Bukhari, Muslim, Abu Dawud)
-- **Original Arabic Text**: Complete Arabic text for all du'aas and religious formulas
-- **Scholar-Approved**: Content reviewed and approved by qualified Islamic scholars
-- **Multiple Fiqh Schools**: Comprehensive coverage of major Islamic jurisprudence schools
+#### **🕌 Source-referenced Islamic Content**
+- Selected guidance is cross-referenced to Qur'an, hadith, and Ministry of Hajj and Umrah materials.
+- The bundled content has not been reviewed in full by a named qualified scholar; rulings may differ by school and circumstance.
+- No claim is made that the app contains every supplication, ruling, or school-specific position.
 
 #### **🌍 Multilingual Support**
 - **Arabic (العربية)**: Full RTL support with proper Arabic typography

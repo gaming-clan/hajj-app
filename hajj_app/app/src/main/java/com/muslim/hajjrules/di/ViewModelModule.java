@@ -8,6 +8,8 @@ import com.muslim.hajjrules.viewmodel.HomeViewModel;
 
 import dagger.Binds;
 import dagger.Module;
+import dagger.hilt.InstallIn;
+import dagger.hilt.components.SingletonComponent;
 import dagger.multibindings.IntoMap;
 import dagger.multibindings.ClassKey;
 
@@ -16,6 +18,7 @@ import dagger.multibindings.ClassKey;
  * Provides ViewModel instances with proper dependency injection
  */
 @Module
+@InstallIn(SingletonComponent.class)
 public abstract class ViewModelModule {
 
     /**

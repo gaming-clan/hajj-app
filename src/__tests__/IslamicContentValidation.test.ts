@@ -3,14 +3,9 @@ import { InputValidator } from '../core/validation/InputValidator';
 describe('Islamic Content Validation', () => {
   describe('Quranic Reference Validation', () => {
     test('should accept valid Quranic references', () => {
-      const validReferences = [
-        '2:255',
-        '1:1-7',
-        '112:1-4',
-        '3:102',
-      ];
+      const validReferences = ['2:255', '1:1-7', '112:1-4', '3:102'];
 
-      validReferences.forEach(reference => {
+      validReferences.forEach((reference) => {
         const result = InputValidator.validateQuranicReference(reference);
         expect(result.isValid).toBe(true);
         expect(result.sanitizedValue).toBe(reference);
@@ -27,7 +22,7 @@ describe('Islamic Content Validation', () => {
         '2:0', // Invalid verse number
       ];
 
-      invalidReferences.forEach(reference => {
+      invalidReferences.forEach((reference) => {
         const result = InputValidator.validateQuranicReference(reference);
         expect(result.isValid).toBe(false);
         expect(result.error).toBeDefined();
@@ -45,7 +40,7 @@ describe('Islamic Content Validation', () => {
         '',
       ];
 
-      validArabicTexts.forEach(text => {
+      validArabicTexts.forEach((text) => {
         const result = InputValidator.validateArabicText(text);
         expect(result.isValid).toBe(true);
       });
@@ -58,7 +53,7 @@ describe('Islamic Content Validation', () => {
         'نص مع " & < >',
       ];
 
-      dangerousTexts.forEach(text => {
+      dangerousTexts.forEach((text) => {
         const result = InputValidator.validateArabicText(text);
         expect(result.isValid).toBe(false);
       });
@@ -83,7 +78,7 @@ describe('Islamic Content Validation', () => {
         '',
       ];
 
-      validHadithReferences.forEach(reference => {
+      validHadithReferences.forEach((reference) => {
         const result = InputValidator.validateHadithReference(reference);
         expect(result.isValid).toBe(true);
       });
@@ -96,7 +91,7 @@ describe('Islamic Content Validation', () => {
         'A'.repeat(501), // Exceeds 500 character limit
       ];
 
-      invalidHadithReferences.forEach(reference => {
+      invalidHadithReferences.forEach((reference) => {
         const result = InputValidator.validateHadithReference(reference);
         expect(result.isValid).toBe(false);
       });
@@ -145,7 +140,7 @@ describe('Islamic Content Validation', () => {
         'Short',
       ];
 
-      validTitles.forEach(title => {
+      validTitles.forEach((title) => {
         const result = InputValidator.validateTitle(title);
         expect(result.isValid).toBe(true);
       });
@@ -159,7 +154,7 @@ describe('Islamic Content Validation', () => {
         null as any,
       ];
 
-      invalidTitles.forEach(title => {
+      invalidTitles.forEach((title) => {
         const result = InputValidator.validateTitle(title);
         expect(result.isValid).toBe(false);
       });
@@ -174,7 +169,7 @@ describe('Islamic Content Validation', () => {
         'وصف صالح للمحتوى الإسلامي',
       ];
 
-      validDescriptions.forEach(description => {
+      validDescriptions.forEach((description) => {
         const result = InputValidator.validateDescription(description);
         expect(result.isValid).toBe(true);
       });
@@ -188,7 +183,7 @@ describe('Islamic Content Validation', () => {
         null as any,
       ];
 
-      invalidDescriptions.forEach(description => {
+      invalidDescriptions.forEach((description) => {
         const result = InputValidator.validateDescription(description);
         expect(result.isValid).toBe(false);
       });
@@ -204,7 +199,7 @@ describe('Islamic Content Validation', () => {
         '<iframe src="malicious.com"></iframe>',
       ];
 
-      unsafeContent.forEach(content => {
+      unsafeContent.forEach((content) => {
         expect(InputValidator.isSafeContent(content)).toBe(false);
       });
     });
@@ -218,7 +213,7 @@ describe('Islamic Content Validation', () => {
         'Përmbajtje e sigurt shqip',
       ];
 
-      safeContent.forEach(content => {
+      safeContent.forEach((content) => {
         expect(InputValidator.isSafeContent(content)).toBe(true);
       });
     });
@@ -235,7 +230,7 @@ describe('Islamic Content Validation', () => {
         '',
       ];
 
-      validQueries.forEach(query => {
+      validQueries.forEach((query) => {
         const result = InputValidator.validateSearchQuery(query);
         expect(result.isValid).toBe(true);
       });
@@ -248,7 +243,7 @@ describe('Islamic Content Validation', () => {
         'Query with <HTML> tags',
       ];
 
-      invalidQueries.forEach(query => {
+      invalidQueries.forEach((query) => {
         const result = InputValidator.validateSearchQuery(query);
         expect(result.isValid).toBe(false);
       });

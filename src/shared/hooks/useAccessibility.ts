@@ -1,5 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Platform, AccessibilityInfo, I18nManager } from 'react-native';
+import {
+  Platform,
+  AccessibilityInfo,
+  I18nManager,
+  PixelRatio,
+} from 'react-native';
 
 interface AccessibilitySettings {
   reduceMotion: boolean;
@@ -28,44 +33,31 @@ export const useAccessibility = () => {
     checkAccessibilitySettings();
 
     const listeners = [
-      AccessibilityInfo.addEventListener(
-        'reduceMotionChanged',
-        (enabled) => updateSetting('reduceMotion', enabled)
+      AccessibilityInfo.addEventListener('reduceMotionChanged', (enabled) =>
+        updateSetting('reduceMotion', enabled),
       ),
-      AccessibilityInfo.addEventListener(
-        'screenReaderChanged',
-        (enabled) => updateSetting('screenReaderEnabled', enabled)
-      ),
-      AccessibilityInfo.addEventListener(
-        'highContrastChanged',
-        (enabled) => updateSetting('highContrastMode', enabled)
+      AccessibilityInfo.addEventListener('screenReaderChanged', (enabled) =>
+        updateSetting('screenReaderEnabled', enabled),
       ),
     ];
 
     return () => {
-      listeners.forEach(listener => listener.remove());
+      listeners.forEach((listener) => listener.remove());
     };
   }, []);
 
   const checkAccessibilitySettings = async () => {
     try {
-      const [
-        reduceMotion,
-        screenReader,
-        highContrast,
-        fontSizeScale,
-      ] = await Promise.all([
+      const [reduceMotion, screenReader] = await Promise.all([
         AccessibilityInfo.isReduceMotionEnabled(),
         AccessibilityInfo.isScreenReaderEnabled(),
-        AccessibilityInfo.isHighContrastEnabled(),
-        AccessibilityInfo.preferredFontScale(),
       ]);
+      const fontSizeScale = PixelRatio.getFontScale();
 
-      setSettings(prev => ({
+      setSettings((prev) => ({
         ...prev,
         reduceMotion,
         screenReaderEnabled: screenReader,
-        highContrastMode: highContrast,
         fontSizeScale,
         largeTextSize: fontSizeScale > 1.0,
       }));
@@ -74,8 +66,11 @@ export const useAccessibility = () => {
     }
   };
 
-  const updateSetting = (key: keyof AccessibilitySettings, value: boolean | number) => {
-    setSettings(prev => ({
+  const updateSetting = (
+    key: keyof AccessibilitySettings,
+    value: boolean | number,
+  ) => {
+    setSettings((prev) => ({
       ...prev,
       [key]: value,
     }));
@@ -194,15 +189,21 @@ export const useRTL = () => {
   };
 
   const getMarginDirection = (margin: number) => {
-    return isRTL() ? { marginLeft: margin, marginRight: 0 } : { marginLeft: 0, marginRight: margin };
+    return isRTL()
+      ? { marginLeft: margin, marginRight: 0 }
+      : { marginLeft: 0, marginRight: margin };
   };
 
   const getPaddingDirection = (padding: number) => {
-    return isRTL() ? { paddingLeft: padding, paddingRight: 0 } : { paddingLeft: 0, paddingRight: padding };
+    return isRTL()
+      ? { paddingLeft: padding, paddingRight: 0 }
+      : { paddingLeft: 0, paddingRight: padding };
   };
 
   const getPositionDirection = (position: number) => {
-    return isRTL() ? { left: 0, right: position } : { left: position, right: 0 };
+    return isRTL()
+      ? { left: 0, right: position }
+      : { left: position, right: 0 };
   };
 
   return {
@@ -275,7 +276,7 @@ export const useArabicText = () => {
 export const useScreenReader = () => {
   const { isScreenReaderActive, announceForAccessibility } = useAccessibility();
 
-  const announce = (message: string, delay: number = 0) => {
+  const announce = (message: string, delay = 0) => {
     if (isScreenReaderActive()) {
       if (delay > 0) {
         setTimeout(() => {

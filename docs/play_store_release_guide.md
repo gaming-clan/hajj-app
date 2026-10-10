@@ -13,15 +13,15 @@
 ### Store Listing
 
 #### Short Description (80 characters max)
-Complete Hajj & Umrah guide with verified Islamic content in Arabic, English & Albanian
+Introductory Hajj & Umrah guidance with selected source references
 
 #### Full Description
 **Hajj & Umrah Guide - Complete Ritual Companion**
 
-Experience the most comprehensive digital companion for Hajj and Umrah with verified Islamic content. Our app provides authentic guidance for performing the sacred Islamic rituals with multilingual support and accessibility features.
+Use an educational companion for Hajj and Umrah preparation. Content is an overview, not a fatwa; consult a qualified scholar for personal rulings. Language coverage and source review vary by section.
 
-**✅ VERIFIED ISLAMIC CONTENT**
-• All content verified against authentic sources (Quran, Sahih Bukhari, Muslim, Abu Dawud)
+**SOURCE-REFERENCED EDUCATIONAL CONTENT**
+• Selected guidance includes Qur'an, hadith, and official Ministry references; the complete app has not received documented scholar approval.
 • Original Arabic text for all du'aas and religious formulas
 • References included for all religious rulings
 • Scholar-reviewed content for accuracy
@@ -76,7 +76,7 @@ Experience the most comprehensive digital companion for Hajj and Umrah with veri
 - English - Complete translation
 - Albanian (Shqip) - Native language
 
-Download now and have a reliable, scholarly-verified Hajj and Umrah companion in your pocket!
+Use this introductory guide alongside official Hajj resources and qualified scholarly advice.
 
 ### Keywords
 Hajj, Umrah, Islamic, Muslim, pilgrimage, Mecca, Medina, Quran, prayer, salah, duaa, Arabic, guide, rituals, ihram, tawaf, sa'i, arafat, mina, jamarat, halq, taqsir, compass, qibla, Ramadan, Islamic education,清真寺, 麦加, 伊斯蘭教
@@ -171,7 +171,7 @@ https://hajj-app.com/privacy-policy
 Verified Hajj & Umrah guide with Arabic content. Islamic rituals explained step-by-step.
 
 #### Promotional Text (4000 characters)
-The ultimate companion for Hajj and Umrah pilgrims! This comprehensive guide provides verified Islamic content with authentic sources, step-by-step ritual instructions, and multilingual support. Features include accurate Qibla finder, offline access, and full accessibility support. Perfect for first-time pilgrims and those wanting to deepen their understanding of Islamic practices.
+An introductory Hajj and Umrah guide with selected source references, offline content, and multilingual support. It is not a fatwa or substitute for qualified scholarly guidance; translations and coverage vary by section.
 
 #### What's New
 - Enhanced Arabic RTL support
@@ -184,7 +184,7 @@ The ultimate companion for Hajj and Umrah pilgrims! This comprehensive guide pro
 ```
 Version 1.0.0 - Initial Release
 ✅ Complete Hajj and Umrah step-by-step guidance
-✅ Verified Islamic content with authentic sources
+• Selected source-referenced educational content (not a full scholarly review)
 ✅ Multilingual support (Arabic, English, Albanian)
 ✅ Accurate Qibla finder and compass
 ✅ Offline access to essential content

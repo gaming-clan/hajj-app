@@ -71,7 +71,7 @@ export class SecureStorage {
   static async clear(): Promise<void> {
     try {
       const keys = await AsyncStorage.getAllKeys();
-      const secureKeys = keys.filter(key => key.startsWith(this.PREFIX));
+      const secureKeys = keys.filter((key) => key.startsWith(this.PREFIX));
       await AsyncStorage.multiRemove(secureKeys);
     } catch (error) {
       throw new Error(`Failed to clear secure data: ${error}`);
@@ -95,7 +95,10 @@ export class SecureStorage {
    */
   private static decrypt(encryptedData: string): string {
     try {
-      const decrypted = CryptoJS.AES.decrypt(encryptedData, this.ENCRYPTION_KEY);
+      const decrypted = CryptoJS.AES.decrypt(
+        encryptedData,
+        this.ENCRYPTION_KEY,
+      );
       const decryptedString = decrypted.toString(CryptoJS.enc.Utf8);
 
       if (!decryptedString) {
@@ -136,8 +139,11 @@ export class SecureStorage {
       autoBackup: true,
     };
 
-    const preferences = await this.getItem('user_preferences');
-    return { ...defaultPreferences, ...preferences };
+    const preferences =
+      await this.getItem<Partial<typeof defaultPreferences>>(
+        'user_preferences',
+      );
+    return { ...defaultPreferences, ...(preferences ?? {}) };
   }
 
   /**
@@ -164,8 +170,9 @@ export class SecureStorage {
       securityLevel: 'medium' as const,
     };
 
-    const settings = await this.getItem('app_settings');
-    return { ...defaultSettings, ...settings };
+    const settings =
+      await this.getItem<Partial<typeof defaultSettings>>('app_settings');
+    return { ...defaultSettings, ...(settings ?? {}) };
   }
 
   /**
@@ -196,8 +203,9 @@ export class SecureStorage {
       lastAccess: Date.now(),
     };
 
-    const progress = await this.getItem('user_progress');
-    return { ...defaultProgress, ...progress };
+    const progress =
+      await this.getItem<Partial<typeof defaultProgress>>('user_progress');
+    return { ...defaultProgress, ...(progress ?? {}) };
   }
 
   /**
@@ -206,7 +214,7 @@ export class SecureStorage {
   static async exportBackup(): Promise<string> {
     try {
       const keys = await AsyncStorage.getAllKeys();
-      const secureKeys = keys.filter(key => key.startsWith(this.PREFIX));
+      const secureKeys = keys.filter((key) => key.startsWith(this.PREFIX));
       const backup: Record<string, string> = {};
 
       for (const key of secureKeys) {

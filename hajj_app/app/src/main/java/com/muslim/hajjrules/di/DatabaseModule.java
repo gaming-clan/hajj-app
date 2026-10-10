@@ -10,7 +10,6 @@ import com.muslim.hajjrules.data.CategoryDao;
 
 import javax.inject.Singleton;
 
-import dagger.Binds;
 import dagger.Module;
 import dagger.Provides;
 import dagger.hilt.InstallIn;
@@ -23,7 +22,7 @@ import dagger.hilt.components.SingletonComponent;
  */
 @Module
 @InstallIn(SingletonComponent.class)
-public abstract class DatabaseModule {
+public final class DatabaseModule {
 
     @Provides
     @Singleton
@@ -38,9 +37,13 @@ public abstract class DatabaseModule {
             .build();
     }
 
-    @Binds
-    public abstract HajjRuleDao bindHajjRuleDao(HajjDatabase database);
+    @Provides
+    public static HajjRuleDao provideHajjRuleDao(HajjDatabase database) {
+        return database.hajjRuleDao();
+    }
 
-    @Binds
-    public abstract CategoryDao bindCategoryDao(HajjDatabase database);
+    @Provides
+    public static CategoryDao provideCategoryDao(HajjDatabase database) {
+        return database.categoryDao();
+    }
 }

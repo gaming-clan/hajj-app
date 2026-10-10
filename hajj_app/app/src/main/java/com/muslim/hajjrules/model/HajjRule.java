@@ -36,7 +36,7 @@ public class HajjRule {
     @ColumnInfo(name = "isFavorite")
     private boolean isFavorite;
 
-    @ColumnInfo(name = "`order`") // Order in category
+    @ColumnInfo(name = "order") // Order in category
     private int order;
 
     @ColumnInfo(name = "quranicReference")

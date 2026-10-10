@@ -1,4 +1,10 @@
-import { MultilingualString, MultilingualTitle, MultilingualContent, MultilingualDescription, AppSettings } from '../types';
+import {
+  MultilingualString,
+  MultilingualTitle,
+  MultilingualContent,
+  MultilingualDescription,
+  AppSettings,
+} from '../types';
 import { SUPPORTED_LANGUAGES } from '../constants';
 
 export type Language = keyof typeof SUPPORTED_LANGUAGES;
@@ -7,8 +13,12 @@ export type Language = keyof typeof SUPPORTED_LANGUAGES;
  * Gets text in the specified language from a multilingual string
  */
 export function getLocalizedText(
-  text: MultilingualString | MultilingualTitle | MultilingualContent | MultilingualDescription,
-  language: Language = 'albanian'
+  text:
+    | MultilingualString
+    | MultilingualTitle
+    | MultilingualContent
+    | MultilingualDescription,
+  language: Language = 'albanian',
 ): string {
   return text[language] || text.albanian || text.english || '';
 }
@@ -17,13 +27,22 @@ export function getLocalizedText(
  * Gets the primary language text with fallbacks
  */
 export function getLocalizedTextWithFallback(
-  text: MultilingualString | MultilingualTitle | MultilingualContent | MultilingualDescription,
-  settings: AppSettings
+  text:
+    | MultilingualString
+    | MultilingualTitle
+    | MultilingualContent
+    | MultilingualDescription,
+  settings: AppSettings,
 ): string {
   const { language, showArabicText, showTransliteration } = settings;
 
   // If Arabic display is enabled and Arabic text exists, prioritize it
-  if (showArabicText && language === 'arabic' && 'arabic' in text && text.arabic) {
+  if (
+    showArabicText &&
+    language === 'arabic' &&
+    'arabic' in text &&
+    text.arabic
+  ) {
     return text.arabic;
   }
 
@@ -31,7 +50,12 @@ export function getLocalizedTextWithFallback(
   let result = getLocalizedText(text, language);
 
   // If transliteration is enabled and we're showing Arabic, add transliteration
-  if (showTransliteration && 'transliteration' in text && text.transliteration && result === text.arabic) {
+  if (
+    showTransliteration &&
+    'transliteration' in text &&
+    text.transliteration &&
+    result === text.arabic
+  ) {
     result = `${result}\n${text.transliteration}`;
   }
 
@@ -60,7 +84,10 @@ export function shouldUseRTL(settings: AppSettings, content?: string): boolean {
 /**
  * Formats text with proper RTL/LTR handling
  */
-export function formatText(text: string, isRTL: boolean): {
+export function formatText(
+  text: string,
+  isRTL: boolean,
+): {
   text: string;
   style: {
     writingDirection: 'ltr' | 'rtl';
@@ -80,8 +107,12 @@ export function formatText(text: string, isRTL: boolean): {
  * Validates multilingual content structure
  */
 export function validateMultilingualContent(
-  content: any
-): content is MultilingualString | MultilingualTitle | MultilingualContent | MultilingualDescription {
+  content: any,
+): content is
+  | MultilingualString
+  | MultilingualTitle
+  | MultilingualContent
+  | MultilingualDescription {
   if (!content || typeof content !== 'object') return false;
 
   return (
@@ -94,7 +125,10 @@ export function validateMultilingualContent(
 /**
  * Creates a proper error message for missing translations
  */
-export function getMissingTranslationError(key: string, language: Language): string {
+export function getMissingTranslationError(
+  key: string,
+  language: Language,
+): string {
   return `Missing translation for key "${key}" in language "${language}"`;
 }
 
@@ -116,23 +150,25 @@ export function searchMultilingualContent<T extends Record<string, any>>(
   items: T[],
   query: string,
   settings: AppSettings,
-  fields: (keyof T)[] = []
+  fields: (keyof T)[] = [],
 ): T[] {
   if (!query.trim()) return items;
 
   const normalizedQuery = normalizeTextForSearch(query);
 
-  return items.filter(item => {
+  return items.filter((item) => {
     // If no specific fields provided, search all string fields
     if (fields.length === 0) {
-      return Object.values(item).some(value => {
+      return Object.values(item).some((value) => {
         if (typeof value === 'string') {
           return normalizeTextForSearch(value).includes(normalizedQuery);
         }
 
         if (validateMultilingualContent(value)) {
           const localizedText = getLocalizedTextWithFallback(value, settings);
-          return normalizeTextForSearch(localizedText).includes(normalizedQuery);
+          return normalizeTextForSearch(localizedText).includes(
+            normalizedQuery,
+          );
         }
 
         return false;
@@ -140,7 +176,7 @@ export function searchMultilingualContent<T extends Record<string, any>>(
     }
 
     // Search only in specified fields
-    return fields.some(field => {
+    return fields.some((field) => {
       const value = item[field];
 
       if (typeof value === 'string') {
@@ -163,7 +199,7 @@ export function searchMultilingualContent<T extends Record<string, any>>(
 export function formatDate(
   date: Date,
   language: Language,
-  format: 'short' | 'medium' | 'long' = 'medium'
+  format: 'short' | 'medium' | 'long' = 'medium',
 ): string {
   const options: Intl.DateTimeFormatOptions = {
     year: 'numeric',
@@ -197,7 +233,7 @@ export function formatDate(
 /**
  * Generates a unique ID for content items
  */
-export function generateId(prefix: string = ''): string {
+export function generateId(prefix = ''): string {
   const timestamp = Date.now();
   const random = Math.random().toString(36).substring(2, 8);
   return `${prefix}${timestamp}_${random}`;
@@ -208,13 +244,13 @@ export function generateId(prefix: string = ''): string {
  */
 export function debounce<T extends (...args: any[]) => any>(
   func: T,
-  delay: number
+  delay: number,
 ): (...args: Parameters<T>) => void {
-  let timeoutId: NodeJS.Timeout;
+  let timeoutId: ReturnType<typeof setTimeout>;
 
   return (...args: Parameters<T>) => {
     clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => func.apply(null, args), delay);
+    timeoutId = setTimeout(() => func(...args), delay);
   };
 }
 
@@ -224,11 +260,12 @@ export function debounce<T extends (...args: any[]) => any>(
 export function deepClone<T>(obj: T): T {
   if (obj === null || typeof obj !== 'object') return obj;
   if (obj instanceof Date) return new Date(obj.getTime()) as unknown as T;
-  if (obj instanceof Array) return obj.map(item => deepClone(item)) as unknown as T;
+  if (obj instanceof Array)
+    return obj.map((item) => deepClone(item)) as unknown as T;
 
   const cloned = {} as T;
   for (const key in obj) {
-    if (obj.hasOwnProperty(key)) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
       cloned[key] = deepClone(obj[key]);
     }
   }
@@ -272,7 +309,8 @@ export class SimpleCache<T> {
   private cache = new Map<string, { value: T; timestamp: number }>();
   private ttl: number;
 
-  constructor(ttl: number = 5 * 60 * 1000) { // 5 minutes default TTL
+  constructor(ttl: number = 5 * 60 * 1000) {
+    // 5 minutes default TTL
     this.ttl = ttl;
   }
 

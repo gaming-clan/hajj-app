@@ -1,21 +1,19 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-} from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import DataService from '../services/DataService';
 
 const MapScreen: React.FC = () => {
-  const miqatData = DataService.getCategories().find(cat => cat.name === 'vendcaktimet');
+  const miqatData = DataService.getCategories().find(
+    (cat) => cat.name === 'vendcaktimet',
+  );
 
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Vendcaktimet (Miqat)</Text>
         <Text style={styles.headerDescription}>
-          Vendcaktimet ku duhet të bëhet ihrami para se të hyjnë në territorin e shenjtë
+          Vendcaktimet ku duhet të bëhet ihrami para se të hyjnë në territorin e
+          shenjtë
         </Text>
       </View>
 
@@ -29,13 +27,14 @@ const MapScreen: React.FC = () => {
       <View style={styles.infoSection}>
         <Text style={styles.infoTitle}>Informacion i rëndësishëm</Text>
         <Text style={styles.infoText}>
-          Vendcaktimet janë pika gjeografike të caktuara nga Profeti Muhamed (a.s.) 
-          ku haxhilerët dhe atyre që kryejnë umren duhet të bëjnë ihramin para se 
-          të vazhdojnë drejt Mekës.
+          Vendcaktimet janë pika gjeografike të caktuara nga Profeti Muhamed
+          (a.s.) ku haxhilerët dhe atyre që kryejnë umren duhet të bëjnë ihramin
+          para se të vazhdojnë drejt Mekës.
         </Text>
         <Text style={styles.infoText}>
-          Është e detyrueshme për çdo haxhiler të kalojë nëpër një nga këto vendcaktime 
-          dhe të bëjë ihramin para se të hyjë në territorin e shenjtë të Mekës.
+          Është e detyrueshme për çdo haxhiler të kalojë nëpër një nga këto
+          vendcaktime dhe të bëjë ihramin para se të hyjë në territorin e
+          shenjtë të Mekës.
         </Text>
       </View>
     </ScrollView>
@@ -54,7 +53,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     elevation: 3,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 3,
   },
@@ -78,7 +77,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     elevation: 2,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 1},
+    shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
   },
@@ -100,7 +99,7 @@ const styles = StyleSheet.create({
     margin: 16,
     elevation: 2,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 1},
+    shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
   },

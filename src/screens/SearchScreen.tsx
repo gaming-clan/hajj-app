@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -7,14 +7,16 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../core/types';
 import DataService from '../services/DataService';
-import {HajjRule} from '../types';
+import { HajjRule } from '../types';
 
 const SearchScreen: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<HajjRule[]>([]);
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
@@ -33,17 +35,16 @@ const SearchScreen: React.FC = () => {
     });
   };
 
-  const renderRule = ({item}: {item: HajjRule}) => (
+  const renderRule = ({ item }: { item: HajjRule }) => (
     <TouchableOpacity
       style={styles.ruleCard}
-      onPress={() => handleRulePress(item)}>
+      onPress={() => handleRulePress(item)}
+    >
       <Text style={styles.ruleTitle}>{item.rule}</Text>
       <Text style={styles.ruleDescription} numberOfLines={2}>
         {item.description}
       </Text>
-      {item.category && (
-        <Text style={styles.categoryTag}>{item.category}</Text>
-      )}
+      {item.category && <Text style={styles.categoryTag}>{item.category}</Text>}
     </TouchableOpacity>
   );
 
@@ -75,7 +76,7 @@ const SearchScreen: React.FC = () => {
         <FlatList
           data={searchResults}
           renderItem={renderRule}
-          keyExtractor={item => `${item.category}-${item.id}`}
+          keyExtractor={(item) => `${item.category}-${item.id}`}
           contentContainerStyle={styles.listContainer}
           showsVerticalScrollIndicator={false}
         />
@@ -94,7 +95,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     elevation: 2,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 1},
+    shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
   },
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     elevation: 2,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 1},
+    shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
   },

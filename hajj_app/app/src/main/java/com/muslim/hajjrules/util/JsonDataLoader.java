@@ -30,8 +30,8 @@ import javax.inject.Singleton;
 public class JsonDataLoader {
 
     private static final String TAG = "JsonDataLoader";
-    private static final String HAJJ_RULES_FILE = "hajj_rules_extended.json";
-    private static final String HAJJ_RULES_BACKUP_FILE = "hajj_rules.json";
+    private static final String HAJJ_RULES_FILE = "hajj_rules.json";
+    private static final String HAJJ_RULES_BACKUP_FILE = "hajj_rules_extended.json";
 
     private final Context context;
     private final Gson gson;
@@ -39,9 +39,7 @@ public class JsonDataLoader {
     @Inject
     public JsonDataLoader(Context context) {
         this.context = context;
-        this.gson = new GsonBuilder()
-                .setLenient() // Allows lenient parsing for malformed JSON
-                .create();
+        this.gson = new GsonBuilder().create();
     }
 
     /**
@@ -200,8 +198,8 @@ public class JsonDataLoader {
                 for (Map<String, Object> pillar : pillars) {
                     rules.add(new HajjRule(
                             ruleId++,
-                            pillar.get("name") != null ? pillar.get("name").toString() : "",
-                            pillar.get("description") != null ? pillar.get("description").toString() : "",
+                            localizedText(pillar.get("name")),
+                            localizedText(pillar.get("description")),
                             "shtyllat_e_islamit",
                             false,
                             0,
@@ -248,8 +246,8 @@ public class JsonDataLoader {
                 for (Map<String, Object> miqat : miqats) {
                     rules.add(new HajjRule(
                             ruleId++,
-                            miqat.get("emri") != null ? miqat.get("emri").toString() : "",
-                            miqat.get("per_ke") != null ? miqat.get("per_ke").toString() : "",
+                            localizedText(miqat.get("emri")),
+                            localizedText(miqat.get("per_ke")),
                             "vendcaktimet",
                             false,
                             0,
@@ -265,6 +263,19 @@ public class JsonDataLoader {
             Log.e(TAG, "Error parsing rules from " + fileName, e);
             return null;
         }
+    }
+
+    private String localizedText(Object value) {
+        if (value instanceof Map) {
+            Map<?, ?> translations = (Map<?, ?>) value;
+            Object albanian = translations.get("albanian");
+            if (albanian instanceof String) return (String) albanian;
+            Object english = translations.get("english");
+            if (english instanceof String) return (String) english;
+            Object arabic = translations.get("arabic");
+            if (arabic instanceof String) return (String) arabic;
+        }
+        return value instanceof String ? (String) value : "";
     }
 
     /**

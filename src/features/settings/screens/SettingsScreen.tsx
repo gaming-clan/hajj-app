@@ -12,7 +12,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useNavigation } from '@react-navigation/native';
 
 import { useNavigationContext } from '../../../shared/navigation/AppNavigator';
-import { AppSettings, SUPPORTED_LANGUAGES } from '../../../core/types';
+import { AppSettings } from '../../../core/types';
 import { getLocalizedText, shouldUseRTL } from '../../../core/utils';
 import { APP_CONFIG } from '../../../core/constants';
 
@@ -48,25 +48,34 @@ const SettingItem: React.FC<SettingItemProps> = ({
       Alert.alert(
         title,
         undefined,
-        options.map(option => ({
+        options.map((option) => ({
           text: option.label,
           onPress: () => onValueChange(option.value),
           style: value === option.value ? 'default' : 'cancel',
-        }))
+        })),
       );
     }
   }, [type, options, value, onValueChange, title]);
 
   const content = (
-    <View style={[styles.settingItem, { flexDirection: isRTL ? 'row-reverse' : 'row' }]}>
+    <View
+      style={[
+        styles.settingItem,
+        { flexDirection: isRTL ? 'row-reverse' : 'row' },
+      ]}
+    >
       {icon && (
-        <View style={[styles.iconContainer, { backgroundColor: `${iconColor}20` }]}>
+        <View
+          style={[styles.iconContainer, { backgroundColor: `${iconColor}20` }]}
+        >
           <Icon name={icon} size={20} color={iconColor} />
         </View>
       )}
 
       <View style={styles.settingContent}>
-        <Text style={[styles.settingTitle, { textAlign: isRTL ? 'right' : 'left' }]}>
+        <Text
+          style={[styles.settingTitle, { textAlign: isRTL ? 'right' : 'left' }]}
+        >
           {title}
         </Text>
         {subtitle && (
@@ -94,14 +103,22 @@ const SettingItem: React.FC<SettingItemProps> = ({
       {type === 'selector' && (
         <View style={styles.selectorContainer}>
           <Text style={styles.selectorValue}>
-            {options?.find(opt => opt.value === value)?.label || value}
+            {options?.find((opt) => opt.value === value)?.label || value}
           </Text>
-          <Icon name="chevron-right" size={20} color={APP_CONFIG.theme.textSecondary} />
+          <Icon
+            name="chevron-right"
+            size={20}
+            color={APP_CONFIG.theme.textSecondary}
+          />
         </View>
       )}
 
       {type === 'action' && (
-        <Icon name="chevron-right" size={20} color={APP_CONFIG.theme.textSecondary} />
+        <Icon
+          name="chevron-right"
+          size={20}
+          color={APP_CONFIG.theme.textSecondary}
+        />
       )}
     </View>
   );
@@ -111,7 +128,11 @@ const SettingItem: React.FC<SettingItemProps> = ({
   }
 
   return (
-    <TouchableOpacity onPress={handlePress} activeOpacity={0.7} style={styles.touchableItem}>
+    <TouchableOpacity
+      onPress={handlePress}
+      activeOpacity={0.7}
+      style={styles.touchableItem}
+    >
       {content}
     </TouchableOpacity>
   );
@@ -131,7 +152,7 @@ const EnhancedSettingsScreen: React.FC = () => {
         updateSettings({ rtl: isRTL });
       }
     },
-    [updateSettings]
+    [updateSettings],
   );
 
   const handleClearCache = useCallback(() => {
@@ -148,7 +169,7 @@ const EnhancedSettingsScreen: React.FC = () => {
             Alert.alert('Success', 'Cache cleared successfully');
           },
         },
-      ]
+      ],
     );
   }, []);
 
@@ -175,7 +196,10 @@ const EnhancedSettingsScreen: React.FC = () => {
         <Text style={styles.headerTitle}>Settings</Text>
       </View>
 
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        style={styles.scrollView}
+        showsVerticalScrollIndicator={false}
+      >
         {/* Language Settings */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Language & Display</Text>
@@ -195,7 +219,9 @@ const EnhancedSettingsScreen: React.FC = () => {
             title="Show Arabic Text"
             subtitle="Display Arabic alongside translations"
             value={settings.showArabicText}
-            onValueChange={(value) => handleSettingChange('showArabicText', value)}
+            onValueChange={(value) =>
+              handleSettingChange('showArabicText', value)
+            }
             type="toggle"
             icon="translate"
             settings={settings}
@@ -205,7 +231,9 @@ const EnhancedSettingsScreen: React.FC = () => {
             title="Show Transliteration"
             subtitle="Display romanized Arabic text"
             value={settings.showTransliteration}
-            onValueChange={(value) => handleSettingChange('showTransliteration', value)}
+            onValueChange={(value) =>
+              handleSettingChange('showTransliteration', value)
+            }
             type="toggle"
             icon="text-fields"
             settings={settings}
@@ -231,7 +259,9 @@ const EnhancedSettingsScreen: React.FC = () => {
             title="Dark Mode"
             subtitle="Switch between light and dark themes"
             value={settings.theme === 'dark'}
-            onValueChange={(value) => handleSettingChange('theme', value ? 'dark' : 'light')}
+            onValueChange={(value) =>
+              handleSettingChange('theme', value ? 'dark' : 'light')
+            }
             type="toggle"
             icon="dark-mode"
             iconColor="#7B1FA2"
@@ -258,7 +288,9 @@ const EnhancedSettingsScreen: React.FC = () => {
             title="Auto-play Audio"
             subtitle="Automatically play Quranic recitations"
             value={settings.autoPlayAudio}
-            onValueChange={(value) => handleSettingChange('autoPlayAudio', value)}
+            onValueChange={(value) =>
+              handleSettingChange('autoPlayAudio', value)
+            }
             type="toggle"
             icon="play-circle"
             iconColor="#F57C00"
@@ -274,7 +306,9 @@ const EnhancedSettingsScreen: React.FC = () => {
             title="Push Notifications"
             subtitle="Receive reminders and updates"
             value={settings.notifications}
-            onValueChange={(value) => handleSettingChange('notifications', value)}
+            onValueChange={(value) =>
+              handleSettingChange('notifications', value)
+            }
             type="toggle"
             icon="notifications"
             iconColor="#4CAF50"
@@ -301,7 +335,7 @@ const EnhancedSettingsScreen: React.FC = () => {
             title="Offline Mode"
             subtitle="Use downloaded content when offline"
             value={false} // This would be based on actual offline status
-            onValueChange={() => {}}
+            onValueChange={() => undefined}
             type="toggle"
             icon="offline-bolt"
             iconColor="#9E9E9E"
@@ -330,7 +364,10 @@ const EnhancedSettingsScreen: React.FC = () => {
             value={null}
             onValueChange={() => {
               // Implement sharing functionality
-              Alert.alert('Share', 'Sharing functionality would be implemented here');
+              Alert.alert(
+                'Share',
+                'Sharing functionality would be implemented here',
+              );
             }}
             type="action"
             icon="share"
@@ -344,7 +381,10 @@ const EnhancedSettingsScreen: React.FC = () => {
             value={null}
             onValueChange={() => {
               // Implement rating functionality
-              Alert.alert('Rate App', 'Rating functionality would be implemented here');
+              Alert.alert(
+                'Rate App',
+                'Rating functionality would be implemented here',
+              );
             }}
             type="action"
             icon="star"
@@ -359,7 +399,8 @@ const EnhancedSettingsScreen: React.FC = () => {
             Hajj Rules App v{APP_CONFIG.version}
           </Text>
           <Text style={styles.footerSubtext}>
-            © 2025 - All content verified against authentic Islamic sources
+            © 2025 - Educational guidance; consult qualified scholars for
+            personal rulings
           </Text>
         </View>
       </ScrollView>

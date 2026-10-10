@@ -1,72 +1,29 @@
-# Përmbledhje e Rregullave të Haxhit
+# Përmbledhje hyrëse: Haxhi, Umra dhe Ihrami
 
-## Hyrje
-Haxhi është një nga pesë shtyllat e Islamit dhe është detyrë për çdo musliman që ka mundësi ta kryejë atë të paktën një herë në jetë. Qabja është vendi që tërheq zemrat e muslimanëve nga e gjithë bota, dhe është shtëpia e parë e ndërtuar për adhurim mbi tokë.
-
-## Shtyllat e Islamit
-Islami është ndërtuar mbi pesë shtylla:
-1. Dëshmia: Nuk ka zot përveç Allahut dhe Muhammedi është i Dërguari i Tij.
-2. Falja e namazit.
-3. Dhënja e Zekatit.
-4. Agjërimi i Ramazanit.
-5. Haxhi në Qabe.
+Kjo është përmbledhje edukative, jo fetva. Disa hollësi ndryshojnë sipas medhhebit, rrethanave dhe itinerarit; për rast personal këshillohuni me dijetar të kualifikuar. Për udhëzime praktike kontrolloni edhe [udhëzuesin zyrtar të Umres të Ministrisë Saudite të Haxhit dhe Umres](https://haj.gov.sa/-/media/Project/HAJJ/PDF-and-FILES/umrah-hero-guide/EN-Umrah-Guide.pdf).
 
 ## Detyrimi i Haxhit
-Haxhi është detyrë vetëm një herë në jetë. Sipas hadithit të Profetit Muhamed: "Haxhi është vetëm një herë në jetë. Kush kryen më shumë janë nafile për të". Haxhi duhet të jetë patjetër vetëm për Allahun dhe të kryhet sipas mënyrës së të Dërguarit të Allahut.
 
-## Edukata e Udhëtimit për Haxh
-1. Qëllimi duhet të jetë vetëm për hir të Allahut, jo për t'u dukur.
-2. Udhëtari duhet të lajë borxhet dhe të shkruajë testamentin para nisjes.
-3. Pendimi nga mëkatet dhe vendosmëria për të mos u kthyer më në to.
-4. Kërkimi i hallallëkut nga të gjithë.
-5. Paraja që shpenzohet për udhëtim duhet të jetë e fituar në mënyrë hallall.
-6. Largimi nga të gjitha mëkatet gjatë kryerjes së ceremonive.
-7. Leximi i materialeve informuese për Umren dhe Haxhin para udhëtimit.
-8. Përmbushja e detyrave fetare gjatë udhëtimit.
-9. Zgjedhja e shoqërisë së mirë dhe të devotshme.
-10. Pajisja me morale të larta.
-11. Këshillimi i familjarëve para nisjes.
-12. Thënia e lutjeve të udhëtimit.
+Kur’ani 3:97 e lidh detyrimin e Haxhit me aftësinë për ta kryer. Hadithi i pyetjes nëse Haxhi kërkohet çdo vit transmetohet te Sahih Muslim 1337. Haxhi nuk është thjesht vizitë në Qabe; është adhurim me rite të përcaktuara.
 
-## Ihrami
-Ihrami është qëllimi që ka muslimani për të kryer ceremonitë e Haxhit apo të Umres. Nijeti për Haxhin bëhet në muajt: Sheual, Dhul Kadeh dhe Dhul Hixh'xheh.
+## Umra
 
-### Llojet e Nijetit për Haxh dhe Umre
-- Për Umra: "LEB'BEJKE UMRATEN"
-- Për Haxh (mutemet'tia): "LEB'BEJKE UMRATEN MUTEMET'TIAN BIHA ILEL'HAXH'XHI"
-- Për Haxh (Kiran): "LEB'BEJKE UMRATEN UE HAXH'XHEN"
-- Për Haxh (Ifrad): "LEB'BEJKE HAXH'XHEN"
+Udhëzuesi i Ministrisë përshkruan hyrjen në ihram, tavafin, sa’jin ndërmjet Safasë dhe Merves, pastaj shkurtimin ose rruajtjen e flokëve. Hyrja në ihram bëhet me nijet në zemër në mikatin përkatës; formulimet e shtypura nuk duhen paraqitur si formulë e vetme e detyrueshme. Talbija është formulë profetike e njohur.
 
-## Vendcaktimet (Mikat)
-I Dërguari i Allahut ka përcaktuar pesë vende para hyrjes në Mekë, të cilat nuk duhen kaluar pa veshur ihramin:
+## Miqat
 
-1. DHUL HULEJFEH: Për banorët e Medinës dhe ata që vijnë nga ajo rrugë (450 km nga Meka).
-2. XHUHFEH: Për udhëtarët nga Siria, Egjipti, Maroku dhe ata që vijnë nga ajo rrugë (183 km nga Meka).
-3. KARNUL MENAZIL: Për haxhilerët e Nexhdit dhe ata që vijnë nga ajo rrugë (75 km nga Meka).
-4. JELEMLEM: Për haxhinjtë nga Jemeni dhe ata që kalojnë aty (92 km nga Meka).
-5. DHATE IRK: Për haxhinjtë e Irakut dhe ata që kalojnë nga ai vend (94 km nga Meka).
+Ka mikate të përcaktuara për rrugë të ndryshme. Pelegrini nuk duhet të kalojë mikatin e zbatueshëm, ose vijën përkatëse kur vjen nga një rrugë tjetër, pa hyrë në ihram. Hyrja në ihram më herët është e mundur. Emrat e mëposhtëm janë transliterime orientuese: Dhul-Hulaifah, al-Juhfah, Qarn al-Manazil, Yalamlam dhe Dhat Irq. Distancat varen nga pika e matjes dhe rruga; shifrat e sakta nuk jepen këtu si kufij ritualë.
 
-Është detyrë që në këto vende të vishet ihrami. Ai që nuk e vesh, duhet të kthehet në vendcaktimin nga ka ardhur dhe ta veshë. Nëse nuk e bën atë, e vesh aty ku është dhe si shpagim ther një dele dhe ua shpërndan të varfërve të Mekes.
+## Veshja dhe ndalesat e ihramit
 
-## Veshja e Ihramit
-Para veshjes së ihramit rekomandohet:
-1. Prerja e thonjve, shkurtimi i mustaqeve, pastrimi i qimeve të sqetullave dhe vendit të turpshëm.
-2. Larja e të gjithë trupit (e pëlqyeshme, por jo e detyrueshme).
-3. Burrat heqin të gjitha rrobat dhe veshin rrobat e haxhit (ihrami), ndërsa gratë qëndrojnë me veshjen e zakonshme.
+Ihrami është gjendje rituale e hyrë me nijet, jo vetëm veshja. Për burrat, hadithet përmendin veshje të caktuara të qepura/formësuara për trupin; kjo nuk do të thotë se çdo send me qepje ndalohet. Dy copat e bardha janë veshje e zakonshme për burrat, jo kusht vlefshmërie. Gratë veshin rroba modeste të zakonshme; nuk ka uniformë apo ngjyrë të vetme të ihramit. Disa hollësi, përfshirë mbulimin e fytyrës dhe dorezat, kanë diskutime juridike dhe kërkojnë udhëzim sipas medhhebit.
 
-## Ndalesat gjatë Ihramit
-1. Nuk lejohet të mbulohet koka për burrat.
-2. Nuk lejohet të vishen rroba të qepura për burrat.
-3. Nuk lejohet të parfumoset trupi apo rrobat.
-4. Nuk lejohet të priten thonjtë apo flokët.
-5. Nuk lejohet gjuetia e kafshëve tokësore.
-6. Nuk lejohet marrëdhëniet intime me bashkëshorten.
-7. Nuk lejohet lidhja e kurorës (martesa).
+Idtiba, zbulimi i shpatullës së djathtë, lidhet me një tavaf të caktuar dhe nuk mbahet gjatë gjithë ihramit. Kufizimet mbi parfumin, flokët/thonjtë, gjuetinë dhe marrëdhëniet intime duhen paraqitur me kontekstin e tyre ritual dhe përjashtimet përkatëse. Mos paraqitni rregulla të përmbledhura si vendim për çdo rast.
 
-## Qabja e Madhnueshme
-Qabja është vendi që tërheq zemrat e muslimanëve nga e gjithë bota. Është shtëpia e parë e ndërtuar për adhurim mbi tokë. Muslimanët drejtohen nga Qabja pesë herë në ditë për të kryer namazin dhe vërshojnë për të kryer ceremonitë e Haxhit.
+## Burime
 
-## Rëndësia e Haxhit
-Haxhi është një nga shtyllat e Islamit dhe është detyrë për çdo musliman që ka mundësi ta kryejë. Sipas hadithit të Profetit Muhamed, Haxhi është detyrë vetëm një herë në jetë, dhe kush e kryen më shumë se një herë, këto janë nafile (vepra vullnetare) për të.
-
-Këto janë rregullat dhe udhëzimet kryesore për kryerjen e Haxhit sipas traditës islame. Për më shumë detaje dhe udhëzime specifike, rekomandohet konsultimi me burime të specializuara dhe dijetarë islamikë.
+- [Kur’ani 3:97](https://legacy.quran.com/3/97)
+- [Sahih Muslim 1218a — përshkrimi i Haxhit të Profetit ﷺ](https://sunnah.com/muslim/15/159)
+- [Sahih Muslim 1177b — veshjet e ihramit](https://sunnah.com/muslim%3A1177b)
+- [Udhëzuesi zyrtar i Umres](https://haj.gov.sa/-/media/Project/HAJJ/PDF-and-FILES/umrah-hero-guide/EN-Umrah-Guide.pdf)
+- [Udhëzuesi zyrtar për ihramin](https://haj.gov.sa/-/media/Project/HAJJ/Awareness-Guides/Ihram-Guide/English/EN-Ihram-Guide.pdf)

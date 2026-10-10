@@ -99,7 +99,7 @@
         }
     ],
     "ihram": {
-        "description": "Ihrami është qëllimi që ka muslimani për të kryer ceremonitë e Haxhit apo të Umres.",
+        "description": "Ihrami është gjendja e shenjtë në të cilën hyn pelegrini me nijet për Haxh ose Umre; veshja nuk është vetë ihrami. Nijeti është në zemër dhe formulimet janë shembuj, jo formulë e vetme e detyrueshme.",
         "time": "Nijeti për Haxhin bëhet në muajt: Sheual, Dhul Kadeh dhe Dhul Hixh\"xheh.",
         "types_of_intention": [
             {
@@ -138,17 +138,17 @@
         ],
         "additional_details": {
             "what_is_ihram": "The spiritual aspect of Hajj begins with learning about the rituals of Hajj. An important ritual of hajj is entering the state of Ihram- which is unlike anything else you go through in your life.",
-            "why_important": "Ihram is a sacred state of purity that signifies equality among all pilgrims in Allah’s eyes. This state is marked by specific clothing and intention made for the act of worship whether you are doing Hajj or Umrah. This change of clothes is made at the boundary point separating ordinary Muslims from pilgrims- is called miqat. One wears an ihram once they reach the point of miqat, whether they are traveling by plane or road. You cannot get into the state of Ihram before the point of miqat if you are traveling for Hajj or Umrah.",
-            "rules_for_men": "For men, the ihram consists of two seamless white sheets of cloth, one wrapped around the waist, known as Izar, and the other draped over the left shoulder, known as rida. Also, for men, the right shoulder must be bare in the state of Ihram, and no undergarments are permitted.",
-            "rules_for_women": "On the other hand, while the attire for women does not have any specific requirement, it should be loose-fitting and breathable, ensuring full body coverage while allowing for unimpeded movement. It is crucial that the garments are devoid of embellishments of any sort and are plain- while they can be any color- women often wear white or black to blend in.",
-            "women_cover_hands_face": "For the state of Ihram, women must not cover their faces with a Niqab or wear gloves.",
-            "women_adornments": "Women cannot wear any adornments, perfumes, or makeup.",
+            "why_important": "Ihram is a sacred state entered through intention for Hajj or Umrah, with particular limits that apply once it begins. Pilgrims should enter ihram when they reach, or on an aircraft align with, their relevant miqat. They may enter ihram before the miqat; they must not pass the relevant miqat intending Hajj or Umrah without entering ihram.",
+            "rules_for_men": "For men, ihram clothing normally consists of an izar around the waist and a rida over the upper body. White is recommended, not required. Men avoid garments tailored to the body, such as shirts and trousers, while in ihram. The right shoulder is uncovered only for the specific practice of idtiba during the relevant tawaf, not throughout ihram.",
+            "rules_for_women": "Women wear their normal modest clothing that fulfills Islamic covering requirements; ihram has no prescribed colour or uniform for women. Like all pilgrims in ihram, they avoid perfume.",
+            "women_cover_hands_face": "Women in ihram do not wear a fitted niqab or gloves. They should follow qualified guidance on modest covering in crowded settings, including how to cover in front of unrelated men without wearing a fitted face veil.",
+            "women_adornments": "The ihram-specific restriction is perfume. Do not present jewellery or makeup as universally prohibited by ihram; follow a qualified scholar for personal modesty questions.",
             "women_menstruating": "According to hadith, menstruation does not mean that a woman cannot enter the ihram. So, a menstruating woman should enter the ihram and do everything that other pilgrims do, apart from tawaf around the Ka’bah. She should delay tawaf until she becomes pure (i.e., until her period ends). If a woman delays ihram and passes the miqat-in fear of her menstruation- then she must go back to the point of miqat and enter into the state of Ihram. Women on menstruation should ensure they have a change of clothes and all things necessary to stay active and clean for the duration of Hajj or Umrah.",
             "steps_of_ihram": [
                 "Cut your nails, remove or trim any hair.",
                 "Do ghusl(bath)",
                 "Put on your Ihram",
-                "Offer nafl.",
+                "Pray an obligatory prayer if its time has come; there is no separate obligatory prayer solely for entering ihram.",
                 "Make your intention for Hajj/Umrah",
                 "And begin making talbiyah"
             ]
@@ -163,12 +163,12 @@
         {
             "id": 2,
             "prohibition": "Veshja e rrobave të qepura",
-            "description": "Nuk lejohet të vishen rroba të qepura për burrat."
+            "description": "Për burrat në ihram nuk lejohen këmisha, pantallonat dhe veshje të ngjashme të formësuara për trupin; prania e qepjeve në vetvete nuk është ndalesë."
         },
         {
             "id": 3,
             "prohibition": "Parfumimi",
-            "description": "Nuk lejohet të parfumoset trupi apo rrobat."
+            "description": "Pas hyrjes në ihram nuk përdoret parfum në trup ose në rroba."
         },
         {
             "id": 4,
@@ -183,12 +183,12 @@
         {
             "id": 6,
             "prohibition": "Marrëdhëniet intime",
-            "description": "Nuk lejohet marrëdhëniet intime me bashkëshorten."
+            "description": "Nuk lejohen marrëdhëniet intime gjatë ihramit."
         },
         {
             "id": 7,
             "prohibition": "Martesa",
-            "description": "Nuk lejohet lidhja e kurorës (martesa)."
+            "description": "Gjatë ihramit nuk lidhet, nuk ndërmjetësohet dhe nuk kërkohet martesa."
         }
     ],
     "miqats": [
@@ -196,35 +196,35 @@
             "id": 1,
             "name": "DHUL HULEJFEH",
             "for_whom": "Për banorët e Medinës dhe ata që vijnë nga ajo rrugë",
-            "distance_from_mecca": "450 km nga Meka",
+            "distance_from_mecca": "Route-dependent; this is not a ritual boundary.",
             "image": "miqats.jpg"
         },
         {
             "id": 2,
             "name": "XHUHFEH",
             "for_whom": "Për udhëtarët nga Siria, Egjipti, Maroku dhe ata që vijnë nga ajo rrugë",
-            "distance_from_mecca": "183 km nga Meka",
+            "distance_from_mecca": "Route-dependent; this is not a ritual boundary.",
             "image": "miqats.jpg"
         },
         {
             "id": 3,
             "name": "KARNUL MENAZIL",
             "for_whom": "Për haxhilerët e Nexhdit dhe ata që vijnë nga ajo rrugë",
-            "distance_from_mecca": "75 km nga Meka",
+            "distance_from_mecca": "Route-dependent; this is not a ritual boundary.",
             "image": "miqats.jpg"
         },
         {
             "id": 4,
             "name": "JELEMLEM",
             "for_whom": "Për haxhinjtë nga Jemeni dhe ata që kalojnë aty",
-            "distance_from_mecca": "92 km nga Meka",
+            "distance_from_mecca": "Route-dependent; this is not a ritual boundary.",
             "image": "miqats.jpg"
         },
         {
             "id": 5,
             "name": "DHATE IRK",
             "for_whom": "Për haxhinjtë e Irakut dhe ata që kalojnë nga ai vend",
-            "distance_from_mecca": "94 km nga Meka",
+            "distance_from_mecca": "Route-dependent; this is not a ritual boundary.",
             "image": "miqats.jpg"
         }
     ],
