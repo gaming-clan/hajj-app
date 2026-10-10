@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.viewModels;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,7 +39,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         // Initialize ViewModel with Hilt
-        homeViewModel = viewModels(this).get(HomeViewModel.class);
+        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
         recyclerView = view.findViewById(R.id.recycler_view_categories);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
@@ -97,7 +97,7 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         adapter.setOnItemClickListener(category -> {
-            Fragment fragment = CategoryFragment.newInstance(category.getId(), category.getTitle());
+            Fragment fragment = CategoryFragment.newInstance(category.getId(), category.getTitle(), category.getName());
             getActivity().getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.fragment_container, fragment)

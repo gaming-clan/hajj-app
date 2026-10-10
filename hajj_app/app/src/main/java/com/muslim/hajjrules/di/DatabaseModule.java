@@ -46,4 +46,5 @@ public final class DatabaseModule {
     public static CategoryDao provideCategoryDao(HajjDatabase database) {
         return database.categoryDao();
     }
+
 }

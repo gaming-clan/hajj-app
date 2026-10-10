@@ -174,8 +174,13 @@ public class ValidationTest {
     private boolean isValidQuranicReference(String reference) {
         if (reference == null || reference.trim().isEmpty()) return true;
 
-        // Pattern: Surah:Ayah (e.g., 2:255 or 2:255-256)
-        return reference.matches("^\\d+:\\d+(?:-\\d+)?$");
+        if (!reference.matches("^\\d+:\\d+(?:-\\d+)?$")) return false;
+        String[] parts = reference.split(":");
+        String[] verses = parts[1].split("-");
+        int surah = Integer.parseInt(parts[0]);
+        int firstVerse = Integer.parseInt(verses[0]);
+        int lastVerse = verses.length == 1 ? firstVerse : Integer.parseInt(verses[1]);
+        return surah >= 1 && surah <= 114 && firstVerse >= 1 && lastVerse >= firstVerse;
     }
 
     private boolean isValidArabicText(String text) {
@@ -205,23 +210,17 @@ public class ValidationTest {
 
     private boolean isValidTitle(String title) {
         if (title == null || title.trim().isEmpty()) return false;
-        return title.trim().length() > 0 && title.length() <= 200;
+        return title.length() <= 200 && isSafeContent(title);
     }
 
     private boolean isValidDescription(String description) {
         if (description == null || description.trim().isEmpty()) return false;
-
-        // Check for dangerous patterns
-        if (description.contains("<script>") || description.contains("javascript:")) {
-            return false;
-        }
-
-        // Check length limit
-        return description.length() <= 5000;
+        return description.length() <= 5000 && isSafeContent(description);
     }
 
     private boolean isSafeContent(String content) {
         if (content == null) return false;
+        if (content.contains("<") || content.contains(">")) return false;
 
         // Check for dangerous patterns
         String[] dangerousPatterns = {
@@ -244,18 +243,18 @@ public class ValidationTest {
 
     private boolean isValidSearchQuery(String query) {
         if (query == null || query.trim().isEmpty()) return true;
-        return query.length() <= 100 && !query.contains("<script>");
+        return query.length() <= 100 && isSafeContent(query);
     }
 
     private String sanitizeInput(String input) {
         if (input == null) return null;
 
         return input
+            .replace("&", "&amp;")
             .replace("<", "&lt;")
             .replace(">", "&gt;")
             .replace("\"", "&quot;")
             .replace("'", "&#x27;")
-            .replace("&", "&amp;")
             .replace("/", "&#x2F;");
     }
 

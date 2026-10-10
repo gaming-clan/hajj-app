@@ -4,6 +4,8 @@ import android.content.Context;
 import android.security.NetworkSecurityPolicy;
 import android.util.Log;
 
+import com.muslim.hajjrules.BuildConfig;
+
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.security.KeyStore;

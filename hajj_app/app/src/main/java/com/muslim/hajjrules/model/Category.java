@@ -34,6 +34,20 @@ public class Category {
         this.order = id;
     }
 
+    @Ignore
+    public Category(int id, String name, String title, String description,
+                    String image, String icon, String color, boolean featured) {
+        this.id = id;
+        this.name = name;
+        this.title = title;
+        this.description = description;
+        this.image = image;
+        this.icon = icon;
+        this.color = color;
+        this.featured = featured;
+        this.order = id;
+    }
+
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public String getName() { return name; }

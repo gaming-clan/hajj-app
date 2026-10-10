@@ -4,6 +4,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
 import androidx.room.Index;
+import androidx.room.Ignore;
 
 /**
  * Entity representing a Hajj rule in the database
@@ -52,6 +53,7 @@ public class HajjRule {
     public HajjRule() {}
 
     // Constructor for creating new rules
+    @Ignore
     public HajjRule(String title, String description, String category, boolean isFavorite, int order, String image, String quranicReference) {
         this.title = title;
         this.description = description;
@@ -64,6 +66,7 @@ public class HajjRule {
     }
 
     // Constructor with basic fields (backward compatibility)
+    @Ignore
     public HajjRule(String title, String description, String category, int imageResourceId) {
         this.title = title;
         this.description = description;
@@ -75,6 +78,19 @@ public class HajjRule {
         this.quranicReference = null;
         this.hadithReference = null;
         this.lastAccessed = null;
+    }
+
+    @Ignore
+    public HajjRule(int id, String title, String description, String category,
+                    boolean isFavorite, int order, String image, String quranicReference) {
+        this(title, description, category, isFavorite, order, image, quranicReference);
+        this.id = id;
+    }
+
+    @Ignore
+    public HajjRule(String title, String description, int categoryId, int imageResourceId, int order) {
+        this(title, description, String.valueOf(categoryId), imageResourceId);
+        this.order = order;
     }
 
     // Backward compatibility field

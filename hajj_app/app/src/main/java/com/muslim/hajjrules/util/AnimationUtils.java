@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.Transformation;
 
+import com.muslim.hajjrules.R;
+
 public class AnimationUtils {
     
     public static void slideIn(Activity activity, View view, boolean fromRight) {

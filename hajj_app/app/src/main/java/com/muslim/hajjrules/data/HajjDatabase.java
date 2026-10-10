@@ -99,7 +99,7 @@ public abstract class HajjDatabase extends RoomDatabase {
 
             // Create indexes for better performance
             database.execSQL("CREATE INDEX IF NOT EXISTS index_hajj_rules_category ON hajj_rules(category)");
-            database.putExtra("index_hajj_rules_isFavorite ON hajj_rules(isFavorite)");
+            database.execSQL("CREATE INDEX IF NOT EXISTS index_hajj_rules_isFavorite ON hajj_rules(isFavorite)");
             database.execSQL("CREATE INDEX IF NOT EXISTS index_categories_featured ON categories(featured)");
             database.execSQL("CREATE INDEX IF NOT EXISTS index_categories_order ON categories(`order`)");
         }

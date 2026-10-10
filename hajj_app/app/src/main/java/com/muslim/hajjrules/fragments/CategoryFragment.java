@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.viewModels;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,6 +33,7 @@ public class CategoryFragment extends Fragment {
 
     private static final String ARG_CATEGORY_ID = "categoryId";
     private static final String ARG_CATEGORY_TITLE = "categoryTitle";
+    private static final String ARG_CATEGORY_KEY = "categoryKey";
 
     private int categoryId;
     private String categoryTitle;
@@ -40,11 +41,12 @@ public class CategoryFragment extends Fragment {
     private RecyclerView recyclerView;
     private RuleAdapter adapter;
 
-    public static CategoryFragment newInstance(int id, String title) {
+    public static CategoryFragment newInstance(int id, String title, String categoryKey) {
         CategoryFragment fragment = new CategoryFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_CATEGORY_ID, id);
         args.putString(ARG_CATEGORY_TITLE, title);
+        args.putString(ARG_CATEGORY_KEY, categoryKey);
         fragment.setArguments(args);
         return fragment;
     }
@@ -55,7 +57,7 @@ public class CategoryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_categories, container, false);
 
         // Initialize ViewModel with Hilt
-        categoryViewModel = viewModels(this).get(CategoryViewModel.class);
+        categoryViewModel = new ViewModelProvider(this).get(CategoryViewModel.class);
 
         // Get arguments and set category
         if (getArguments() != null) {
@@ -64,7 +66,8 @@ public class CategoryFragment extends Fragment {
             getActivity().setTitle(categoryTitle);
 
             // Set category in ViewModel
-            categoryViewModel.setCategory(categoryId, categoryTitle);
+            categoryViewModel.setCategory(categoryId, categoryTitle,
+                    getArguments().getString(ARG_CATEGORY_KEY, String.valueOf(categoryId)));
         }
 
         setupRecyclerView(view);
