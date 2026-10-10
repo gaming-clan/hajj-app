@@ -86,12 +86,18 @@ export const AccessibleText: React.FC<AccessibleTextProps> = ({
     const themeColors = theme.colors as any;
     if (color) {
       switch (color) {
-        case 'primary': return themeColors.primary;
-        case 'secondary': return themeColors.text;
-        case 'accent': return themeColors.accent;
-        case 'error': return themeColors.error;
-        case 'success': return themeColors.success;
-        default: return themeColors.text;
+        case 'primary':
+          return themeColors.primary;
+        case 'secondary':
+          return themeColors.text;
+        case 'accent':
+          return themeColors.accent;
+        case 'error':
+          return themeColors.error;
+        case 'success':
+          return themeColors.success;
+        default:
+          return themeColors.text;
       }
     }
     return themeColors.text;
@@ -158,11 +164,7 @@ export const AccessibleText: React.FC<AccessibleTextProps> = ({
   ]);
 
   return (
-    <Text
-      style={computedStyle}
-      {...getAccessibilityProps()}
-      {...props}
-    >
+    <Text style={computedStyle} {...getAccessibilityProps()} {...props}>
       {children}
     </Text>
   );
@@ -170,13 +172,13 @@ export const AccessibleText: React.FC<AccessibleTextProps> = ({
 
 // Specialized components for common use cases
 
-export const ArabicText: React.FC<Omit<AccessibleTextProps, 'isArabic'>> = (props) => (
-  <AccessibleText isArabic {...props} />
-);
+export const ArabicText: React.FC<Omit<AccessibleTextProps, 'isArabic'>> = (
+  props,
+) => <AccessibleText isArabic {...props} />;
 
-export const Heading: React.FC<Omit<AccessibleTextProps, 'isHeading'>> = (props) => (
-  <AccessibleText isHeading {...props} />
-);
+export const Heading: React.FC<Omit<AccessibleTextProps, 'isHeading'>> = (
+  props,
+) => <AccessibleText isHeading {...props} />;
 
 export const QuranicVerse: React.FC<AccessibleTextProps> = ({
   children,

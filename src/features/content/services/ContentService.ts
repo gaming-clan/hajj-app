@@ -16,7 +16,7 @@ import {
 } from '../../../core/utils';
 
 // Legacy data import
-const legacyHajjData = require('../../../assets/data/hajj_rules.json');
+import legacyHajjData from '../../../assets/data/hajj_rules.json';
 
 /**
  * Enhanced Content Service with multilingual support and caching
@@ -27,7 +27,9 @@ export class ContentService implements DataServiceInterface {
   private cache = new SimpleCache<any>(10 * 60 * 1000); // 10 minutes cache
   private currentSettings: AppSettings | null = null;
 
-  private constructor() {}
+  private constructor() {
+    this.hajjData = null;
+  }
 
   public static getInstance(): ContentService {
     if (!ContentService.instance) {
@@ -59,7 +61,9 @@ export class ContentService implements DataServiceInterface {
 
     try {
       // Try to load from AsyncStorage
-      const storedData = await AsyncStorage.getItem(APP_CONFIG.storage.hajjDataKey);
+      const storedData = await AsyncStorage.getItem(
+        APP_CONFIG.storage.hajjDataKey,
+      );
       if (storedData) {
         const parsedData = JSON.parse(storedData);
         this.hajjData = this.transformLegacyData(parsedData);
@@ -67,7 +71,10 @@ export class ContentService implements DataServiceInterface {
         return;
       }
     } catch (error) {
-      console.warn('Failed to load data from storage, using legacy data:', error);
+      console.warn(
+        'Failed to load data from storage, using legacy data:',
+        error,
+      );
     }
 
     // Fallback to legacy data and transform it
@@ -76,7 +83,10 @@ export class ContentService implements DataServiceInterface {
 
     // Save transformed data to storage
     try {
-      await AsyncStorage.setItem(APP_CONFIG.storage.hajjDataKey, JSON.stringify(this.hajjData));
+      await AsyncStorage.setItem(
+        APP_CONFIG.storage.hajjDataKey,
+        JSON.stringify(this.hajjData),
+      );
     } catch (error) {
       console.warn('Failed to save data to storage:', error);
     }
@@ -89,57 +99,86 @@ export class ContentService implements DataServiceInterface {
     return measurePerformance('transformLegacyData', () => {
       const transformed: HajjData = {
         title: {
-          albanian: legacyData.title || 'Rregullat e Haxhit',
+          albanian:
+            this.localizedValue(legacyData.title, 'albanian') ||
+            'Rregullat e Haxhit',
           arabic: 'أحكام الحج',
           english: 'Rules of Hajj',
         },
         introduction: {
           description: {
-            albanian: legacyData.introduction?.description || '',
-            arabic: 'الحج هو أحد أركان الإسلام الخمسة، وهو فرض على كل مسلم قادر على أدائه مرة واحدة في العمر على الأقل',
-            english: 'Hajj is one of the five pillars of Islam and is obligatory for every Muslim who is able to perform it at least once in a lifetime',
-            quranic_reference: 'وَلِلَّهِ عَلَى ٱلنَّاسِ حِجُّ ٱلْبَيْتِ مَنِ ٱسْتَطَاعَ إِلَيْهِ سَبِيلًا',
+            ...this.toMultilingual(
+              legacyData.introduction?.description,
+              '',
+              '',
+              'albanian',
+            ),
           },
           qabja: {
-            albanian: legacyData.introduction?.qabja || '',
-            arabic: 'الكعبة هي المكان الذي تجذب إليه قلوب المسلمين من جميع أنحاء العالم، وهي أول بيت بني للعبادة على الأرض',
-            english: 'The Kaaba is the place that attracts the hearts of Muslims from all over the world, and it is the first house built for worship on earth',
-            quranic_reference: 'إِنَّ أَوَّلَ بَيْتٍ وُضِعَ لِلنَّاسِ لَلَّذِي بِبَكَّةَ مُبَارَكًا وَهُدًى لِّلْعَٰلَمِينَ',
+            ...this.toMultilingual(
+              legacyData.introduction?.qabja,
+              '',
+              '',
+              'albanian',
+            ),
           },
         },
-        shtyllat_e_islamit: this.transformPillars(legacyData.shtyllat_e_islamit || []),
-        detyrimi_i_haxhit: this.transformHajjObligation(legacyData.detyrimi_i_haxhit || {}),
-        edukata_e_udhetimit: this.transformTravelEtiquette(legacyData.edukata_e_udhetimit || []),
+        shtyllat_e_islamit: this.transformPillars(
+          legacyData.shtyllat_e_islamit || [],
+        ),
+        detyrimi_i_haxhit: this.transformHajjObligation(
+          legacyData.detyrimi_i_haxhit || {},
+        ),
+        edukata_e_udhetimit: this.transformTravelEtiquette(
+          legacyData.edukata_e_udhetimit || [],
+        ),
         ihrami: this.transformIhramInfo(legacyData.ihrami || {}),
-        ndalesat_gjate_ihramit: this.transformProhibitions(legacyData.ndalesat_gjate_ihramit || []),
+        ndalesat_gjate_ihramit: this.transformProhibitions(
+          legacyData.ndalesat_gjate_ihramit || [],
+        ),
         vendcaktimet: this.transformMiqat(legacyData.vendcaktimet || []),
         qabja: {
           description: {
-            albanian: legacyData.qabja?.description || '',
-            arabic: 'الكعبة هي المكان الذي تجذب إليه قلوب المسلمين من جميع أنحاء العالم، وهي أول بيت بني للعبادة على الأرض',
-            english: 'The Kaaba is the place that attracts the hearts of Muslims from all over the world, and it is the first house built for worship on earth',
+            ...this.toMultilingual(
+              legacyData.qabja?.description,
+              '',
+              '',
+              'albanian',
+            ),
           },
           rendesia: {
-            albanian: legacyData.qabja?.rendesia || '',
-            arabic: 'يتوجه المسلمون نحو الكعبة خمس مرات في اليوم لأداء الصلاة ويطوفون حولها لأداء مناسك الحج',
-            english: 'Muslims face the Kaaba five times a day for prayer and circumambulate it during Hajj rites',
+            ...this.toMultilingual(
+              legacyData.qabja?.rendesia,
+              '',
+              '',
+              'albanian',
+            ),
           },
         },
         rendesia_e_haxhit: {
           description: {
-            albanian: legacyData.rendesia_e_haxhit?.description || '',
-            arabic: 'الحج هو أحد أركان الإسلام وهو فرض على كل مسلم قادر على أدائه',
-            english: 'Hajj is one of the pillars of Islam and is obligatory for every Muslim who is able to perform it',
+            ...this.toMultilingual(
+              legacyData.rendesia_e_haxhit?.description,
+              '',
+              '',
+              'albanian',
+            ),
           },
           hadith: {
-            albanian: legacyData.rendesia_e_haxhit?.hadith || '',
-            arabic: 'الحج فرض مرة واحدة في العمر، ومن زاد فهو نافلة',
-            english: 'Hajj is obligatory once in a lifetime, and whoever does more than that is voluntary',
+            ...this.toMultilingual(
+              legacyData.rendesia_e_haxhit?.hadith,
+              '',
+              '',
+              'albanian',
+            ),
           },
           keshilla: {
-            albanian: legacyData.rendesia_e_haxhit?.keshilla || '',
-            arabic: 'لمزيد من التفاصيل والإرشادات المحددة، يوصى بالاستشارة بمصادر متخصصة وعلماء إسلاميين',
-            english: 'For more details and specific guidance, it is recommended to consult specialized sources and Islamic scholars',
+            ...this.toMultilingual(
+              legacyData.rendesia_e_haxhit?.keshilla,
+              '',
+              '',
+              'albanian',
+            ),
           },
         },
       };
@@ -148,44 +187,84 @@ export class ContentService implements DataServiceInterface {
     });
   }
 
+  private localizedValue(
+    value: any,
+    language: 'albanian' | 'arabic' | 'english',
+  ): string {
+    if (typeof value === 'string') return value;
+    if (value && typeof value[language] === 'string') return value[language];
+    return '';
+  }
+
+  private toMultilingual(
+    value: any,
+    arabic: string,
+    english: string,
+    fallback: 'albanian' | 'arabic' | 'english',
+  ) {
+    if (value && typeof value === 'object') {
+      return {
+        albanian: typeof value.albanian === 'string' ? value.albanian : '',
+        arabic: typeof value.arabic === 'string' ? value.arabic : '',
+        english: typeof value.english === 'string' ? value.english : '',
+        ...(value.quranic_reference
+          ? { quranic_reference: value.quranic_reference }
+          : {}),
+      };
+    }
+    const text = typeof value === 'string' ? value : '';
+    return {
+      albanian: fallback === 'albanian' ? text : '',
+      arabic: fallback === 'arabic' ? text : '',
+      english: fallback === 'english' ? text : '',
+    };
+  }
+
   private transformPillars(legacyPillars: any[]) {
     return legacyPillars.map((pillar, index) => ({
       id: pillar.id || index + 1,
-      name: {
-        albanian: pillar.name,
-        arabic: this.getPillarArabicName(pillar.name),
-        english: this.getPillarEnglishName(pillar.name),
-      },
-      description: {
-        albanian: pillar.description,
-        arabic: this.getPillarArabicDescription(pillar.name),
-        english: this.getPillarEnglishDescription(pillar.name),
-        quranic_reference: this.getPillarQuranicReference(pillar.name),
-      },
+      name:
+        pillar.name && typeof pillar.name === 'object'
+          ? pillar.name
+          : {
+              albanian: pillar.name,
+              arabic: this.getPillarArabicName(pillar.name),
+              english: this.getPillarEnglishName(pillar.name),
+            },
+      description:
+        pillar.description && typeof pillar.description === 'object'
+          ? pillar.description
+          : {
+              albanian: pillar.description,
+              arabic: this.getPillarArabicDescription(pillar.name),
+              english: this.getPillarEnglishDescription(pillar.name),
+              quranic_reference: this.getPillarQuranicReference(pillar.name),
+            },
       order: index + 1,
     }));
   }
 
   private transformHajjObligation(legacyObligation: any) {
     return {
-      description: {
-        albanian: legacyObligation.description,
-        arabic: 'الحج فرض مرة واحدة في العمر',
-        english: 'Hajj is obligatory only once in a lifetime',
-      },
+      description: this.toMultilingual(
+        legacyObligation.description,
+        'الحج فرض مرة واحدة في العمر',
+        'Hajj is obligatory once in a lifetime',
+        'albanian',
+      ),
       hadith: {
-        albanian: legacyObligation.hadith,
-        arabic: 'الحج مرة واحدة، فمن زاد فهو نافلة',
-        english: 'Hajj is once in a lifetime. Whoever does more than that is voluntary.',
-        reference: 'Sahih al-Bukhari, Book 26, Hadith 1513',
-        full_arabic_hadith: 'عن أبي هريرة رضي الله عنه قال: خطبنا رسول الله صلى الله عليه وسلم فقال: يا أيها الناس، قد فرض الله عليكم الحج فحجوا. فقال رجل: أكل عام يا رسول الله؟ فسكت، حتى قالها ثلاثا. فقال رسول الله صلى الله عليه وسلم: لو قلت نعم لوجبت، ولما استطعتم. الحج مرة واحدة، فمن زاد فهو نافلة',
+        ...this.toMultilingual(legacyObligation.hadith, '', '', 'albanian'),
+        reference: legacyObligation.hadith?.reference || 'Sahih Muslim 1337',
+        ...(legacyObligation.hadith?.full_arabic_hadith
+          ? { full_arabic_hadith: legacyObligation.hadith.full_arabic_hadith }
+          : {}),
       },
-      kushtet: {
-        albanian: legacyObligation.kushtet,
-        arabic: 'الحج يجب أن يكون خالصاً لله، ويؤدى على سنة رسول الله صلى الله عليه وسلم',
-        english: 'Hajj must be purely for Allah and performed according to the Sunnah of the Messenger of Allah',
-        quranic_reference: 'وَمَا أُمِرُوا۟ إِلَّا لِيَعْبُدُوا۟ ٱللَّهَ مُخْلِصِينَ لَهُ ٱلدِّينَ حُنَفَآءَ',
-      },
+      kushtet: this.toMultilingual(
+        legacyObligation.kushtet,
+        '',
+        '',
+        'albanian',
+      ),
     };
   }
 
@@ -194,13 +273,13 @@ export class ContentService implements DataServiceInterface {
       id: item.id || index + 1,
       rule: {
         albanian: item.rule,
-        arabic: this.getTravelEtiquetteArabic(item.rule),
-        english: this.getTravelEtiquetteEnglish(item.rule),
+        arabic: item.rule,
+        english: item.rule,
       },
       description: {
         albanian: item.description,
-        arabic: this.getTravelEtiquetteDescriptionArabic(item.rule),
-        english: this.getTravelEtiquetteDescriptionEnglish(item.rule),
+        arabic: item.description,
+        english: item.description,
       },
       order: index + 1,
     }));
@@ -210,51 +289,61 @@ export class ContentService implements DataServiceInterface {
     return {
       description: {
         albanian: legacyIhram.description,
-        arabic: 'الإحرام هو نية المسلمان لأداء مناسك الحج أو العمرة',
-        english: 'Ihram is the intention of a Muslim to perform the rites of Hajj or Umrah',
+        arabic:
+          'الإحرام حالةُ الدخول في النسك وتبدأ بالنية؛ وليس مجرد ملابس الإحرام.',
+        english:
+          'Ihram is the sacred state entered by intention for Hajj or Umrah; it is not merely the clothing.',
       },
       koha: {
         albanian: legacyIhram.koha,
         arabic: 'نية الحج تكون في أشهر الحج: شوال، وذو القعدة، وذو الحجة',
-        english: 'The intention for Hajj is made in the months of Hajj: Shawwal, Dhul-Qa\'dah, and Dhul-Hijjah',
+        english:
+          "The intention for Hajj is made in the months of Hajj: Shawwal, Dhul-Qa'dah, and Dhul-Hijjah",
         quranic_reference: 'ٱلْحَجُّ أَشْهُرٌ مَّعْلُومَٰتٌ',
       },
-      llojet_e_nijetit: (legacyIhram.llojet_e_nijetit || []).map((item: any) => ({
-        lloji: {
-          albanian: item.lloji,
-          arabic: this.getIntentionTypeArabic(item.lloji),
-          english: this.getIntentionTypeEnglish(item.lloji),
-        },
-        nijeti: {
-          albanian: item.nijeti,
-          arabic: this.getIntentionArabic(item.nijeti),
-          english: this.getIntentionEnglish(item.nijeti),
-          transliteration: this.getIntentionTransliteration(item.nijeti),
-        },
-      })),
+      llojet_e_nijetit: (legacyIhram.llojet_e_nijetit || []).map(
+        (item: any) => ({
+          lloji: {
+            albanian: item.lloji,
+            arabic: this.getIntentionsTypeArabic(item.lloji),
+            english: this.getIntentionsTypeEnglish(item.lloji),
+          },
+          nijeti: {
+            albanian: item.nijeti,
+            arabic: this.getIntentionsArabic(item.nijeti),
+            english: this.getIntentionsEnglish(item.nijeti),
+            transliteration: this.getIntentionsTransliteration(item.nijeti),
+          },
+        }),
+      ),
       talbiyyah_complete: {
         albanian: 'Talbiyyah e plotë',
         arabic: 'التلبية الكاملة',
         english: 'Complete Talbiyah',
-        arabic_text: 'لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ، لَا شَرِيكَ لَكَ',
-        transliteration: 'Labbayk Allahumma labbayk, labbayka la sharika laka labbayk, innal-hamda wan-ni\'mata laka wal-mulk, la sharika lak',
-        english_translation: 'Here I am at Your service, O Allah, here I am at Your service. Here I am at Your service, You have no partner, here I am at Your service. Verily all praise and blessings are Yours, and all sovereignty. You have no partner.',
+        arabic_text:
+          'لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ، إِنَّ الْحَمْدَ وَالنِّعْمَةَ لَكَ وَالْمُلْكَ، لَا شَرِيكَ لَكَ',
+        transliteration:
+          "Labbayk Allahumma labbayk, labbayka la sharika laka labbayk, innal-hamda wan-ni'mata laka wal-mulk, la sharika lak",
+        english_translation:
+          'Here I am at Your service, O Allah, here I am at Your service. Here I am at Your service, You have no partner, here I am at Your service. Verily all praise and blessings are Yours, and all sovereignty. You have no partner.',
         hadith_reference: 'Sahih al-Bukhari, Book 26, Hadith 1549',
       },
-      para_veshjes: (legacyIhram.para_veshjes || []).map((item: any, index: number) => ({
-        id: item.id || index + 1,
-        veprim: {
-          albanian: item.veprim,
-          arabic: this.getPreIhramActionArabic(item.veprim),
-          english: this.getPreIhramActionEnglish(item.veprim),
-        },
-        description: {
-          albanian: item.description,
-          arabic: this.getPreIhramDescriptionArabic(item.veprim),
-          english: this.getPreIhramDescriptionEnglish(item.veprim),
-        },
-        order: index + 1,
-      })),
+      para_veshjes: (legacyIhram.para_veshjes || []).map(
+        (item: any, index: number) => ({
+          id: item.id || index + 1,
+          veprim: {
+            albanian: item.veprim,
+            arabic: this.getPreIhramActionArabic(item.veprim),
+            english: this.getPreIhramActionEnglish(item.veprim),
+          },
+          description: {
+            albanian: item.description,
+            arabic: this.getPreIhramDescriptionArabic(item.veprim),
+            english: this.getPreIhramDescriptionEnglish(item.veprim),
+          },
+          order: index + 1,
+        }),
+      ),
     };
   }
 
@@ -263,17 +352,13 @@ export class ContentService implements DataServiceInterface {
       id: item.id || index + 1,
       ndalesa: {
         albanian: item.ndalesa,
-        arabic: this.getProhibitionArabic(item.ndalesa),
-        english: this.getProhibitionEnglish(item.ndalesa),
+        arabic: item.ndalesa,
+        english: item.ndalesa,
       },
       description: {
         albanian: item.description,
-        arabic: this.getProhibitionDescriptionArabic(item.ndalesa),
-        english: this.getProhibitionDescriptionEnglish(item.ndalesa),
-      },
-      evidence: {
-        quranic: 'يَا أَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ لَا تُحِلُّوا۟ شَيْـَٰٓئَاتِ ٱلصَّيْدِ وَأَنتُمْ حُرُمٌ',
-        hadith: 'Sahih al-Bukhari, Book 26, Hadith 615-617',
+        arabic: item.description,
+        english: item.description,
       },
       order: index + 1,
     }));
@@ -284,18 +369,18 @@ export class ContentService implements DataServiceInterface {
       id: item.id || index + 1,
       emri: {
         albanian: item.emri,
-        arabic: this.getMiqatArabicName(item.emri),
-        english: this.getMiqatEnglishName(item.emri),
+        arabic: this.getMiqatArabicName(item.emri) || item.emri,
+        english: this.getMiqatEnglishName(item.emri) || item.emri,
       },
       per_ke: {
         albanian: item.per_ke,
-        arabic: this.getMiqatForWhomArabic(item.per_ke),
-        english: this.getMiqatForWhomEnglish(item.per_ke),
+        arabic: item.per_ke,
+        english: item.per_ke,
       },
       largesia: {
         albanian: item.largesia,
-        arabic: this.getMiqatDistanceArabic(item.largesia),
-        english: this.getMiqatDistanceEnglish(item.largesia),
+        arabic: item.largesia,
+        english: item.largesia,
       },
       coordinates: this.getMiqatCoordinates(item.emri),
       image: item.image,
@@ -306,7 +391,7 @@ export class ContentService implements DataServiceInterface {
   // Helper methods for translations (these would ideally come from a translation service)
   private getPillarArabicName(name: string): string {
     const translations: Record<string, string> = {
-      'Dëshmia': 'الشهادتان',
+      Dëshmia: 'الشهادتان',
       'Falja e namazit': 'الصلاة',
       'Dhënja e Zekatit': 'الزكاة',
       'Agjërimi i Ramazanit': 'صوم رمضان',
@@ -317,7 +402,7 @@ export class ContentService implements DataServiceInterface {
 
   private getPillarEnglishName(name: string): string {
     const translations: Record<string, string> = {
-      'Dëshmia': 'The Testimony',
+      Dëshmia: 'The Testimony',
       'Falja e namazit': 'Prayer',
       'Dhënja e Zekatit': 'Zakat',
       'Agjërimi i Ramazanit': 'Fasting in Ramadan',
@@ -328,54 +413,62 @@ export class ContentService implements DataServiceInterface {
 
   private getPillarArabicDescription(name: string): string {
     const descriptions: Record<string, string> = {
-      'Dëshmia': 'لا إله إلا الله، محمد رسول الله',
+      Dëshmia: 'لا إله إلا الله، محمد رسول الله',
       'Falja e namazit': 'أداء الصلوات الخمس المفروضة في اليوم والليلة',
       'Dhënja e Zekatit': 'إخراج جزء من المال للمحتاجين والمساكين',
-      'Agjërimi i Ramazanit': 'الإمساك عن الطعام والشراب والشهوة من الفجر إلى الغروب في شهر رمضان',
-      'Haxhi në Qabe': 'زيارة الكعبة الشريفة مرة واحدة في العمر على الأقل للقادرين',
+      'Agjërimi i Ramazanit':
+        'الإمساك عن الطعام والشراب والشهوة من الفجر إلى الغروب في شهر رمضان',
+      'Haxhi në Qabe':
+        'زيارة الكعبة الشريفة مرة واحدة في العمر على الأقل للقادرين',
     };
     return descriptions[name] || '';
   }
 
   private getPillarEnglishDescription(name: string): string {
     const descriptions: Record<string, string> = {
-      'Dëshmia': 'There is no god but Allah, and Muhammad is the Messenger of Allah.',
-      'Falja e namazit': 'Performing the five obligatory prayers daily and nightly.',
+      Dëshmia:
+        'There is no god but Allah, and Muhammad is the Messenger of Allah.',
+      'Falja e namazit':
+        'Performing the five obligatory prayers daily and nightly.',
       'Dhënja e Zekatit': 'Giving a portion of wealth to the needy and poor.',
-      'Agjërimi i Ramazanit': 'Abstaining from food, drink, and desires from dawn to sunset in Ramadan.',
-      'Haxhi në Qabe': 'Visiting the Holy Kaaba at least once in a lifetime for those who are able.',
+      'Agjërimi i Ramazanit':
+        'Abstaining from food, drink, and desires from dawn to sunset in Ramadan.',
+      'Haxhi në Qabe':
+        'Visiting the Holy Kaaba at least once in a lifetime for those who are able.',
     };
     return descriptions[name] || '';
   }
 
   private getPillarQuranicReference(name: string): string {
     const references: Record<string, string> = {
-      'Dëshmia': 'شَهِدَ ٱللَّهُ أَنَّهُۥ لَا إِلَٰهَ إِلَّا هُوَ',
-      'Falja e namazit': 'إِنَّ ٱلصَّلَوٰةَ كَانَتْ عَلَى ٱلْمُؤْمِنِينَ كِتَٰبًا مَّوْقُوتًا',
-      'Dhënja e Zekatit': 'خُذْ مِنْ أَمْوَٰلِهِمْ صَدَقَةً تُطَهِّرُهُمْ وَتُزَكِّيهِم بِهَا',
-      'Agjërimi i Ramazanit': 'يَا أَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ كُتِبَ عَلَيْكُمُ ٱلصِّيَامُ',
-      'Haxhi në Qabe': 'وَلِلَّهِ عَلَى ٱلنَّاسِ حِجُّ ٱلْبَيْتِ مَنِ ٱسْتَطَاعَ إِلَيْهِ سَبِيلًا',
+      Dëshmia: 'شَهِدَ ٱللَّهُ أَنَّهُۥ لَا إِلَٰهَ إِلَّا هُوَ',
+      'Falja e namazit':
+        'إِنَّ ٱلصَّلَوٰةَ كَانَتْ عَلَى ٱلْمُؤْمِنِينَ كِتَٰبًا مَّوْقُوتًا',
+      'Dhënja e Zekatit':
+        'خُذْ مِنْ أَمْوَٰلِهِمْ صَدَقَةً تُطَهِّرُهُمْ وَتُزَكِّيهِم بِهَا',
+      'Agjërimi i Ramazanit':
+        'يَا أَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ كُتِبَ عَلَيْكُمُ ٱلصِّيَامُ',
+      'Haxhi në Qabe':
+        'وَلِلَّهِ عَلَى ٱلنَّاسِ حِجُّ ٱلْبَيْتِ مَنِ ٱسْتَطَاعَ إِلَيْهِ سَبِيلًا',
     };
     return references[name] || '';
   }
 
-  // Add more translation helper methods as needed...
+  // Do not substitute plausible-sounding but unrelated translations for source text.
   private getTravelEtiquetteArabic(rule: string): string {
-    // This would be implemented with actual translations
-    return 'يجب أن تكون النية خالصة لله';
+    return rule;
   }
 
   private getTravelEtiquetteEnglish(rule: string): string {
-    // This would be implemented with actual translations
-    return 'The intention must be purely for Allah';
+    return rule;
   }
 
   private getTravelEtiquetteDescriptionArabic(rule: string): string {
-    return 'لا لإظهار أو لأغراض أخرى';
+    return rule;
   }
 
   private getTravelEtiquetteDescriptionEnglish(rule: string): string {
-    return 'Not for showing off or for other purposes';
+    return rule;
   }
 
   private getIntentionsTypeArabic(type: string): string {
@@ -387,55 +480,69 @@ export class ContentService implements DataServiceInterface {
   }
 
   private getIntentionsArabic(nijeti: string): string {
-    return 'لَبَّيْكَ عُمْرَةً';
+    return nijeti;
   }
 
   private getIntentionsEnglish(nijeti: string): string {
-    return 'Labbayk Umratan';
+    return nijeti;
   }
 
   private getIntentionsTransliteration(nijeti: string): string {
-    return 'Labbayk Allahumma Umratan';
+    return nijeti;
   }
 
   private getPreIhramActionArabic(action: string): string {
-    return 'تقليم الأظافر وتقصير الشارب';
+    return action;
   }
 
   private getPreIhramActionEnglish(action: string): string {
-    return 'Trimming nails and mustache';
+    return action;
   }
 
   private getPreIhramDescriptionArabic(action: string): string {
-    return 'تقليم الأظافر، وتقصير الشارب، وحلق شعر الإبطين والعانة';
+    return action;
   }
 
   private getPreIhramDescriptionEnglish(action: string): string {
-    return 'Trimming nails, cutting mustache, removing underarm and pubic hair';
+    return action;
   }
 
   private getProhibitionArabic(prohibition: string): string {
-    return 'تغطية الرأس';
+    return prohibition;
   }
 
   private getProhibitionEnglish(prohibition: string): string {
-    return 'Covering the head';
+    return prohibition;
   }
 
   private getProhibitionDescriptionArabic(prohibition: string): string {
-    return 'لا يجوز للرجال تغطية الرأس';
+    return prohibition;
   }
 
   private getProhibitionDescriptionEnglish(prohibition: string): string {
-    return 'It is not permissible for men to cover their heads';
+    return prohibition;
   }
 
   private getMiqatArabicName(emri: string): string {
-    return 'ذو الحليفة';
+    const names: Record<string, string> = {
+      'DHUL HULEJFEH': 'ذو الحليفة',
+      XHUHFEH: 'الجحفة',
+      'KARNUL MENAZIL': 'قرن المنازل',
+      JELEMLEM: 'يلملم',
+      'DHATE IRK': 'ذات عرق',
+    };
+    return names[emri] || '';
   }
 
   private getMiqatEnglishName(emri: string): string {
-    return 'Dhul Hulaifah';
+    const names: Record<string, string> = {
+      'DHUL HULEJFEH': 'Dhul Hulaifah (Dhul-Hulayfah)',
+      XHUHFEH: 'Al-Juhfah',
+      'KARNUL MENAZIL': 'Qarn al-Manazil',
+      JELEMLEM: 'Yalamlam',
+      'DHATE IRK': 'Dhat Irq',
+    };
+    return names[emri] || '';
   }
 
   private getMiqatForWhomArabic(per_ke: string): string {
@@ -454,14 +561,17 @@ export class ContentService implements DataServiceInterface {
     return '450 km from Mecca';
   }
 
-  private getMiqatCoordinates(emri: string): { latitude: number; longitude: number } | undefined {
-    const coordinates: Record<string, { latitude: number; longitude: number }> = {
-      'DHUL HULEJFEH': { latitude: 24.4475, longitude: 39.5853 },
-      'XHUHFEH': { latitude: 23.3206, longitude: 38.2007 },
-      'KARNUL MENAZIL': { latitude: 21.3808, longitude: 40.4169 },
-      'JELEMLEM': { latitude: 20.9424, longitude: 41.0186 },
-      'DHATE IRK': { latitude: 22.0472, longitude: 42.2977 },
-    };
+  private getMiqatCoordinates(
+    emri: string,
+  ): { latitude: number; longitude: number } | undefined {
+    const coordinates: Record<string, { latitude: number; longitude: number }> =
+      {
+        'DHUL HULEJFEH': { latitude: 24.4475, longitude: 39.5853 },
+        XHUHFEH: { latitude: 23.3206, longitude: 38.2007 },
+        'KARNUL MENAZIL': { latitude: 21.3808, longitude: 40.4169 },
+        JELEMLEM: { latitude: 20.9424, longitude: 41.0186 },
+        'DHATE IRK': { latitude: 22.0472, longitude: 42.2977 },
+      };
     return coordinates[emri];
   }
 
@@ -570,7 +680,7 @@ export class ContentService implements DataServiceInterface {
 
   public async getCategory(id: string): Promise<Category | undefined> {
     const categories = await this.getCategories();
-    return categories.find(cat => cat.name === id);
+    return categories.find((cat) => cat.name === id);
   }
 
   public async getRulesByCategory(categoryName: string): Promise<Rule[]> {
@@ -593,8 +703,12 @@ export class ContentService implements DataServiceInterface {
           category: categoryName,
           order: pillar.order,
           evidence: {
-            quranic: [pillar.description.quranic_reference].filter(Boolean),
-            hadith: pillar.description.hadith_reference ? [pillar.description.hadith_reference] : [],
+            quranic: pillar.description.quranic_reference
+              ? [pillar.description.quranic_reference]
+              : [],
+            hadith: pillar.description.hadith_reference
+              ? [pillar.description.hadith_reference]
+              : [],
           },
         }));
         break;
@@ -603,7 +717,7 @@ export class ContentService implements DataServiceInterface {
         rules = this.hajjData!.edukata_e_udhetimit.map((item, index) => ({
           id: generateId('travel_'),
           title: item.rule,
-          description: item.rule,
+          description: item.description,
           category: categoryName,
           order: item.order,
         }));
@@ -620,17 +734,25 @@ export class ContentService implements DataServiceInterface {
         break;
 
       case CATEGORIES.IHRAM_PROHIBITIONS:
-        rules = this.hajjData!.ndalesat_gjate_ihramit.map((prohibition, index) => ({
-          id: generateId('prohibition_'),
-          title: prohibition.ndalesa,
-          description: prohibition.description,
-          category: categoryName,
-          order: prohibition.order,
-          evidence: prohibition.evidence ? {
-            quranic: prohibition.evidence.quranic ? [prohibition.evidence.quranic] : [],
-            hadith: prohibition.evidence.hadith ? [prohibition.evidence.hadith] : [],
-          } : undefined,
-        }));
+        rules = this.hajjData!.ndalesat_gjate_ihramit.map(
+          (prohibition, index) => ({
+            id: generateId('prohibition_'),
+            title: prohibition.ndalesa,
+            description: prohibition.description,
+            category: categoryName,
+            order: prohibition.order,
+            evidence: prohibition.evidence
+              ? {
+                  quranic: prohibition.evidence.quranic
+                    ? [prohibition.evidence.quranic]
+                    : [],
+                  hadith: prohibition.evidence.hadith
+                    ? [prohibition.evidence.hadith]
+                    : [],
+                }
+              : undefined,
+          }),
+        );
         break;
 
       case CATEGORIES.MIQAT:
@@ -672,9 +794,15 @@ export class ContentService implements DataServiceInterface {
 
     const allRules = await this.getAllRules();
 
-    return allRules.filter(rule => {
-      const titleText = getLocalizedTextWithFallback(rule.title, this.currentSettings!);
-      const descText = getLocalizedTextWithFallback(rule.description, this.currentSettings!);
+    return allRules.filter((rule) => {
+      const titleText = getLocalizedTextWithFallback(
+        rule.title,
+        this.currentSettings!,
+      );
+      const descText = getLocalizedTextWithFallback(
+        rule.description,
+        this.currentSettings!,
+      );
 
       const normalizedQuery = query.toLowerCase().trim();
 

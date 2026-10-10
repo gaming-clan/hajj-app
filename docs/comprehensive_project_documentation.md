@@ -2,13 +2,13 @@
 
 ## 📋 Project Overview
 
-The **Hajj & Umrah Guide** is a comprehensive multi-platform mobile application designed to provide verified Islamic guidance for performing Hajj and Umrah rituals. The project implements three separate implementations using React Native, Android Native, and Flutter to demonstrate best practices across different mobile development ecosystems.
+The **Hajj & Umrah Guide** is an educational multi-platform application providing introductory guidance for Hajj and Umrah. Its Flutter directory is currently an incomplete scaffold, and its content is not a substitute for qualified scholarly advice.
 
 ### 🕌 **Mission Statement**
-To provide Muslims worldwide with accurate, accessible, and user-friendly digital guidance for performing Hajj and Umrah, with all content verified against authentic Islamic sources.
+To provide accessible introductory guidance for Hajj and Umrah with source references where available. Content requires full scholarly review before being described as approved.
 
 ### 🎯 **Core Objectives**
-- **Religious Accuracy**: 100% verified Islamic content against authentic sources
+- **Religious Content**: Selected guidance has been cross-checked against cited primary and official sources; this is not a complete scholarly audit.
 - **Accessibility**: Full support for users with disabilities
 - **Multilingual**: Arabic, English, and Albanian language support
 - **Performance**: Optimized for low-end devices and offline usage
@@ -1074,10 +1074,9 @@ test: Add unit tests for content validation
 - **Accessibility**: > 90% accessibility compliance
 
 ### **Religious Content Metrics**
-- **Accuracy**: 100% verified Islamic content
 - **Comprehensiveness**: Covers all major Hajj/Umrah topics
 - **Multilingual**: Complete support in all target languages
-- **Scholar Approval**: All content approved by Islamic scholars
+- **Scholar Review**: No named scholar approval is currently documented; obtain review before making such a claim.
 
 ---
 

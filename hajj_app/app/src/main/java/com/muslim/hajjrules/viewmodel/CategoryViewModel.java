@@ -3,6 +3,7 @@ package com.muslim.hajjrules.viewmodel;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
 
 import android.app.Application;
 
@@ -33,6 +34,9 @@ public class CategoryViewModel extends AndroidViewModel {
     private final MutableLiveData<String> categoryTitle = new MutableLiveData<>();
 
     private int categoryId;
+    private String categoryName;
+    private LiveData<List<HajjRule>> observedRules;
+    private final Observer<List<HajjRule>> rulesObserver = rules::postValue;
 
     @Inject
     public CategoryViewModel(Application application, HajjRepositoryInterface repository) {
@@ -61,7 +65,12 @@ public class CategoryViewModel extends AndroidViewModel {
      * Set the category and load its rules
      */
     public void setCategory(int categoryId, String title) {
+        setCategory(categoryId, title, String.valueOf(categoryId));
+    }
+
+    public void setCategory(int categoryId, String title, String categoryName) {
         this.categoryId = categoryId;
+        this.categoryName = categoryName;
         this.categoryTitle.setValue(title);
         loadRules();
     }
@@ -75,10 +84,11 @@ public class CategoryViewModel extends AndroidViewModel {
 
         executorService.execute(() -> {
             try {
-                List<HajjRule> ruleList = repository.getRulesByCategory(categoryId);
-
-                // Post rules to main thread
-                rules.postValue(ruleList);
+                if (observedRules != null) {
+                    observedRules.removeObserver(rulesObserver);
+                }
+                observedRules = repository.getRulesByCategory(categoryName);
+                observedRules.observeForever(rulesObserver);
                 isLoading.postValue(false);
 
             } catch (Exception e) {
@@ -103,10 +113,10 @@ public class CategoryViewModel extends AndroidViewModel {
         executorService.execute(() -> {
             try {
                 rule.setFavorite(!rule.isFavorite());
-                repository.updateRule(rule);
+                repository.update(rule);
 
                 // Refresh the list to update UI
-                loadRules();
+                rules.postValue(repository.getRulesByCategory(categoryName).getValue());
             } catch (Exception e) {
                 errorMessage.postValue("Error updating favorite: " + e.getMessage());
             }
@@ -117,5 +127,8 @@ public class CategoryViewModel extends AndroidViewModel {
     protected void onCleared() {
         super.onCleared();
         executorService.shutdown();
+        if (observedRules != null) {
+            observedRules.removeObserver(rulesObserver);
+        }
     }
 }

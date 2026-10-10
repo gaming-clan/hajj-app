@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import org.osmdroid.tileprovider.modules.SqlTileWriter;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
@@ -62,6 +63,6 @@ public class MapUtils {
     }
 
     public static void clearMapCache(Context context) {
-        Configuration.getInstance().clearAllCaches(context);
+        new SqlTileWriter().purgeCache();
     }
 }

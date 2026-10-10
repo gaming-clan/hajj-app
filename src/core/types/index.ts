@@ -24,6 +24,7 @@ export interface MultilingualDescription {
   arabic: string;
   english: string;
   quranic_reference?: string;
+  hadith_reference?: string;
 }
 
 // Enhanced Hajj-related interfaces with multilingual support
@@ -196,12 +197,15 @@ export interface AppSettings {
 }
 
 // Navigation types
-export interface RootStackParamList {
+export type RootStackParamList = {
   Splash: undefined;
   Main: undefined;
   Detail: {
-    item: Rule | Category;
-    type: 'rule' | 'category';
+    item?: Rule | Category;
+    rule?: unknown;
+    category?: unknown;
+    title?: unknown;
+    type?: 'rule' | 'category';
   };
   Search: undefined;
   Settings: undefined;
@@ -211,15 +215,18 @@ export interface RootStackParamList {
   };
   Qibla: undefined;
   Tracker: undefined;
-}
+  Map: undefined;
+  About: undefined;
+};
 
-export interface MainTabParamList {
+export type MainTabParamList = {
   Home: undefined;
   Categories: undefined;
-  Content: undefined;
   Qibla: undefined;
   Settings: undefined;
-}
+  Map: undefined;
+  About: undefined;
+};
 
 // UI Component Props
 export interface ContentCardProps {
@@ -273,13 +280,3 @@ export interface UserInteraction {
   timestamp: Date;
   duration?: number;
 }
-
-// Export all types for convenience
-export type {
-  MultilingualString,
-  MultilingualTitle,
-  MultilingualContent,
-  MultilingualDescription,
-  RootStackParamList,
-  MainTabParamList,
-};

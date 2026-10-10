@@ -14,13 +14,10 @@
       "@/*": ["src/*"]
     }
   },
-  "include": [
-    "src",
-    "App.tsx",
-    "index.js"
-  ],
+  "include": ["src", "App.tsx", "index.js"],
   "exclude": [
     "node_modules",
+    "src/__tests__",
     "babel.config.js",
     "metro.config.js",
     "jest.config.js"

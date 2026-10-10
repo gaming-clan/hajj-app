@@ -1,13 +1,7 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  StyleSheet,
-  ScrollView,
-} from 'react-native';
-import {useRoute} from '@react-navigation/native';
-import {HajjRule, Category} from '../types';
+import { View, Text, FlatList, StyleSheet, ScrollView } from 'react-native';
+import { useRoute } from '@react-navigation/native';
+import { HajjRule, Category } from '../types';
 
 interface RouteParams {
   rule?: HajjRule;
@@ -17,9 +11,9 @@ interface RouteParams {
 
 const DetailScreen: React.FC = () => {
   const route = useRoute();
-  const {rule, category, title} = route.params as RouteParams;
+  const { rule, category, title } = route.params as RouteParams;
 
-  const renderRule = ({item}: {item: HajjRule}) => (
+  const renderRule = ({ item }: { item: HajjRule }) => (
     <View style={styles.ruleCard}>
       <Text style={styles.ruleTitle}>{item.rule}</Text>
       <Text style={styles.ruleDescription}>{item.description}</Text>
@@ -49,7 +43,7 @@ const DetailScreen: React.FC = () => {
         <FlatList
           data={category.rules}
           renderItem={renderRule}
-          keyExtractor={item => `${item.category}-${item.id}`}
+          keyExtractor={(item) => `${item.category}-${item.id}`}
           contentContainerStyle={styles.listContainer}
           showsVerticalScrollIndicator={false}
         />
@@ -77,7 +71,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     elevation: 3,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 3,
   },
@@ -102,7 +96,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     elevation: 2,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 1},
+    shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
   },

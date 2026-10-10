@@ -18,7 +18,7 @@ export const APP_CONFIG = {
     },
   },
   storage: {
-    hajjDataKey: '@hajj_app_data',
+    hajjDataKey: '@hajj_app_data_v2',
     settingsKey: '@hajj_app_settings',
     languageKey: '@hajj_app_language',
   },

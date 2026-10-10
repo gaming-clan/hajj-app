@@ -13,25 +13,26 @@ interface ValidationResult {
 // Regular expressions for validation
 const REGEX_PATTERNS = {
   // Allowed characters for Islamic content (Arabic, English, Albanian characters, numbers, basic punctuation)
-  ISLAMIC_CONTENT: /^[\w\s\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF\u00C0-\u017F.,;:!?'"()\-\/@#%&*+=]*$/,
+  ISLAMIC_CONTENT:
+    /^[\w\s\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF\u00C0-\u017F.,;:!?'"()\x2f@#%&*+=-]*$/,
 
   // Arabic text only (for religious content)
-  ARABIC_TEXT: /^[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF\s\W]*$/,
+  ARABIC_TEXT: /^[\p{Script=Arabic}\p{M}\s،؛؟.,!()-]*$/u,
 
   // Quranic verse reference pattern
   QURANIC_REFERENCE: /^(\d+):(\d+)(-\d+)?$/,
 
   // Hadith reference pattern
-  HADITH_REFERENCE: /^[A-Za-z\s,.\d]+$/,
+  HADITH_REFERENCE: /^[A-Za-z][A-Za-z\s,.:()\d-]*$/,
 
   // Email pattern
   EMAIL: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
 
   // Phone number pattern
-  PHONE: /^\+?[\d\s\-\(\)]+$/,
+  PHONE: /^\+?[\d\s()-]+$/,
 
   // General safe text (prevents XSS)
-  SAFE_TEXT: /^[^<>\"'&]*$/,
+  SAFE_TEXT: /^[^<>'&"]*$/,
 };
 
 // Maximum lengths for different types of content
@@ -60,7 +61,10 @@ export class InputValidator {
     }
 
     if (trimmed.length > MAX_LENGTHS.TITLE) {
-      return { isValid: false, error: `Title must be less than ${MAX_LENGTHS.TITLE} characters` };
+      return {
+        isValid: false,
+        error: `Title must be less than ${MAX_LENGTHS.TITLE} characters`,
+      };
     }
 
     if (!REGEX_PATTERNS.ISLAMIC_CONTENT.test(trimmed)) {
@@ -85,12 +89,18 @@ export class InputValidator {
     }
 
     if (trimmed.length > MAX_LENGTHS.ARABIC_TEXT) {
-      return { isValid: false, error: `Arabic text must be less than ${MAX_LENGTHS.ARABIC_TEXT} characters` };
+      return {
+        isValid: false,
+        error: `Arabic text must be less than ${MAX_LENGTHS.ARABIC_TEXT} characters`,
+      };
     }
 
     // Allow Arabic text with basic punctuation
     if (!REGEX_PATTERNS.ARABIC_TEXT.test(trimmed)) {
-      return { isValid: false, error: 'Arabic text contains invalid characters' };
+      return {
+        isValid: false,
+        error: 'Arabic text contains invalid characters',
+      };
     }
 
     return { isValid: true, sanitizedValue: trimmed };
@@ -111,11 +121,17 @@ export class InputValidator {
     }
 
     if (trimmed.length > MAX_LENGTHS.DESCRIPTION) {
-      return { isValid: false, error: `Description must be less than ${MAX_LENGTHS.DESCRIPTION} characters` };
+      return {
+        isValid: false,
+        error: `Description must be less than ${MAX_LENGTHS.DESCRIPTION} characters`,
+      };
     }
 
     if (!REGEX_PATTERNS.ISLAMIC_CONTENT.test(trimmed)) {
-      return { isValid: false, error: 'Description contains invalid characters' };
+      return {
+        isValid: false,
+        error: 'Description contains invalid characters',
+      };
     }
 
     return { isValid: true, sanitizedValue: this.sanitizeHtml(trimmed) };
@@ -136,8 +152,24 @@ export class InputValidator {
     }
 
     // Pattern: Surah:Ayah (e.g., 2:255 or 2:255-256)
-    if (!REGEX_PATTERNS.QURANIC_REFERENCE.test(trimmed)) {
-      return { isValid: false, error: 'Invalid Quranic reference format. Use format: Surah:Ayah (e.g., 2:255)' };
+    const match = REGEX_PATTERNS.QURANIC_REFERENCE.exec(trimmed);
+    if (!match) {
+      return {
+        isValid: false,
+        error:
+          'Invalid Quranic reference format. Use format: Surah:Ayah (e.g., 2:255)',
+      };
+    }
+
+    const surah = Number(match[1]);
+    const firstAyah = Number(match[2]);
+    const lastAyah = match[3] ? Number(match[3].slice(1)) : firstAyah;
+    if (surah < 1 || surah > 114 || firstAyah < 1 || lastAyah < firstAyah) {
+      return {
+        isValid: false,
+        error:
+          'Quranic references must use a valid surah and positive, ascending ayah numbers',
+      };
     }
 
     return { isValid: true, sanitizedValue: trimmed };
@@ -158,7 +190,10 @@ export class InputValidator {
     }
 
     if (trimmed.length > MAX_LENGTHS.REFERENCE) {
-      return { isValid: false, error: `Reference must be less than ${MAX_LENGTHS.REFERENCE} characters` };
+      return {
+        isValid: false,
+        error: `Reference must be less than ${MAX_LENGTHS.REFERENCE} characters`,
+      };
     }
 
     if (!REGEX_PATTERNS.HADITH_REFERENCE.test(trimmed)) {
@@ -183,12 +218,18 @@ export class InputValidator {
     }
 
     if (trimmed.length > MAX_LENGTHS.SEARCH_QUERY) {
-      return { isValid: false, error: `Search query must be less than ${MAX_LENGTHS.SEARCH_QUERY} characters` };
+      return {
+        isValid: false,
+        error: `Search query must be less than ${MAX_LENGTHS.SEARCH_QUERY} characters`,
+      };
     }
 
     // Allow safe characters only
     if (!REGEX_PATTERNS.SAFE_TEXT.test(trimmed)) {
-      return { isValid: false, error: 'Search query contains invalid characters' };
+      return {
+        isValid: false,
+        error: 'Search query contains invalid characters',
+      };
     }
 
     return { isValid: true, sanitizedValue: trimmed };
@@ -251,7 +292,10 @@ export class InputValidator {
     }
 
     if (trimmed.length > MAX_LENGTHS.NOTE) {
-      return { isValid: false, error: `Note must be less than ${MAX_LENGTHS.NOTE} characters` };
+      return {
+        isValid: false,
+        error: `Note must be less than ${MAX_LENGTHS.NOTE} characters`,
+      };
     }
 
     if (!REGEX_PATTERNS.SAFE_TEXT.test(trimmed)) {
@@ -266,11 +310,11 @@ export class InputValidator {
    */
   private static sanitizeHtml(input: string): string {
     return input
+      .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#x27;')
-      .replace(/&/g, '&amp;')
       .replace(/\//g, '&#x2F;');
   }
 
@@ -340,7 +384,7 @@ export class InputValidator {
       /<embed[^>]*>/gi,
     ];
 
-    return !dangerousPatterns.some(pattern => pattern.test(input));
+    return !dangerousPatterns.some((pattern) => pattern.test(input));
   }
 
   /**

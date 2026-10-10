@@ -1,48 +1,33 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { AppSettings } from '../../core/types';
+import {
+  AppSettings,
+  MainTabParamList,
+  RootStackParamList,
+} from '../../core/types';
 import { getLocalizedText, shouldUseRTL } from '../../core/utils';
 import { APP_CONFIG } from '../../core/constants';
 
 // Import screens (will be updated as we create them)
 import SplashScreen from '../../screens/SplashScreen';
-import HomeScreen from '../../screens/HomeScreen';
 import CategoriesScreen from '../../screens/CategoriesScreen';
 import ContentScreen from '../../screens/ContentScreen';
 import MapScreen from '../../screens/MapScreen';
 import AboutScreen from '../../screens/AboutScreen';
 import DetailScreen from '../../screens/DetailScreen';
 import SearchScreen from '../../screens/SearchScreen';
-import SettingsScreen from '../../screens/SettingsScreen';
-
-// Types
-export type RootStackParamList = {
-  Splash: undefined;
-  Main: undefined;
-  Detail: {
-    item: any;
-    type: 'rule' | 'category';
-  };
-  Search: undefined;
-  Settings: undefined;
-  Content: {
-    category: string;
-    title: any;
-  };
-  Map: undefined;
-  About: undefined;
-};
-
-export type MainTabParamList = {
-  Home: undefined;
-  Categories: undefined;
-  Content: undefined;
-  Map: undefined;
-  Settings: undefined;
-};
+import SettingsScreen from '../../features/settings/screens/SettingsScreen';
+import EnhancedHomeScreen from '../../features/content/screens/EnhancedHomeScreen';
 
 // Navigation Context
 interface NavigationContextType {
@@ -51,12 +36,16 @@ interface NavigationContextType {
   isRTL: boolean;
 }
 
-const NavigationContext = createContext<NavigationContextType | undefined>(undefined);
+const NavigationContext = createContext<NavigationContextType | undefined>(
+  undefined,
+);
 
 export const useNavigationContext = () => {
   const context = useContext(NavigationContext);
   if (!context) {
-    throw new Error('useNavigationContext must be used within NavigationProvider');
+    throw new Error(
+      'useNavigationContext must be used within NavigationProvider',
+    );
   }
   return context;
 };
@@ -81,7 +70,7 @@ export const NavigationProvider: React.FC<NavigationProviderProps> = ({
       autoPlayAudio: false,
       notifications: true,
       rtl: false,
-    }
+    },
   );
 
   const [isRTL, setIsRTL] = useState(false);
@@ -89,13 +78,16 @@ export const NavigationProvider: React.FC<NavigationProviderProps> = ({
   useEffect(() => {
     const newRTL = shouldUseRTL(settings);
     setIsRTL(newRTL);
-
-    // Save settings to storage
-    // This would integrate with AsyncStorage in a real implementation
+    AsyncStorage.setItem(
+      APP_CONFIG.storage.settingsKey,
+      JSON.stringify(settings),
+    ).catch((error) => {
+      console.warn('Failed to save settings:', error);
+    });
   }, [settings]);
 
   const updateSettings = (newSettings: Partial<AppSettings>) => {
-    setSettings(prev => ({ ...prev, ...newSettings }));
+    setSettings((prev) => ({ ...prev, ...newSettings }));
   };
 
   return (
@@ -131,9 +123,6 @@ const MainTabs: React.FC = () => {
       case 'Categories':
         iconName = 'category';
         break;
-      case 'Content':
-        iconName = 'menu-book';
-        break;
       case 'Map':
         iconName = 'map';
         break;
@@ -158,11 +147,6 @@ const MainTabs: React.FC = () => {
         albanian: 'Kategoritë',
         arabic: 'الفئات',
         english: 'Categories',
-      },
-      Content: {
-        albanian: 'Përmbajtja',
-        arabic: 'المحتوى',
-        english: 'Content',
       },
       Map: {
         albanian: 'Harta',
@@ -204,7 +188,7 @@ const MainTabs: React.FC = () => {
     >
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={EnhancedHomeScreen}
         options={{
           headerShown: false,
         }}
@@ -218,16 +202,6 @@ const MainTabs: React.FC = () => {
             writingDirection: settings.rtl ? 'rtl' : 'ltr',
           },
         })}
-      />
-      <Tab.Screen
-        name="Content"
-        component={CategoriesScreen} // Will be replaced with ContentScreen
-        options={{
-          title: getTabBarLabel('Content'),
-          headerTitleStyle: {
-            writingDirection: settings.rtl ? 'rtl' : 'ltr',
-          },
-        }}
       />
       <Tab.Screen
         name="Map"
@@ -283,7 +257,10 @@ const AppNavigator: React.FC = () => {
           name="Detail"
           component={DetailScreen}
           options={({ route }) => ({
-            title: route.params.type === 'category' ? 'Category Details' : 'Rule Details',
+            title:
+              route.params.type === 'category'
+                ? 'Category Details'
+                : 'Rule Details',
             headerTitleStyle: {
               writingDirection: 'rtl', // Will be updated based on settings
             },

@@ -5,11 +5,10 @@ import android.os.Build;
 import android.text.SpannableString;
 import android.text.style.URLSpan;
 import android.text.util.Linkify;
-import android.view.AccessibilityManager;
+import android.view.accessibility.AccessibilityManager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.accessibility.AccessibilityEvent;
-import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.TextView;
 
 import java.util.List;
@@ -185,18 +184,6 @@ public class AccessibilityUtils {
         itemView.setContentDescription(contentDescription);
         itemView.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_YES);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            itemView.setAccessibilityCollectionItemInfo(
-                new AccessibilityNodeInfo.CollectionItemInfo.Builder()
-                    .setRowIndex(position)
-                    .setColumnIndex(0)
-                    .setRowSpan(1)
-                    .setColumnSpan(1)
-                    .setHeading(false)
-                    .setSelected(false)
-                    .build()
-            );
-        }
     }
 
     /**

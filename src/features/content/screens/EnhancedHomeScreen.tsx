@@ -11,15 +11,20 @@ import {
   Animated,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { useNavigation } from '@react-navigation/native';
+import {
+  CompositeNavigationProp,
+  useNavigation,
+} from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 
-import { RootStackParamList } from '../../../shared/navigation/AppNavigator';
 import { useNavigationContext } from '../../../shared/navigation/AppNavigator';
 import {
   HajjData,
   Category,
   AppSettings,
+  MainTabParamList,
+  RootStackParamList,
 } from '../../../core/types';
 import {
   getLocalizedTextWithFallback,
@@ -29,7 +34,10 @@ import {
 import { APP_CONFIG } from '../../../core/constants';
 import ContentService from '../services/ContentService';
 
-type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Main'>;
+type HomeScreenNavigationProp = CompositeNavigationProp<
+  BottomTabNavigationProp<MainTabParamList, 'Home'>,
+  StackNavigationProp<RootStackParamList>
+>;
 
 interface FeatureCardProps {
   icon: string;
@@ -93,7 +101,9 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
         activeOpacity={0.7}
       >
         <View style={styles.cardContent}>
-          <View style={[styles.iconContainer, { backgroundColor: `${color}20` }]}>
+          <View
+            style={[styles.iconContainer, { backgroundColor: `${color}20` }]}
+          >
             <Icon name={icon} size={24} color={color} />
           </View>
 
@@ -130,7 +140,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
             color={APP_CONFIG.theme.textSecondary}
             style={[
               styles.chevron,
-              { transform: [{ rotate: isCardRTL ? '180deg' : '0deg' }] }
+              { transform: [{ rotate: isCardRTL ? '180deg' : '0deg' }] },
             ]}
           />
         </View>
@@ -148,7 +158,7 @@ const EnhancedHomeScreen: React.FC = () => {
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const contentService = useMemo(() => ContentService.getInstance(), []);
+  const contentService = useMemo(() => ContentService, []);
   const isRTL = shouldUseRTL(settings);
 
   // Load data
@@ -184,12 +194,15 @@ const EnhancedHomeScreen: React.FC = () => {
   }, [contentService, loadData]);
 
   // Navigation handlers
-  const handleCategoryPress = useCallback((category: Category) => {
-    navigation.navigate('Content', {
-      category: category.name,
-      title: category.title,
-    });
-  }, [navigation]);
+  const handleCategoryPress = useCallback(
+    (category: Category) => {
+      navigation.navigate('Content', {
+        category: category.name,
+        title: category.title,
+      });
+    },
+    [navigation],
+  );
 
   const handleSearchPress = useCallback(() => {
     navigation.navigate('Search');
@@ -205,7 +218,7 @@ const EnhancedHomeScreen: React.FC = () => {
 
   // Featured categories for quick access
   const featuredCategories = useMemo(() => {
-    return categories.filter(cat => cat.featured).slice(0, 3);
+    return categories.filter((cat) => cat.featured).slice(0, 3);
   }, [categories]);
 
   if (loading) {
@@ -230,19 +243,32 @@ const EnhancedHomeScreen: React.FC = () => {
   }
 
   return (
-    <View style={[styles.container, { backgroundColor: APP_CONFIG.theme.background }]}>
+    <View
+      style={[
+        styles.container,
+        { backgroundColor: APP_CONFIG.theme.background },
+      ]}
+    >
       {/* Header */}
-      <View style={[styles.header, { backgroundColor: APP_CONFIG.theme.primary }]}>
+      <View
+        style={[styles.header, { backgroundColor: APP_CONFIG.theme.primary }]}
+      >
         <View style={styles.headerContent}>
           <View>
             <Text style={styles.welcomeText}>
               {getLocalizedTextWithFallback(
-                { albanian: 'Mirësevini', arabic: 'أهلاً بك', english: 'Welcome' },
-                settings
+                {
+                  albanian: 'Mirësevini',
+                  arabic: 'أهلاً بك',
+                  english: 'Welcome',
+                },
+                settings,
               )}
             </Text>
             <Text style={styles.appTitle}>
-              {hajjData ? getLocalizedTextWithFallback(hajjData.title, settings) : 'Hajj Rules'}
+              {hajjData
+                ? getLocalizedTextWithFallback(hajjData.title, settings)
+                : 'Hajj Rules'}
             </Text>
           </View>
 
@@ -282,7 +308,10 @@ const EnhancedHomeScreen: React.FC = () => {
           <View style={[styles.introductionCard, styles.cardMargin]}>
             <View style={styles.introductionContent}>
               <Text style={styles.introductionText}>
-                {getLocalizedTextWithFallback(hajjData.introduction.description, settings)}
+                {getLocalizedTextWithFallback(
+                  hajjData.introduction.description,
+                  settings,
+                )}
               </Text>
             </View>
           </View>
@@ -292,18 +321,27 @@ const EnhancedHomeScreen: React.FC = () => {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>
             {getLocalizedTextWithFallback(
-              { albanian: 'Aksesi i Shpejtë', arabic: 'الوصول السريع', english: 'Quick Access' },
-              settings
+              {
+                albanian: 'Aksesi i Shpejtë',
+                arabic: 'الوصول السريع',
+                english: 'Quick Access',
+              },
+              settings,
             )}
           </Text>
 
           <FeatureCard
             icon="menu-book"
-            title={{ albanian: 'Kategoritë', arabic: 'الفئات', english: 'Categories' }}
+            title={{
+              albanian: 'Kategoritë',
+              arabic: 'الفئات',
+              english: 'Categories',
+            }}
             description={{
-              albanian: 'Shfletoni të gjitha rregullat e Haxhit të organizuara për kategori',
+              albanian:
+                'Shfletoni të gjitha rregullat e Haxhit të organizuara për kategori',
               arabic: 'تصفح جميع قواعد الحج المنظمة حسب الفئة',
-              english: 'Browse all Hajj rules organized by category'
+              english: 'Browse all Hajj rules organized by category',
             }}
             onPress={() => navigation.navigate('Categories')}
             settings={settings}
@@ -311,11 +349,15 @@ const EnhancedHomeScreen: React.FC = () => {
 
           <FeatureCard
             icon="map"
-            title={{ albanian: 'Harta e Miqat', arabic: 'خريطة المواقيت', english: 'Miqat Map' }}
+            title={{
+              albanian: 'Harta e Miqat',
+              arabic: 'خريطة المواقيت',
+              english: 'Miqat Map',
+            }}
             description={{
               albanian: 'Vendndodhjet e Miqat-ve ku fillon Ihrami',
               arabic: 'مواقع المواقيت حيث يبدأ الإحرام',
-              english: 'Locations of Miqat where Ihram begins'
+              english: 'Locations of Miqat where Ihram begins',
             }}
             onPress={handleMapPress}
             color="#F57C00"
@@ -324,11 +366,16 @@ const EnhancedHomeScreen: React.FC = () => {
 
           <FeatureCard
             icon="help"
-            title={{ albanian: 'Rreth Aplikacionit', arabic: 'حول التطبيق', english: 'About App' }}
+            title={{
+              albanian: 'Rreth Aplikacionit',
+              arabic: 'حول التطبيق',
+              english: 'About App',
+            }}
             description={{
-              albanian: 'Mësoni më shumë rreth aplikacionit dhe burimeve islame',
+              albanian:
+                'Mësoni më shumë rreth aplikacionit dhe burimeve islame',
               arabic: 'اعرف المزيد عن التطبيق ومصادره الإسلامية',
-              english: 'Learn more about the app and its Islamic sources'
+              english: 'Learn more about the app and its Islamic sources',
             }}
             onPress={() => navigation.navigate('About')}
             color="#7B1FA2"
@@ -341,8 +388,12 @@ const EnhancedHomeScreen: React.FC = () => {
           <View style={styles.section}>
             <Text style={styles.sectionTitle}>
               {getLocalizedTextWithFallback(
-                { albanian: 'Kategoritë e Rekomanduara', arabic: 'الفئات الموصى بها', english: 'Featured Categories' },
-                settings
+                {
+                  albanian: 'Kategoritë e Rekomanduara',
+                  arabic: 'الفئات الموصى بها',
+                  english: 'Featured Categories',
+                },
+                settings,
               )}
             </Text>
 
@@ -371,7 +422,10 @@ const EnhancedHomeScreen: React.FC = () => {
                 style={styles.infoIcon}
               />
               <Text style={styles.infoText}>
-                {getLocalizedTextWithFallback(hajjData.detyrimi_i_haxhit.description, settings)}
+                {getLocalizedTextWithFallback(
+                  hajjData.detyrimi_i_haxhit.description,
+                  settings,
+                )}
               </Text>
             </View>
           </View>

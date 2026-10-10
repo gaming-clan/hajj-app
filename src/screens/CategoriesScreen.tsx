@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -7,15 +7,17 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../core/types';
 import DataService from '../services/DataService';
-import {Category} from '../types';
+import { Category } from '../types';
 
-const {width} = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 
 const CategoriesScreen: React.FC = () => {
   const [categories, setCategories] = useState<Category[]>([]);
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
 
   useEffect(() => {
     const categoriesData = DataService.getCategories();
@@ -29,10 +31,11 @@ const CategoriesScreen: React.FC = () => {
     });
   };
 
-  const renderCategory = ({item}: {item: Category}) => (
+  const renderCategory = ({ item }: { item: Category }) => (
     <TouchableOpacity
       style={styles.categoryCard}
-      onPress={() => handleCategoryPress(item)}>
+      onPress={() => handleCategoryPress(item)}
+    >
       <View style={styles.categoryHeader}>
         <View style={styles.categoryIcon}>
           <Text style={styles.categoryIconText}>📚</Text>
@@ -55,7 +58,7 @@ const CategoriesScreen: React.FC = () => {
       <FlatList
         data={categories}
         renderItem={renderCategory}
-        keyExtractor={item => item.id.toString()}
+        keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={styles.listContainer}
         showsVerticalScrollIndicator={false}
       />
@@ -78,7 +81,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     elevation: 2,
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 1},
+    shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.1,
     shadowRadius: 2,
   },
