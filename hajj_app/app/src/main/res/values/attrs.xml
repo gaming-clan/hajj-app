@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="colorCanvas" format="color" />
+    <attr name="colorSurfaceAlt" format="color" />
+    <attr name="colorOnSurfaceVariant" format="color" />
+    <attr name="colorOutline" format="color" />
+    <attr name="colorNavigationSurface" format="color" />
+    <attr name="colorNavigationActive" format="color" />
+    <attr name="colorNavigationUnselected" format="color" />
+</resources>

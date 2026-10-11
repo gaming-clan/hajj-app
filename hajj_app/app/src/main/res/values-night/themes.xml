@@ -2,6 +2,9 @@
 <resources>
     <!-- Base application theme for dark mode -->
     <style name="Theme.HajjApp" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorCanvas">#FFF8F4</item><item name="colorSurfaceAlt">#FFF1E4</item>
+        <item name="colorOnSurfaceVariant">#514536</item><item name="colorOutline">#D6C4B1</item>
+        <item name="colorNavigationSurface">#FFF1E4</item><item name="colorNavigationActive">#FEE2B7</item><item name="colorNavigationUnselected">#74685C</item>
         <!-- Primary brand color -->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/primary_dark</item>
@@ -16,8 +19,8 @@
         <item name="android:statusBarColor">@color/primary_dark</item>
         
         <!-- Background colors -->
-        <item name="android:windowBackground">@color/window_background</item>
-        <item name="android:navigationBarColor">@color/window_background</item>
+        <item name="android:windowBackground">#FFF8F4</item>
+        <item name="android:navigationBarColor">#FFF8F4</item>
         <item name="android:windowLightNavigationBar">true</item>
         <item name="colorSurface">@color/surface</item>
         <item name="colorOnSurface">@color/on_surface</item>

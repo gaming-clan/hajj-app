@@ -2,6 +2,9 @@ package com.muslim.hajjrules;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.content.res.ColorStateList;
+import android.graphics.drawable.GradientDrawable;
+import android.util.TypedValue;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +16,7 @@ import com.muslim.hajjrules.fragments.HomeFragment;
 import com.muslim.hajjrules.fragments.SearchFragment;
 import com.muslim.hajjrules.fragments.MapFragment;
 import com.muslim.hajjrules.fragments.SavedFragment;
+import com.muslim.hajjrules.util.ThemeManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -31,10 +35,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(ThemeManager.styleFor(this));
         setContentView(R.layout.activity_main);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setItemActiveIndicatorEnabled(true);
+        applyNavigationTheme();
         getSupportFragmentManager().addOnBackStackChangedListener(() -> {
             if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
                 setTitle(titleForDestination(selectedDestination));
@@ -50,6 +56,31 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         if (getSupportFragmentManager().findFragmentById(R.id.fragment_container) == null) {
             loadFragment(fragmentForDestination(selectedDestination));
         }
+    }
+
+    private int themeColor(int attribute) {
+        TypedValue value = new TypedValue();
+        getTheme().resolveAttribute(attribute, value, true);
+        return value.data;
+    }
+
+    private void applyNavigationTheme() {
+        int primary = themeColor(com.google.android.material.R.attr.colorPrimaryVariant);
+        int muted = themeColor(R.attr.colorNavigationUnselected);
+        int surface = themeColor(R.attr.colorNavigationSurface);
+        int outline = themeColor(R.attr.colorOutline);
+        int active = themeColor(R.attr.colorNavigationActive);
+        ColorStateList tint = new ColorStateList(
+                new int[][]{new int[]{android.R.attr.state_checked}, new int[]{}},
+                new int[]{primary, muted});
+        bottomNavigationView.setItemIconTintList(tint);
+        bottomNavigationView.setItemTextColor(tint);
+        bottomNavigationView.setItemRippleColor(ColorStateList.valueOf(active));
+        GradientDrawable pill = new GradientDrawable();
+        pill.setColor(surface);
+        pill.setCornerRadius(getResources().getDisplayMetrics().density * 28);
+        pill.setStroke(Math.round(getResources().getDisplayMetrics().density), outline);
+        bottomNavigationView.setBackground(pill);
     }
 
     @Override

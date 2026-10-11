@@ -2,24 +2,27 @@
 <resources>
     <!-- Base application theme -->
     <style name="Theme.HajjApp" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorCanvas">#FFF8F4</item><item name="colorSurfaceAlt">#FFF1E4</item>
+        <item name="colorOnSurfaceVariant">#514536</item><item name="colorOutline">#D6C4B1</item>
+        <item name="colorNavigationSurface">#FFF1E4</item><item name="colorNavigationActive">#FEE2B7</item><item name="colorNavigationUnselected">#74685C</item>
         <!-- Primary brand color -->
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryVariant">@color/primary_dark</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">#0D4736</item>
+        <item name="colorPrimaryVariant">#002F22</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
         
         <!-- Secondary brand color -->
-        <item name="colorSecondary">@color/accent</item>
-        <item name="colorSecondaryVariant">@color/accent_dark</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">#FDB963</item>
+        <item name="colorSecondaryVariant">#855300</item>
+        <item name="colorOnSecondary">#000000</item>
         
         <!-- Status bar color -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">#002F22</item>
         
         <!-- Background colors -->
-        <item name="android:windowBackground">@color/window_background</item>
-        <item name="colorSurface">@color/surface</item>
-        <item name="colorOnSurface">@color/on_surface</item>
-        <item name="android:navigationBarColor">@color/window_background</item>
+        <item name="android:windowBackground">#FFF8F4</item>
+        <item name="colorSurface">#FFFFFF</item>
+        <item name="colorOnSurface">#231A0D</item>
+        <item name="android:navigationBarColor">#FFF8F4</item>
         <item name="android:windowLightNavigationBar">true</item>
         
         <!-- Card styles -->
@@ -38,15 +41,51 @@
         <item name="android:windowExitTransition">@android:transition/fade</item>
     </style>
 
+    <style name="Theme.HajjApp.SacredRawdah" parent="Theme.HajjApp">
+        <item name="colorPrimary">#0A3D2E</item><item name="colorPrimaryVariant">#78a894</item><item name="colorOnPrimary">#F2F9F5</item>
+        <item name="colorSecondary">#e9c349</item><item name="colorSecondaryVariant">#af8d11</item><item name="colorOnSecondary">#342800</item>
+        <item name="colorSurface">#01251a</item><item name="colorOnSurface">#c5ebda</item><item name="colorCanvas">#00170f</item><item name="colorSurfaceAlt">#0d3024</item>
+        <item name="colorOnSurfaceVariant">#c0c8c3</item><item name="colorOutline">#404944</item><item name="colorNavigationSurface">#002117</item><item name="colorNavigationActive">#193b2f</item><item name="colorNavigationUnselected">#8a938e</item>
+        <item name="android:windowBackground">#00170f</item><item name="android:statusBarColor">#00120b</item><item name="android:navigationBarColor">#00170f</item><item name="android:windowLightNavigationBar">false</item>
+    </style>
+    <style name="Theme.HajjApp.SacredPurity" parent="Theme.HajjApp">
+        <item name="colorPrimary">#000000</item><item name="colorPrimaryVariant">#131b2e</item><item name="colorOnPrimary">#ffffff</item>
+        <item name="colorSecondary">#6b5d3d</item><item name="colorSecondaryVariant">#524527</item><item name="colorOnSecondary">#ffffff</item>
+        <item name="colorSurface">#ffffff</item><item name="colorOnSurface">#191c1e</item><item name="colorCanvas">#f7f9fb</item><item name="colorSurfaceAlt">#f2f4f6</item>
+        <item name="colorOnSurfaceVariant">#45464d</item><item name="colorOutline">#c6c6cd</item><item name="colorNavigationSurface">#f2f4f6</item><item name="colorNavigationActive">#f2ddb5</item><item name="colorNavigationUnselected">#76777d</item>
+        <item name="android:windowBackground">#f7f9fb</item><item name="android:statusBarColor">#131b2e</item><item name="android:navigationBarColor">#f7f9fb</item><item name="android:windowLightNavigationBar">true</item>
+    </style>
+    <style name="Theme.HajjApp.SanctuaryGuidance" parent="Theme.HajjApp">
+        <item name="colorPrimary">#002f22</item><item name="colorPrimaryVariant">#0d4736</item><item name="colorOnPrimary">#ffffff</item>
+        <item name="colorSecondary">#775a19</item><item name="colorSecondaryVariant">#59420e</item><item name="colorOnSecondary">#ffffff</item>
+        <item name="colorSurface">#ffffff</item><item name="colorOnSurface">#181c1b</item><item name="colorCanvas">#f7faf6</item><item name="colorSurfaceAlt">#f1f4f1</item>
+        <item name="colorOnSurfaceVariant">#404944</item><item name="colorOutline">#c0c9c3</item><item name="colorNavigationSurface">#f1f4f1</item><item name="colorNavigationActive">#dbe8df</item><item name="colorNavigationUnselected">#707974</item>
+        <item name="android:windowBackground">#f7faf6</item><item name="android:statusBarColor">#002f22</item><item name="android:navigationBarColor">#f7faf6</item><item name="android:windowLightNavigationBar">true</item>
+    </style>
+    <style name="Theme.HajjApp.KiswahRoyale" parent="Theme.HajjApp">
+        <item name="colorPrimary">#0d0f12</item><item name="colorPrimaryVariant">#f2ca50</item><item name="colorOnPrimary">#f5f3eb</item>
+        <item name="colorSecondary">#e1c561</item><item name="colorSecondaryVariant">#c59b27</item><item name="colorOnSecondary">#3c2f00</item>
+        <item name="colorSurface">#191c20</item><item name="colorOnSurface">#e2e2e6</item><item name="colorCanvas">#111317</item><item name="colorSurfaceAlt">#252930</item>
+        <item name="colorOnSurfaceVariant">#c4c6d0</item><item name="colorOutline">#41444d</item><item name="colorNavigationSurface">#191c20</item><item name="colorNavigationActive">#3c3520</item><item name="colorNavigationUnselected">#9ea3ae</item>
+        <item name="android:windowBackground">#111317</item><item name="android:statusBarColor">#0d0f12</item><item name="android:navigationBarColor">#111317</item><item name="android:windowLightNavigationBar">false</item>
+    </style>
+    <style name="Theme.HajjApp.NocturnalSanctuary" parent="Theme.HajjApp">
+        <item name="colorPrimary">#081612</item><item name="colorPrimaryVariant">#e5b95f</item><item name="colorOnPrimary">#f5f8f6</item>
+        <item name="colorSecondary">#9cd2ba</item><item name="colorSecondaryVariant">#1a503d</item><item name="colorOnSecondary">#003828</item>
+        <item name="colorSurface">#14221e</item><item name="colorOnSurface">#d6e6df</item><item name="colorCanvas">#081612</item><item name="colorSurfaceAlt">#1e2d28</item>
+        <item name="colorOnSurfaceVariant">#d1c5b2</item><item name="colorOutline">#4e4637</item><item name="colorNavigationSurface">#101e1a</item><item name="colorNavigationActive">#293833</item><item name="colorNavigationUnselected">#9a8f7e</item>
+        <item name="android:windowBackground">#081612</item><item name="android:statusBarColor">#04110d</item><item name="android:navigationBarColor">#081612</item><item name="android:windowLightNavigationBar">false</item>
+    </style>
+
     <style name="Widget.HajjApp.Navigation.ActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="android:color">@color/navigation_active</item>
+        <item name="android:color">?attr/colorNavigationActive</item>
     </style>
 
     <!-- Card style -->
     <style name="Widget.HajjApp.CardView" parent="Widget.MaterialComponents.CardView">
         <item name="cardElevation">1dp</item>
         <item name="cardCornerRadius">18dp</item>
-        <item name="strokeColor">@color/surface_outline</item>
+        <item name="strokeColor">?attr/colorOutline</item>
         <item name="strokeWidth">1dp</item>
         <item name="android:layout_margin">8dp</item>
     </style>

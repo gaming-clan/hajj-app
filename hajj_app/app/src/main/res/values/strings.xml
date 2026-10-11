@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="app_theme_names">
+        <item>Sacred Rawdah</item>
+        <item>Hijaz Golden Dawn</item>
+        <item>Sacred Purity</item>
+        <item>Sanctuary Guidance</item>
+        <item>Kiswah Royale</item>
+        <item>Nocturnal Sanctuary</item>
+    </string-array>
     <string name="app_name">Rregullat e Haxhit</string>
     <string name="home">Kryefaqja</string>
     <string name="categories">Kategoritë</string>
