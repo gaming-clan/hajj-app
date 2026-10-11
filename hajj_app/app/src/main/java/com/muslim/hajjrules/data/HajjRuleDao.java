@@ -75,6 +75,9 @@ public interface HajjRuleDao {
     @Query("SELECT COUNT(*) FROM hajj_rules")
     int getRulesCountSync();
 
+    @Query("SELECT COUNT(*) FROM hajj_rules WHERE category = :category")
+    int getRulesCountByCategorySync(String category);
+
     @Query("SELECT COUNT(*) FROM hajj_rules WHERE (quranicReference IS NOT NULL OR hadithReference IS NOT NULL)")
     LiveData<Integer> getRulesWithEvidenceCount();
 

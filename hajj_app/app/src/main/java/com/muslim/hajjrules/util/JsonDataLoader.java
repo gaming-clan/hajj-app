@@ -209,6 +209,35 @@ public class JsonDataLoader {
                 }
             }
 
+            // The ihram section is an object with explanatory text and nested
+            // arrays, unlike the top-level rule sections which are arrays.
+            if (jsonData.get("ihrami") instanceof Map) {
+                Map<String, Object> ihram = (Map<String, Object>) jsonData.get("ihrami");
+                addRule(rules, ruleId++, "Çfarë është Ihrami", ihram.get("description"), "ihrami");
+                addRule(rules, ruleId++, "Koha e Ihramit", ihram.get("koha"), "ihrami");
+
+                Object intentionTypes = ihram.get("llojet_e_nijetit");
+                if (intentionTypes instanceof List) {
+                    for (Object value : (List<?>) intentionTypes) {
+                        if (!(value instanceof Map)) continue;
+                        Map<String, Object> intention = (Map<String, Object>) value;
+                        String type = localizedText(intention.get("lloji"));
+                        addRule(rules, ruleId++, "Nijeti për " + type,
+                                intention.get("nijeti"), "ihrami");
+                    }
+                }
+
+                Object preparations = ihram.get("para_veshjes");
+                if (preparations instanceof List) {
+                    for (Object value : (List<?>) preparations) {
+                        if (!(value instanceof Map)) continue;
+                        Map<String, Object> preparation = (Map<String, Object>) value;
+                        addRule(rules, ruleId++, localizedText(preparation.get("veprim")),
+                                preparation.get("description"), "ihrami");
+                    }
+                }
+            }
+
             if (jsonData.containsKey("edukata_e_udhetimit")) {
                 List<Map<String, Object>> etiquetteItems = (List<Map<String, Object>>) jsonData.get("edukata_e_udhetimit");
                 for (Map<String, Object> item : etiquetteItems) {
@@ -276,6 +305,12 @@ public class JsonDataLoader {
             if (arabic instanceof String) return (String) arabic;
         }
         return value instanceof String ? (String) value : "";
+    }
+
+    private void addRule(List<HajjRule> rules, int id, String title, Object description, String category) {
+        if (title == null || title.trim().isEmpty() || description == null) return;
+        rules.add(new HajjRule(id, title, localizedText(description), category,
+                false, 0, null, null));
     }
 
     /**

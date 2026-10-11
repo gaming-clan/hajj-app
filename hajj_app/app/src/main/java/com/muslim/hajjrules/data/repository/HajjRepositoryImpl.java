@@ -64,14 +64,9 @@ public class HajjRepositoryImpl implements HajjRepositoryInterface {
     private void initializeData() {
         executorService.execute(() -> {
             try {
-                // Check if data exists
-                int ruleCount = ruleDao.getRulesCountSync();
-                int categoryCount = categoryDao.getCategoriesCountSync();
-
-                if (ruleCount == 0 || categoryCount == 0) {
-                    // Load initial data from JSON
-                    loadInitialData();
-                }
+                // Seed empty tables and backfill newly added content categories
+                // for existing installs without replacing saved rules/favorites.
+                loadInitialData();
 
                 // Update freshness status
                 updateDataFreshness();
@@ -89,14 +84,24 @@ public class HajjRepositoryImpl implements HajjRepositoryInterface {
         try {
             // Load categories
             List<Category> categories = jsonDataLoader.loadCategories();
-            if (categories != null && !categories.isEmpty()) {
+            if (categoryDao.getCategoriesCountSync() == 0 && categories != null && !categories.isEmpty()) {
                 categoryDao.insertAll(categories);
             }
 
             // Load rules
             List<HajjRule> rules = jsonDataLoader.loadRules();
             if (rules != null && !rules.isEmpty()) {
-                ruleDao.insertAll(rules);
+                java.util.Map<String, List<HajjRule>> rulesByCategory = new java.util.LinkedHashMap<>();
+                for (HajjRule rule : rules) {
+                    rulesByCategory.computeIfAbsent(rule.getCategory(), ignored -> new java.util.ArrayList<>()).add(rule);
+                }
+                for (java.util.Map.Entry<String, List<HajjRule>> entry : rulesByCategory.entrySet()) {
+                    if (ruleDao.getRulesCountByCategorySync(entry.getKey()) == 0) {
+                        // Preserve existing database IDs from older asset versions.
+                        for (HajjRule rule : entry.getValue()) rule.setId(0);
+                        ruleDao.insertAll(entry.getValue());
+                    }
+                }
             }
 
             lastRefreshTime = System.currentTimeMillis();
