@@ -13,6 +13,12 @@ import com.muslim.hajjrules.R;
 
 public class AboutFragment extends Fragment {
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getActivity() != null) getActivity().setTitle(R.string.about);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

@@ -2,22 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_home"
-        android:icon="@android:drawable/ic_menu_compass"
-        android:title="@string/home" />
-    <item
-        android:id="@+id/navigation_categories"
-        android:icon="@android:drawable/ic_menu_sort_by_size"
-        android:title="@string/categories" />
+        android:icon="@drawable/ic_explore_24"
+        android:title="@string/guide" />
     <item
         android:id="@+id/navigation_search"
-        android:icon="@android:drawable/ic_menu_search"
+        android:icon="@drawable/ic_search_24"
         android:title="@string/search" />
     <item
-        android:id="@+id/navigation_about"
-        android:icon="@android:drawable/ic_menu_info_details"
-        android:title="@string/about" />
+        android:id="@+id/navigation_saved"
+        android:icon="@drawable/ic_bookmark_outline_24"
+        android:title="@string/saved" />
     <item
         android:id="@+id/navigation_map"
-        android:icon="@android:drawable/ic_menu_mapmode"
+        android:icon="@drawable/ic_map_24"
         android:title="@string/map" />
+    <item
+        android:id="@+id/navigation_about"
+        android:icon="@drawable/ic_info_24"
+        android:title="@string/nav_about" />
 </menu>

@@ -29,6 +29,14 @@ import dagger.hilt.android.AndroidEntryPoint;
 @AndroidEntryPoint
 public class HomeFragment extends Fragment {
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getActivity() != null && getParentFragmentManager().getBackStackEntryCount() == 0) {
+            getActivity().setTitle(R.string.guide);
+        }
+    }
+
     private RecyclerView recyclerView;
     private CategoryAdapter adapter;
     private HomeViewModel homeViewModel;

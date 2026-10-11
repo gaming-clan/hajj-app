@@ -24,6 +24,7 @@
         
         <!-- Card styles -->
         <item name="materialCardViewStyle">@style/Widget.HajjApp.CardView</item>
+        <item name="itemActiveIndicatorStyle">@style/Widget.HajjApp.Navigation.ActiveIndicator</item>
         
         <!-- Text appearance -->
         <item name="textAppearanceHeadline1">@style/TextAppearance.HajjApp.Headline1</item>
@@ -35,6 +36,10 @@
         <item name="android:windowActivityTransitions">true</item>
         <item name="android:windowEnterTransition">@android:transition/fade</item>
         <item name="android:windowExitTransition">@android:transition/fade</item>
+    </style>
+
+    <style name="Widget.HajjApp.Navigation.ActiveIndicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/navigation_active</item>
     </style>
 
     <!-- Card style -->

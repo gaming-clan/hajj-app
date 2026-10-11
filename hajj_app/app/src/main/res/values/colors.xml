@@ -17,6 +17,9 @@
     <color name="surface_warm">#FFF1E4</color>
     <color name="surface_outline">#D6C4B1</color>
     <color name="text_muted">#514536</color>
+    <color name="navigation_surface">#FFF1E4</color>
+    <color name="navigation_active">#FEE2B7</color>
+    <color name="navigation_unselected">#74685C</color>
     <color name="primary_dark_theme">#16404D</color>
     <color name="primary_dark_theme_variant">#1E5465</color>
     <color name="accent_dark_theme">#FFD54F</color>

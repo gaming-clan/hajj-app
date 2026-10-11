@@ -3,6 +3,9 @@
     <string name="app_name">Rregullat e Haxhit</string>
     <string name="home">Kryefaqja</string>
     <string name="categories">Kategoritë</string>
+    <string name="guide">Udhëzuesi</string>
+    <string name="saved">Ruajturat</string>
+    <string name="nav_about">Rreth</string>
     <string name="search">Kërko</string>
     <string name="about">Rreth Aplikacionit</string>
     <string name="introduction">Hyrje</string>
@@ -23,4 +26,9 @@
     <string name="no_results">Nuk u gjetën rezultate</string>
     <string name="map">Harta</string>
     <string name="contact_info">Kontakti: dariolloshi2023@gmail.com</string>
+    <string name="saved_rules_title">Rregullat e ruajtura</string>
+    <string name="saved_rules_empty">Nuk keni ruajtur ende rregulla. Prekni faqerojtësin në një rregull për ta gjetur këtu.</string>
+    <string name="save_rule">Ruaj rregullin</string>
+    <string name="remove_saved_rule">Hiq nga të ruajturat</string>
+    <string name="about_heading">RRETH UDHËZUESIT</string>
 </resources>

@@ -24,6 +24,7 @@
         
         <!-- Card styles -->
         <item name="materialCardViewStyle">@style/Widget.HajjApp.CardView</item>
+        <item name="itemActiveIndicatorStyle">@style/Widget.HajjApp.Navigation.ActiveIndicator</item>
         
         <!-- Enable window content transitions -->
         <item name="android:windowActivityTransitions">true</item>

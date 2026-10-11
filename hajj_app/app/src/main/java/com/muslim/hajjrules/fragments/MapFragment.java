@@ -41,6 +41,7 @@ public class MapFragment extends Fragment {
         
         // Enable multitouch controls
         map.setMultiTouchControls(true);
+        map.setBuiltInZoomControls(true);
         
         // Set initial zoom and center on Mecca
         IMapController mapController = map.getController();
@@ -50,6 +51,8 @@ public class MapFragment extends Fragment {
         
         // Add important Hajj locations
         addHajjLocations();
+        view.findViewById(R.id.button_center_mecca).setOnClickListener(v ->
+                map.getController().animateTo(new GeoPoint(21.4225, 39.8262)));
         
         return view;
     }
@@ -59,24 +62,24 @@ public class MapFragment extends Fragment {
         Marker kaabaMarker = new Marker(map);
         kaabaMarker.setPosition(new GeoPoint(21.4225, 39.8262));
         kaabaMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-        kaabaMarker.setTitle("Kaaba - Masjid al-Haram");
-        kaabaMarker.setSubDescription("The holiest site in Islam");
+        kaabaMarker.setTitle("Qabja - Mesxhidul Haram");
+        kaabaMarker.setSubDescription("Vendi më i shenjtë në Islam");
         map.getOverlays().add(kaabaMarker);
         
         // Mount Arafat
         Marker arafatMarker = new Marker(map);
         arafatMarker.setPosition(new GeoPoint(21.3544, 39.9857));
         arafatMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-        arafatMarker.setTitle("Mount Arafat");
-        arafatMarker.setSubDescription("The most important day of Hajj");
+        arafatMarker.setTitle("Arafati");
+        arafatMarker.setSubDescription("Vendi i qëndrimit në ditën e Arafatit");
         map.getOverlays().add(arafatMarker);
         
         // Muzdalifah
         Marker muzdalifaMarker = new Marker(map);
         muzdalifaMarker.setPosition(new GeoPoint(21.4067, 39.9364));
         muzdalifaMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-        muzdalifaMarker.setTitle("Muzdalifah");
-        muzdalifaMarker.setSubDescription("Sacred valley where pilgrims spend the night");
+        muzdalifaMarker.setTitle("Muzdelife");
+        muzdalifaMarker.setSubDescription("Lugina ku pelegrinët kalojnë natën pas Arafatit");
         map.getOverlays().add(muzdalifaMarker);
         
         // Mina
@@ -84,21 +87,22 @@ public class MapFragment extends Fragment {
         minaMarker.setPosition(new GeoPoint(21.4120, 39.8884));
         minaMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
         minaMarker.setTitle("Mina");
-        minaMarker.setSubDescription("City of tents - Jamarat location");
+        minaMarker.setSubDescription("Qyteti i tendave dhe vendi i Xhemerateve");
         map.getOverlays().add(minaMarker);
         
         // Masjid an-Nabawi (Medina)
         Marker medinaMarker = new Marker(map);
         medinaMarker.setPosition(new GeoPoint(24.4672, 39.6142));
         medinaMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-        medinaMarker.setTitle("Masjid an-Nabawi");
-        medinaMarker.setSubDescription("Prophet's Mosque in Medina");
+        medinaMarker.setTitle("Mesxhidun Nebevi");
+        medinaMarker.setSubDescription("Xhamia e Profetit ﷺ në Medine");
         map.getOverlays().add(medinaMarker);
     }
     
     @Override
     public void onResume() {
         super.onResume();
+        if (getActivity() != null) getActivity().setTitle(R.string.map);
         // This will refresh the osmdroid configuration on resuming.
         map.onResume();
     }

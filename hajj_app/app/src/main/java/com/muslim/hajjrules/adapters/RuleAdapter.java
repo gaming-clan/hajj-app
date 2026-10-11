@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -54,6 +55,16 @@ public class RuleAdapter extends RecyclerView.Adapter<RuleAdapter.RuleViewHolder
         HajjRule rule = rules.get(position);
         holder.title.setText(rule.getTitle());
         holder.description.setText(rule.getDescription());
+        holder.favorite.setVisibility(favoriteListener == null ? View.GONE : View.VISIBLE);
+        if (favoriteListener != null) {
+            holder.favorite.setImageResource(rule.isFavorite()
+                    ? R.drawable.ic_bookmark_filled_24 : R.drawable.ic_bookmark_outline_24);
+            holder.favorite.setColorFilter(androidx.core.content.ContextCompat.getColor(context,
+                    rule.isFavorite() ? R.color.accent_dark : R.color.navigation_unselected));
+            holder.favorite.setContentDescription(context.getString(
+                    rule.isFavorite() ? R.string.remove_saved_rule : R.string.save_rule));
+            holder.favorite.setOnClickListener(v -> favoriteListener.onFavoriteClick(rule));
+        }
         
         // Set the image if available
         if (rule.getImageResourceId() != 0) {
@@ -84,12 +95,14 @@ public class RuleAdapter extends RecyclerView.Adapter<RuleAdapter.RuleViewHolder
         TextView title;
         TextView description;
         ImageView imageIcon;
+        ImageButton favorite;
 
         public RuleViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.text_rule_title);
             description = itemView.findViewById(R.id.text_rule_description);
             imageIcon = itemView.findViewById(R.id.image_rule_icon);
+            favorite = itemView.findViewById(R.id.button_save_rule);
         }
     }
 }

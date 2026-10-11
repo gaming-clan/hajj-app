@@ -9,21 +9,22 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.muslim.hajjrules.R;
 import com.muslim.hajjrules.adapters.RuleAdapter;
 import com.muslim.hajjrules.model.HajjRule;
-import com.muslim.hajjrules.util.DataManager;
+import com.muslim.hajjrules.viewmodel.SearchViewModel;
 import com.muslim.hajjrules.DetailActivity;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 
+@dagger.hilt.android.AndroidEntryPoint
 public class SearchFragment extends Fragment {
     private RuleAdapter adapter;
+    private SearchViewModel searchViewModel;
 
     @Nullable
     @Override
@@ -34,10 +35,12 @@ public class SearchFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        SearchView searchView = view.findViewById(R.id.search_view);
+        com.google.android.material.textfield.TextInputEditText searchInput = view.findViewById(R.id.search_input);
         RecyclerView rv = view.findViewById(R.id.recycler_view_search);
+        android.widget.TextView emptyState = view.findViewById(R.id.empty_search);
+        searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new RuleAdapter(getContext(), new ArrayList<>());
+        adapter = new RuleAdapter(requireContext(), Collections.emptyList());
         rv.setAdapter(adapter);
         adapter.setOnItemClickListener(rule -> {
             Intent intent = new Intent(getActivity(), DetailActivity.class);
@@ -46,23 +49,24 @@ public class SearchFragment extends Fragment {
             intent.putExtra("ruleImageId", rule.getImageResourceId());
             startActivity(intent);
         });
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                updateResults(query);
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                updateResults(newText);
-                return true;
-            }
-
-            private void updateResults(String text) {
-                List<HajjRule> results = DataManager.getInstance(getContext()).searchRules(text);
-                adapter.updateRules(results);
-            }
+        adapter.setOnFavoriteClickListener(searchViewModel::toggleSaved);
+        searchViewModel.getResults().observe(getViewLifecycleOwner(), results -> {
+            adapter.updateRules(results);
+            emptyState.setVisibility(results == null || results.isEmpty() ? View.VISIBLE : View.GONE);
         });
+        searchInput.addTextChangedListener(new android.text.TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+                searchViewModel.setQuery(s.toString());
+            }
+            @Override public void afterTextChanged(android.text.Editable s) { }
+        });
+        searchViewModel.setQuery(searchInput.getText() == null ? "" : searchInput.getText().toString());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getActivity() != null) getActivity().setTitle(R.string.search);
     }
 }
