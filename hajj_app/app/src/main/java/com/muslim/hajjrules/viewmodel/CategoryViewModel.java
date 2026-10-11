@@ -11,8 +11,6 @@ import com.muslim.hajjrules.data.repository.HajjRepositoryInterface;
 import com.muslim.hajjrules.model.HajjRule;
 
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 import javax.inject.Inject;
 
@@ -26,8 +24,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 public class CategoryViewModel extends AndroidViewModel {
 
     private final HajjRepositoryInterface repository;
-    private final ExecutorService executorService;
-
     private final MutableLiveData<List<HajjRule>> rules = new MutableLiveData<>();
     private final MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     private final MutableLiveData<String> errorMessage = new MutableLiveData<>();
@@ -42,7 +38,6 @@ public class CategoryViewModel extends AndroidViewModel {
     public CategoryViewModel(Application application, HajjRepositoryInterface repository) {
         super(application);
         this.repository = repository;
-        this.executorService = Executors.newSingleThreadExecutor();
     }
 
     public LiveData<List<HajjRule>> getRules() {
@@ -82,21 +77,17 @@ public class CategoryViewModel extends AndroidViewModel {
         isLoading.setValue(true);
         errorMessage.setValue(null);
 
-        executorService.execute(() -> {
-            try {
-                if (observedRules != null) {
-                    observedRules.removeObserver(rulesObserver);
-                }
-                observedRules = repository.getRulesByCategory(categoryName);
-                observedRules.observeForever(rulesObserver);
-                isLoading.postValue(false);
-
-            } catch (Exception e) {
-                // Post error to main thread
-                errorMessage.postValue("Error loading rules: " + e.getMessage());
-                isLoading.postValue(false);
+        try {
+            if (observedRules != null) {
+                observedRules.removeObserver(rulesObserver);
             }
-        });
+            observedRules = repository.getRulesByCategory(categoryName);
+            observedRules.observeForever(rulesObserver);
+            isLoading.setValue(false);
+        } catch (Exception e) {
+            errorMessage.setValue("Error loading rules: " + e.getMessage());
+            isLoading.setValue(false);
+        }
     }
 
     /**
@@ -110,23 +101,17 @@ public class CategoryViewModel extends AndroidViewModel {
      * Toggle favorite status for a rule
      */
     public void toggleFavorite(HajjRule rule) {
-        executorService.execute(() -> {
-            try {
-                rule.setFavorite(!rule.isFavorite());
-                repository.update(rule);
-
-                // Refresh the list to update UI
-                rules.postValue(repository.getRulesByCategory(categoryName).getValue());
-            } catch (Exception e) {
-                errorMessage.postValue("Error updating favorite: " + e.getMessage());
-            }
-        });
+        try {
+            rule.setFavorite(!rule.isFavorite());
+            repository.update(rule);
+        } catch (Exception e) {
+            errorMessage.setValue("Error updating favorite: " + e.getMessage());
+        }
     }
 
     @Override
     protected void onCleared() {
         super.onCleared();
-        executorService.shutdown();
         if (observedRules != null) {
             observedRules.removeObserver(rulesObserver);
         }
