@@ -38,6 +38,9 @@ public class SearchFragment extends Fragment {
         com.google.android.material.textfield.TextInputEditText searchInput = view.findViewById(R.id.search_input);
         RecyclerView rv = view.findViewById(R.id.recycler_view_search);
         android.widget.TextView emptyState = view.findViewById(R.id.empty_search);
+        view.findViewById(R.id.suggestion_ihram).setOnClickListener(v -> searchInput.setText("Ihrami"));
+        view.findViewById(R.id.suggestion_miqat).setOnClickListener(v -> searchInput.setText("Miqat"));
+        view.findViewById(R.id.suggestion_umrah).setOnClickListener(v -> searchInput.setText("Umre"));
         searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new RuleAdapter(requireContext(), Collections.emptyList());

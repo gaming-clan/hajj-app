@@ -41,6 +41,16 @@ public class SavedFragment extends Fragment {
         viewModel = new ViewModelProvider(this).get(SavedViewModel.class);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_saved);
         TextView emptyState = view.findViewById(R.id.empty_saved);
+        android.util.TypedValue iconColor = new android.util.TypedValue();
+        requireContext().getTheme().resolveAttribute(
+                com.google.android.material.R.attr.colorPrimaryVariant, iconColor, true);
+        android.graphics.drawable.Drawable[] emptyIcons = emptyState.getCompoundDrawablesRelative();
+        if (emptyIcons[0] != null) {
+            android.graphics.drawable.Drawable icon = androidx.core.graphics.drawable.DrawableCompat
+                    .wrap(emptyIcons[0].mutate());
+            androidx.core.graphics.drawable.DrawableCompat.setTint(icon, iconColor.data);
+            emptyState.setCompoundDrawablesRelative(icon, emptyIcons[1], emptyIcons[2], emptyIcons[3]);
+        }
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         adapter = new RuleAdapter(requireContext(), Collections.emptyList());
         adapter.setOnFavoriteClickListener(viewModel::toggleSaved);

@@ -55,6 +55,7 @@ public class CategoryFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_categories, container, false);
+        android.widget.TextView categoryHeading = view.findViewById(R.id.category_heading);
 
         // Initialize ViewModel with Hilt
         categoryViewModel = new ViewModelProvider(this).get(CategoryViewModel.class);
@@ -63,6 +64,7 @@ public class CategoryFragment extends Fragment {
         if (getArguments() != null) {
             categoryId = getArguments().getInt(ARG_CATEGORY_ID);
             categoryTitle = getArguments().getString(ARG_CATEGORY_TITLE);
+            categoryHeading.setText(categoryTitle);
             getActivity().setTitle(categoryTitle);
 
             // Set category in ViewModel
